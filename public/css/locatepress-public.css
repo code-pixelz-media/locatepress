@@ -1,0 +1,473 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+.lp-row  {
+
+  max-width: 100% !important;
+}
+
+.lp-row .lp-content-title h2{
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.lp-search-filter-form ul{
+    display: flex;
+    list-style-type: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 25px 0;
+    position: relative;
+}
+
+.lp-search-filter-form  li {
+  display: inline-block;
+  padding: 10px 5px;
+  width: 100% !important;
+}
+
+.lp-search-filter-form li:first-child {
+    padding: 10px 5px 10px 0px;
+}
+
+.lp-map-container {
+    position: relative;
+}
+
+.lp-search-filter-form .lp_resetbutton {
+    padding: 55px 0 10px 5px !important;
+}
+
+.lp-search-filter-form .lp_filterbutton {
+    padding: 55px 0 10px 5px !important;
+}
+
+.lp-search-filter-form h3{
+    font-size: 14px;
+    margin: 15px 0;
+} 
+
+.lp-search-filter-form  input[type=text] {
+  background-color: #fff;
+  border: 1px solid #aaa;
+  border-radius: 2px;
+  box-sizing: border-box;
+  display: block;
+  font-size: 16px;
+  color: #333;
+  height: 40px;
+  line-height: 1.2;
+  max-width: 100%; 
+  margin: 15px 0 0;
+  outline: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 0 8px;
+  width: 100%;
+}
+
+.lp-search-filter-form input[type=text]:focus, 
+.lp-search-filter-form select:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.lp-search-filter-form .lp-filter-form-reset{
+    appearance: none;
+    background-color: #007CB2;
+    border: 1px solid #007CB2;
+    box-sizing: border-box;
+    border-radius: 2px;
+    color: #ffffff;
+    display: block;
+    font-size: 16px;
+    max-width: 100%;
+    margin: 0px;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+}
+
+.lp-search-filter-form .lp-filter-form-reset:hover {
+    color: #007CB2;
+    background-color: transparent;
+}
+
+/* class applies to select element itself, not a wrapper element */
+.lp-search-filter-form select   {
+    appearance: none;
+    background-color: #ffffff;
+    background-image: url(data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E), linear-gradient(rgb(255 255 255 / 0) 0%, rgb(229 229 229 / 0) 100%);
+    background-repeat: no-repeat, repeat;
+    background-position: right 3px top 50%, 0px 0px;
+    background-size: 9px;
+    border: 1px solid #aaaaaa;
+    border-radius: 2px;
+    box-sizing: border-box;
+    box-shadow: none;
+    color: #444444;
+    display: block;
+    font-size: 16px;
+    height: 40px;
+    line-height: 1.2;
+    max-width: 100%;
+    margin: 15px 0 0;
+    outline: none;
+    padding: 0 15px !important;
+    width: 100%;
+}
+
+.lp-search-filter-reset > input[type="button"]:hover{
+  color: blue;
+  background-color: none; 
+}
+
+.lp-search-filter-reset, 
+.lp_filterbutton {
+    padding-top: 70px;
+}
+
+/* Hide arrow icon in IE browsers */
+.select-css::-ms-expand {
+  display: none;
+}
+/* Hover style */
+.select-css:hover {
+  border-color: #888;
+}
+/* Focus style */
+.select-css:focus {
+  border-color: #aaa;
+  /* It'd be nice to use -webkit-focus-ring-color here but it doesn't work on box-shadow */
+  box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+  box-shadow: 0 0 0 3px -moz-mac-focusring;
+  color: #222; 
+  outline: none;
+}
+
+/* Set options to normal weight */
+.select-css option {
+  font-weight:normal;
+}
+
+/* Support for rtl text, explicit support for Arabic and Hebrew */
+*[dir="rtl"] .select-css, :root:lang(ar) .select-css, :root:lang(iw) .select-css {
+  background-position: left .7em top 50%, 0 0;
+  padding: .6em .8em .5em 1.4em;
+}
+
+/* Disabled styles */
+.select-css:disabled, .select-css[aria-disabled=true] {
+  color: graytext;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22graytext%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+    linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+}
+
+.select-css:disabled:hover, .select-css[aria-disabled=true] {
+  border-color: #aaa;
+}
+
+
+/*Listing Display Css*/
+
+.lp-listing-container {
+    padding-top: 50px;
+}
+
+
+.lp-container .lp-search-filter.search-align-bottom {
+    order: 2;
+}
+
+
+.lp-container .lp-listing-container {
+    order: 3;
+}
+
+.lp-display-listing {
+    display: flex;
+    flex-flow: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.lp-listing-container .lp-display-listing .lp-card-col {
+    padding: 0 15px;
+    width: 25%;
+}
+
+.lp-listing-container .lp-display-listing .lp-card{
+    border: 1px solid rgb(0 0 0 / 20%);
+    border-radius: 5px;
+    display: inline-block;
+    margin-bottom: 50px;
+    padding: 0;
+    width: 100%;
+}
+
+
+.lp-listing-container .lp-display-listing .lp-card img{
+  margin-bottom: 0px;
+  width: 100%;
+}
+
+.lp-display-listing .lp-card .lp-card-body {
+    font-family: "Roboto";
+    font-size: 16px;
+    padding: 20px;
+}
+
+.lp-listing-container .lp-display-listing .lp-card .lp-card-body .card-body-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 10px;
+}
+
+.card-body-location{
+  margin: 0;
+}
+
+.card-body-location a {
+    color: #8F71D4;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none !important;
+}
+
+/*Test Css*/
+.lp-filter-content
+{
+  
+  color: #fff;
+  height: 400px;
+  width: 100%;
+  margin: 0px auto;
+  
+}
+.lp-form-content
+{
+  background-color: #efefef;
+  color: #000;
+  height: 400px;
+  
+  float: left;
+}
+.lp-map-content
+{
+  background-color: #efefef;
+  color: #000;
+  height: 400px;
+  width: 69%;
+  float: right;
+}
+
+/******* Search alignment ******/
+
+
+.lp-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.lp-wrap .lp-search-filter{
+    display: block;
+    position: relative;
+    width: 100%;
+}
+
+.lp-wrap.search-align-top,
+.lp-wrap.search-align-buttom {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.lp-wrap.search-align-top .lp-search-filter{
+    flex: 0 0 100%;
+    order: 1;
+}
+
+.lp-wrap.search-align-top .lp-map-container {
+    flex: 0 0 100%;
+    order: 2;
+}
+
+.lp-wrap.search-align-buttom .lp-search-filter {
+    flex: 0 0 100%;
+    order: 2;
+}
+
+.lp-wrap.search-align-buttom .lp-map-container {
+    flex: 0 0 100%;
+    order: 1;
+}
+
+.lp-wrap.search-align-right .lp-search-filter {
+    order: 2;
+    padding: 0 10px;
+    width: 20%;
+}
+
+.lp-wrap.search-align-left .lp-search-filter{
+    display: inline-block;
+    width: 20%;
+    padding: 0 10px;
+}
+
+.lp-wrap.search-align-left .lp-map-container,
+.lp-wrap.search-align-right .lp-map-container {
+    display: inline-block;
+    width: 80% !important;
+}
+
+.lp-wrap.search-align-left .lp-search-filter li,
+.lp-wrap.search-align-right .lp-search-filter li {
+    width: 100% !important;
+    padding-top: 15px !important;
+}
+
+.lp-wrap.search-align-left .lp-search-filter ul,
+.lp-wrap.search-align-right .lp-search-filter ul {
+    display: block;
+    padding: 10px 0;
+}
+
+.lp-wrap.search-align-left .lp-search-filter li h3, 
+.lp-wrap.search-align-right .lp-search-filter li h3 {
+    margin: 0;
+}
+
+.lp-wrap.search-align-left .lp-search-filter li:first-child, 
+.lp-wrap.search-align-right .lp-search-filter li:first-child {
+    padding: 10px 5px !important;
+}
+
+.lp-wrap.search-align-left .lp-display-map,
+.lp-wrap.search-align-right .lp-display-map {
+    height: 500px !important;
+}
+
+.marker-container {
+  margin: 0px !important;
+
+}
+
+.marker-container img{
+  width : 150px;
+  height: 90px;
+}
+
+.marker-container .info-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 5px;
+
+}
+.marker-container  span{
+  font-weight: normal;
+  font-size: 15px;
+ 
+ 
+}
+
+.marker-container button{
+ 
+  padding: 3px;
+  font-weight: normal;
+
+}
+
+
+.gm-style .gm-style-iw-t {
+    position: relative;
+}
+
+.gm-style .gm-style-iw-c {
+    left: 0;
+    right: 0;
+    width: 180px;
+    padding: 12px !important;
+}
+
+.gm-style .gm-style-iw-d {
+    overflow: hidden !important;
+    position: relative;
+}
+
+.gm-style img {
+    width: 100%;
+}
+
+.gm-style .info-title {
+    margin: 10px 0px;
+    text-align: center;
+}
+
+.gm-style .info-location {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.gm-style a{
+  display: block;
+  text-align: center;
+}
+
+.gm-style a .load-link {
+    padding: 8px;
+    margin-bottom: 5px;
+}
+
+
+@media(max-width: 1023px){
+
+  .lp-search-filter-form ul{
+    display: block;
+  }
+
+  .lp-search-filter-form li {
+    display: block;
+    width: 100% !important;
+    padding: 10px 0;
+  }
+
+  .lp-search-filter-form li:first-child,
+  .lp-wrap.search-align-left .lp-search-filter li:first-child, 
+  .lp-wrap.search-align-right .lp-search-filter li:first-child {
+      padding: 10px 0 !important;
+  }
+
+  .lp-search-filter-form li:last-child,
+  .lp-wrap.search-align-left .lp-search-filter li:last-child, 
+  .lp-wrap.search-align-right .lp-search-filter li:last-child  {
+      padding: 10px 0 !important;
+  }
+
+  .lp-search-filter-form h3 {
+      margin: 0;
+  }
+
+  .lp-wrap.search-align-left .lp-search-filter,
+  .lp-wrap.search-align-right .lp-search-filter,
+  .lp-wrap.search-align-left .lp-map-container, 
+  .lp-wrap.search-align-right .lp-map-container {
+    display: block;
+    width: 100% !important;
+  }
+
+  .lp-wrap.search-align-right .lp-search-filter {
+      order: 1;
+  }
+
+  .lp-wrap.search-align-right .lp-map-container {
+      order: 2;
+  }
+
+  .lp-listing-container .lp-display-listing .lp-card-col {
+      width: 100%;
+  }
+
+}
+
