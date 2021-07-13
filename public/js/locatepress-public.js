@@ -153,9 +153,13 @@ LocatePress.App = ( function($) {
 		
 		infos = new google.maps.InfoWindow();
 		bounds = new google.maps.LatLngBounds();
+		var marklist = [];
 	
 		for(var k=0 ; k < mark.length; k++ ){
-			
+
+			var markLatLong = [mark[k].latitude, mark[k].longitude];
+			marklist.push(markLatLong);
+
 	    	var iconUrl; 
 
 	    	if(mark[k].marker_icon){
@@ -198,6 +202,20 @@ LocatePress.App = ( function($) {
  
 	      })(mlist, k));
 		}
+		//console.log(marklist);
+		var locations = marklist;
+		var labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		var markers = locations.map((locations, i) => {
+			return new google.maps.Marker({
+			  position: location,
+			  label: labels[i % labels.length],
+			});
+		  });
+		  // Add a marker clusterer to manage the markers.
+		  new MarkerClusterer(LocatePressMap, markers, {
+			imagePath:
+			  "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+		  });
 
 	 	LocatePressMap.fitBounds(bounds);
 

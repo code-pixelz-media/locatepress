@@ -125,6 +125,12 @@ class Locatepress_Public {
 		wp_register_script('googlemaps-polyfill', 'https://polyfill.io/v3/polyfill.min.js?features=default', array(), '', false);
 		 
 		wp_enqueue_script('googlemaps-polyfill');
+		
+		wp_register_script('googlemaps-cluster', 'https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js', array(), '', false);
+		
+		wp_enqueue_script('googlemaps-cluster');
+
+
 
 		wp_enqueue_script('jquery');
 
