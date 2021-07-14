@@ -214,24 +214,6 @@ if(isset($lp_options['lp_filter_page'])){
             </div>
         </div>
     </div>
-    <div class="form-group">
-        <label for=""><?php _e('Zoom','locatepress'); ?></label>
-        <div class="form-control-wrap">
-            <input class="form-control" name="locate_press_set[lp_map_zoom]"  type="text" placeholder="<?php _e('Zoom','locatepress'); ?>" onfocus="this.placeholder=''" onblur="this.placeholder='Zoom'" value="<?php if(isset($lp_options['lp_map_zoom'])): echo $lp_options['lp_map_zoom']; else: echo '1'; endif;  ?>">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for=""><?php _e('Center latitude','locatepress'); ?></label>
-        <div class="form-control-wrap">
-            <input class="form-control" name="locate_press_set[lp_center_lat]"  type="text" placeholder="<?php _e('Lat','locatepress'); ?>" onfocus="this.placeholder=''" onblur="this.placeholder='Lat'" value="<?php if(isset($lp_options['lp_center_lat'])): echo $lp_options['lp_center_lat']; else: echo '-33.92'; endif;  ?>">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for=""><?php _e('Center longitude','locatepress'); ?></label>
-        <div class="form-control-wrap">
-            <input class="form-control" name="locate_press_set[lp_center_long]"  type="text" placeholder="<?php _e('Long','locatepress'); ?>" onfocus="this.placeholder=''" onblur="this.placeholder='Long'" value="<?php if(isset($lp_options['lp_center_long'])) : echo $lp_options['lp_center_long']; else: echo '151.25'; endif;  ?>">
-        </div>
-    </div>
 </div>
 
 

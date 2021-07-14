@@ -14,7 +14,8 @@ LocatePress.App = ( function($) {
 		LpReset 	= $('#lp-resetbutton'),
 		LocatePressMap  , icons,marker, mapDiv,popup, 
 		formDataObj ={}, markerArrList=[],
-		zoom = parseInt(lp_settings.map.lp_map_zoom),autocompleteSearch,bounds ,infos;
+		//zoom = parseInt(lp_settings.map.lp_map_zoom),
+		autocompleteSearch,bounds ,infos;
 
 
 
@@ -117,7 +118,7 @@ LocatePress.App = ( function($) {
 	function locatePressMapInit() {
 
 		var LocatePressMapOptions = {
-		    zoom: zoom,
+		    zoom: 2,
 		    center: new google.maps.LatLng(-33.92, 151.25),
 
 		}

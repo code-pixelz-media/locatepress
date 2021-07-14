@@ -123,11 +123,14 @@
 .cpm-plugin-wrap .cpm-btn.btn2:hover,
 .cpm-plugin-wrap .cpm-btn.btn2:visited:hover,
 .cpm-plugin-wrap .tabs-wrap .tab-menu li a,
-.checkbox-wrap.custom input[type="checkbox"]:checked+span:before,
-.checkbox-wrap.custom input[type="checkbox"]:checked+span:after,
 .radio-wrap.custom input[type="radio"]:checked+span:after,
 .cpm-plugin-wrap .acc-link{
     background: #00C071;
+}
+
+.checkbox-wrap.custom input[type="checkbox"]:checked+span:before,
+.checkbox-wrap.custom input[type="checkbox"]:checked+span:after{
+    background: #ff0000;
 }
 
 /***** ALL THE BASE BORDER COLOR CSS *****/
