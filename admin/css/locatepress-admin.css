@@ -907,6 +907,19 @@
     transform: translateY(8px);
 }
 
+.cpm-plugin-wrap .addon-wrap{
+    background: #ffffff;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    min-height: 300px;
+    padding: 30px;
+
+    -webkit-box-shadow: 8px 8px 8px 0 rgba(187, 187, 187, 0.2);
+    -moz-box-shadow: 8px 8px 8px 0 rgba(187, 187, 187, 0.2);
+    box-shadow: 8px 8px 8px 0 rgba(187, 187, 187, 0.2);
+}
+
 /*.cpm-plugin-wrap .tabs-wrap .tab-menu li.ui-tabs-active{
     -webkit-box-shadow: 8px 8px 0 0 rgba(187, 187, 187, 0.5);
     -moz-box-shadow: 8px 8px 0 0 rgba(187, 187, 187, 0.5);
@@ -976,6 +989,18 @@
 
 .cpm-plugin-wrap .tabs-wrap #need-help .tab-title:before{
     content: "\f223";
+}
+
+.addon-wrap .addon-logo-wrap .title .addon-wrap-title{
+   margin-bottom: 40px;
+}
+
+.addon-wrap .addon-logo-wrap .title .addon-wrap-title:before{
+    position: relative;
+    font-family: 'dashicons';
+    font-size: 23px;
+    margin-right: 10px;
+    content: "\f103";
 }
 
 .cpm-plugin-wrap .tabs-wrap .tab-content > form:first-child{

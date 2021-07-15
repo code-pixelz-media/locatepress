@@ -272,7 +272,7 @@ if(isset($lp_options['lp_filter_page'])){
     }
     //console.log('exists');
 
-
+    //js to change options as seleceted in dropdpwn added by openstreet addon
     jQuery(document).ready(function($){
         if (document.querySelector('.os-maptype-options') !== null) {
             var mapType = $('.os-custom-select').val();

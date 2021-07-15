@@ -70,12 +70,11 @@ class Locatepress_Settings {
 
 		require_once(plugin_dir_path( __FILE__ ). 'partials/locatepress-admin-display.php');
 
-		echo '	</form>' . "\n";
+		echo '	</form>' . "\n";		
 		echo '</div>';//tab content end
 		echo '	</div>';//tabs-wrap ends
 		echo '	</div>';//body wrap end
-
-
+		require_once(plugin_dir_path( __FILE__ ). 'partials/locatepress-addons.php');
 		require_once(plugin_dir_path( __FILE__ ). 'partials/locatepress-admin-footer.php');
 		//get footer of plugin
 		echo '</div>' . "\n";//cpm-plugin-wrap ends
