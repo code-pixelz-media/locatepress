@@ -8,52 +8,40 @@
         </div>
     </div>
     <div class="row">
-        <div class="singleaddon-wrap col-md-3">
-            <h4>Addon 1</h4>
+        <?php  
+            $url = 'http://codepixelz.tech/locatepress/locatepress-addons.json';
+            $ch = curl_init();
+            // Will return the response, if false it print the response
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            // Set the url
+            curl_setopt($ch, CURLOPT_URL,$url);
+            // Execute
+            $result=curl_exec($ch);
+            // Closing
+            curl_close($ch);
 
-            <p>Test addon 1</p>
-        </div>
-        <div class="singleaddon-wrap col-md-3">
-            <h4>Addon 2</h4>
+            // Will dump a beauty json :3
+            $addons = json_decode($result, true);
+            //print_r($data);
 
-            <p>Test addon 2</p>
-        </div>
-        <div class="singleaddon-wrap col-md-3">
-            <h4>Addon 3</h4>
-
-            <p>Test addon 3</p>
-        </div>
-        <div class="singleaddon-wrap col-md-3">
-            <h4>Addon 4</h4>
-
-            <p>Test addon 4</p>
-        </div>
-        <div class="singleaddon-wrap col-md-3">
-            <h4>Addon 5</h4>
-
-            <p>Test addon 5</p>
-        </div>
-        <div class="singleaddon-wrap col-md-3">
-            <h4>Addon 6</h4>
-
-            <p>Test addon 6</p>
-        </div>
-        <div class="singleaddon-wrap col-md-3">
-            <h4>Addon 7</h4>
-
-            <p>Test addon 7</p>
-        </div>
-        <div class="singleaddon-wrap col-md-3">
-            <h4>Addon 8</h4>
-
-            <p>Test addon 8</p>
-        </div>
-
-        <div class="singleaddon-wrap col-md-3">
-            <h4>Addon 9</h4>
-
-            <p>Test addon 9</p>
-        </div>
+            foreach($addons as $addon){
+                $title = $addon['name'];
+                $desc = $addon['about'];
+                $image = $addon['icon'];
+                $url = $addon['url'];
+                $address = $addon['address'];
+                echo '<a href="'.$url.'">';
+                echo '<div class="singleaddon-wrap col-md-3">';
+                echo '<img src="'.$image.'">';
+                echo '<h4>'.$title.'</h4>';
+                echo '<h6>'.$address.'</h6>';
+                echo '<p>'.$desc.'</p>';
+                echo '</div>';
+                echo '</a>';
+            }
+        ?>
+        
+        
     </div>
 
 </div>
