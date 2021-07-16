@@ -1454,4 +1454,24 @@
     background: #DFF2BF;
     color: #4F8A10;
 }
+.singleaddon-wrap img {
+    width: 100%;
+}
+.addons-wrap-inner {
+    box-shadow: 0 0 0 1px rgb(92 121 143 / 7%), 0 0 4px rgb(92 121 143 / 34%);
+}
+.addons-content {
+    padding: 25px 30px;
+}
+.addons-content h4 {
+    color: #000;
+    font-size: 22px;
+}
+.addons-content h6{
+    color: #000;
+}
+.addons-content p {
+    color: #444;
+    margin-bottom: 0;
+}
 

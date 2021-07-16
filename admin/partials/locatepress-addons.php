@@ -31,12 +31,12 @@
                 $url = $addon['url'];
                 $address = $addon['address'];
                 echo '<a href="'.$url.'">';
-                echo '<div class="singleaddon-wrap col-md-3">';
-                echo '<img src="'.$image.'">';
+                echo '<div class="singleaddon-wrap col-md-3"><div class="addons-wrap-inner">';
+                echo '<img src="'.$image.'"><div class="addons-content">';
                 echo '<h4>'.$title.'</h4>';
                 echo '<h6>'.$address.'</h6>';
-                echo '<p>'.$desc.'</p>';
-                echo '</div>';
+                echo '<p>'.$desc.'</p></div>';
+                echo '</div></div>';
                 echo '</a>';
             }
         ?>
