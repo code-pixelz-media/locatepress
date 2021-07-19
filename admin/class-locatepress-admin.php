@@ -109,7 +109,7 @@ class Locatepress_Admin {
 
 		$locate_press_api_key =  $locate_press_options['lp_map_api_key'];
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/locatepress-admin.js', array( 'jquery' ), $this->version, true );
+		wp_enqueue_script( $this->plugin_name.'-admin', plugin_dir_url( __FILE__ ) . 'js/locatepress-admin.js', array( 'jquery' ), $this->version, true );
 	
         wp_enqueue_script( 'jquery-ui-accordion');
 

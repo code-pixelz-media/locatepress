@@ -19,8 +19,6 @@
             $result=curl_exec($ch);
             // Closing
             curl_close($ch);
-
-            // Will dump a beauty json :3
             $addons = json_decode($result, true);
             //print_r($data);
 

@@ -61,6 +61,7 @@ class Locatepress_Register_Metabox {
 		echo '	  </div>';
 		
 		wp_enqueue_script('map-script');
+		do_action ('locatepress_after_map_canvas');
 
 	}
 
