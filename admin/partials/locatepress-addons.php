@@ -23,19 +23,47 @@
             //print_r($data);
 
             foreach($addons as $addon){
-                $title = $addon['name'];
-                $desc = $addon['about'];
-                $image = $addon['icon'];
-                $url = $addon['url'];
-                $address = $addon['address'];
-                echo '<a href="'.$url.'">';
+                $title      = $addon['name'];
+                $desc       = $addon['about'];
+                $image      = $addon['icon'];
+                $version    = $addon['version'];
+                $type       = $addon['type'];
+                $slug       = $addon['slug'];
+                $date       = $addon['date']; //date created
+                $price      = $addon['price'];
+                $pluginPath = $slug.'/'.$slug.'.php';
+                $pathpluginurl = WP_PLUGIN_DIR .'/'. $pluginPath;
+                //check if plugin is downloaded or not
+                if (file_exists( $pathpluginurl )){
+                    if (is_plugin_active($pluginPath)){
+                        $buttonText = "Activated";
+                        $url = "#";
+                    }else{
+                        $buttonText = "Activate";
+                        $url = admin_url('plugins.php');
+
+                    }
+                    
+                }else{
+                    if ($type == "premium"){
+                        $buttonText = "Buy";
+                        $url        = $addon['url'];
+                    }else{
+                        $buttonText = "Download";
+                        $url        = $addon['url'];
+                    }
+                   
+                }
+
                 echo '<div class="singleaddon-wrap col-md-3"><div class="addons-wrap-inner">';
                 echo '<img src="'.$image.'"><div class="addons-content">';
-                echo '<h4>'.$title.'</h4>';
-                echo '<h6>'.$address.'</h6>';
+                echo '<h4 class= "addon-title">'.$title.'</h4>';
+                echo '<p class= "addon-version">Version : '.$version.'</p>';
+                echo '<span><p class= "addon-date">Release Date : '.$date.'</p></span>';
+                //echo '<h6>'.$slug.'</h6>';
                 echo '<p>'.$desc.'</p></div>';
+                echo '<a href="'.$url.'" class="addon-button">'.$buttonText.'<a/>';
                 echo '</div></div>';
-                echo '</a>';
             }
         ?>
         
