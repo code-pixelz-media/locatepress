@@ -1474,4 +1474,11 @@
     color: #444;
     margin-bottom: 0;
 }
-
+.addons-wrap-inner a.addon-button {
+    width: 100%;
+    display: block;
+    padding: 10px 10px;
+    text-align: center;
+    background: #00C071 !important;
+    color: #fff !important;
+}

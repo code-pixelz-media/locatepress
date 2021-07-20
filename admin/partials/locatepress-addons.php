@@ -58,8 +58,8 @@
                 echo '<div class="singleaddon-wrap col-md-3"><div class="addons-wrap-inner">';
                 echo '<img src="'.$image.'"><div class="addons-content">';
                 echo '<h4 class= "addon-title">'.$title.'</h4>';
-                echo '<p class= "addon-version">Version : '.$version.'</p>';
-                echo '<span><p class= "addon-date">Release Date : '.$date.'</p></span>';
+                echo '<p class= "addon-version"><strong>Version</strong> : '.$version.'</p>';
+                echo '<span><p class= "addon-date"><strong>Release Date</strong> : '.$date.'</p></span>';
                 //echo '<h6>'.$slug.'</h6>';
                 echo '<p>'.$desc.'</p></div>';
                 echo '<a href="'.$url.'" class="addon-button">'.$buttonText.'<a/>';
