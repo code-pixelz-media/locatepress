@@ -46,7 +46,7 @@
                     
                 }else{
                     if ($type == "premium"){
-                        $buttonText = "Buy";
+                        $buttonText = 'Buy ('.$price.')';
                         $url        = $addon['url'];
                     }else{
                         $buttonText = "Download";
