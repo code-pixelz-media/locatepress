@@ -56,7 +56,7 @@ class Locatepress_Register_Metabox {
 		echo '		</td>';
 		echo '	<tr/>';
 		echo '</table>';
-		echo '    <input id="lp-search-input" class="controls" type="text" placeholder="Search Location" style="width:50%" onFocus="geolocate()" >';
+		echo '    <input id="lp-search-input" class="controls google-map-admin-search-input" type="text" placeholder="Search Location" style="width:50%" onFocus="geolocate()" >';
 		echo '	  <div id="lp-meta-map-canvas" data-latlong="'.$lp_lt.'" style="height: 500px; ">'."\n";
 		echo '	  </div>';
 		
