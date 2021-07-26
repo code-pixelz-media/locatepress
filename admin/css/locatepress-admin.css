@@ -1528,7 +1528,6 @@
     display: block;
     padding: 10px 10px;
     text-align: center;
-    background: #00C071 !important;
     color: #fff !important;
 }
 
@@ -1583,4 +1582,17 @@
     left: -25px;
     top: 30px;
     transform: rotate(45deg);
+  }
+
+
+  .btn-grey{
+    background : #444 !important ;
+  }
+
+  .btn-red{
+    background : rgb(255, 0, 0) !important ;
+  }
+  
+  .btn-green{
+    background : #00C071 !important ;
   }

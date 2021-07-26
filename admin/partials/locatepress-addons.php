@@ -38,7 +38,10 @@
                     if (is_plugin_active($pluginPath)){
                         $buttonText = "Activated";
                         $url = "#";
+                        $btnColor   = 'btn-grey';
+
                     }else{
+                        $btnColor   = 'btn-green';
                         $buttonText = "Activate";
                         $url = admin_url('plugins.php');
 
@@ -46,9 +49,12 @@
                     
                 }else{
                     if ($type == "premium"){
+                        $btnColor   = 'btn-red';
                         $buttonText = 'Buy Now : '.$price;
                         $url        = $addon['url'];
                     }else{
+
+                        $btnColor   = 'btn-red';
                         $buttonText = "Download";
                         $url        = $addon['url'];
                     }
@@ -71,7 +77,7 @@
                 echo '<span><p class= "addon-date"><strong>Release Date</strong> : '.$date.'</p></span>';
                 //echo '<h6>'.$slug.'</h6>';
                 echo '<p>'.$desc.'</p></div>';
-                echo '<a href="'.$url.'" class="addon-button">'.$buttonText.'<a/>';
+                echo '<a href="'.$url.'" class="addon-button '.$btnColor.'">'.$buttonText.'<a/>';
                 echo '</div></div>';
             }
         ?>
