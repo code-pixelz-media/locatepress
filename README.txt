@@ -1,60 +1,113 @@
-=== Plugin Name ===
-Plugin Name: Locatepress
-Plugin URI: http://wplocatepress.com/
-Description: Locatepress is a wordpress plugin used to filter and track the listings with google maps. 
-Version: 0.1.0
-Author: wplocatepress.com
-Author URI: http://wplocatepress.com/
-Contributors: locatepress, utsavsinghrathour, aleenak19, rowhit07, sushil51, ramanb
-Donate Link: http://wplocatepress.com/
-Requires at least: 3.0.1
-Requires PHP: 5.6.20
-Tested up to: 3.4
-Stable tag: 4.3
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+<?php
 
-Locatepress is a plugin where you can add listings and filter and track listings with Google Map API integration
+/**
+ * The plugin bootstrap file
+ *
+ * This file is read by WordPress to generate the plugin information in the plugin
+ * admin area. This file also includes all of the dependencies used by the plugin,
+ * registers the activation and deactivation functions, and defines a function
+ * that starts the plugin.
+ *
+ * @link              http://wplocatepress.com/
+ * @since             0.1.0
+ * @package           Locatepress
+ *
+ * @wordpress-plugin
+ * Plugin Name:       Locatepress
+ * Plugin URI:        http://wplocatepress.com/locatepress/
+ * Description:       Locatepress is a wordpress plugin used to filter and track the listings with google maps. 
+ * Version:           0.1.0
+ * Author:            wplocatepress.com
+ * Author URI:        http://wplocatepress.com/
+ * License:           GPL-2.0+
+ * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * Text Domain:       locatepress
+ * Domain Path:       /languages
+ */
 
-== Description ==
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
 
-Locatepress allows you to add multiple listings. With the integration of Google Map API, you can define location in every listing.
-You can search listings by keywords, listing categories, tags and Google Map Places. 
+/**
+ * Currently plugin version.
+ * Start at version 0.1.0 and use SemVer - https://semver.org
+ * Rename this for your plugin and update it as you release new versions.
+ */
+define( 'LOCATEPRESS_VERSION', '0.1.0' );
 
-== Features ==
-1. Google Map integration
-2. Listing search functionality.
-3. Enable/Disable Map view in Search page.
-4. Add custom Google Map markers for listing types
-5. Options to choose from different map types provided by Google Map API
+define( 'LOCATEPRESS_SETTINGS_URL', get_admin_url() . "edit.php?post_type=map_listing&page=locatepress_dashboard" );
 
-== Installation ==
+/**
+ * The code that runs during plugin activation.
+ * This action is documented in includes/class-locatepress-activator.php
+ */
+function activate_locatepress() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-locatepress-activator.php';
+	Locatepress_Activator::activate();
 
-This section describes how to install the plugin and get it working.
+}
 
-e.g.
+/**
+ * The code that runs during plugin deactivation.
+ * This action is documented in includes/class-locatepress-deactivator.php
+ */
+function deactivate_locatepress() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-locatepress-deactivator.php';
+	Locatepress_Deactivator::deactivate();
+}
 
-1. Upload `locatepress.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+register_activation_hook( __FILE__, 'activate_locatepress' );
+register_deactivation_hook( __FILE__, 'deactivate_locatepress' );
+
+/**
+ * The core plugin class that is used to define internationalization,
+ * admin-specific hooks, and public-facing site hooks.
+ */
+
+//require plugin_dir_path( __FILE__ ) . 'includes/class-locatepress.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-locatepress.php';
+
+/**
+ * Begins execution of the plugin.
+ *
+ * Since everything within the plugin is registered via hooks,
+ * then kicking off the plugin from this point in the file does
+ * not affect the page life cycle.
+ *
+ * @since    0.1.0
+ */
+function run_locatepress() {
+
+	$plugin = new Locatepress();
+	$plugin->run();
+
+}
+run_locatepress();
 
 
-== Frequently Asked Questions ==
+register_activation_hook(__FILE__, 'locatepress_activate');
 
-= Can you have separate Markers per listing ? =
+add_action('admin_init', 'locatepress_redirect');
 
-The plugin has option to have separate custom marker per Listing Category
+function locatepress_activate() {
+    add_option('locatepress_do_activation_redirect', true);
+}
 
+function locatepress_redirect() {
+    if (get_option('locatepress_do_activation_redirect', false)) {
+        delete_option('locatepress_do_activation_redirect');
+        wp_redirect(LOCATEPRESS_SETTINGS_URL);
+    }
+}
 
-== Screenshots ==
+function locatepress_add_settings_link( $links ) {
+    $url = LOCATEPRESS_SETTINGS_URL;
+    $settings_link = '<a href="' . $url . '">' . __('Settings', 'locatepress') . '</a>';
+    $links[] = $settings_link;
+    return $links;
+}
+$plugin = plugin_basename( __FILE__ );
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
-
-== Changelog ==
-
-= 1.0 =
-* First Push.
+add_filter( "plugin_action_links_$plugin", 'locatepress_add_settings_link' );

@@ -14,7 +14,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Locatepress
- * Plugin URI:        http://wplocatepress.com/
+ * Plugin URI:        http://wplocatepress.com/locatepress/
  * Description:       Locatepress is a wordpress plugin used to filter and track the listings with google maps. 
  * Version:           0.1.0
  * Author:            wplocatepress.com
