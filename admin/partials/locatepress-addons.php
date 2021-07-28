@@ -10,17 +10,15 @@
     <div class="row">
         <?php  
             $url = 'http://codepixelz.tech/locatepress/locatepress-addons.json';
-            $ch = curl_init();
-            // Will return the response, if false it print the response
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            // Set the url
-            curl_setopt($ch, CURLOPT_URL,$url);
-            // Execute
-            $result=curl_exec($ch);
-            // Closing
-            curl_close($ch);
-            $addons = json_decode($result, true);
-            //print_r($data);
+
+			$response = wp_remote_get($url);
+
+			if( is_wp_error( $response ) ) {
+				return false; // Bail early
+			}
+
+			$body = wp_remote_retrieve_body( $response );
+			$addons = json_decode( $body, true );
 
             foreach($addons as $addon){
                 $title      = $addon['name'];
