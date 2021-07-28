@@ -26,7 +26,7 @@
                 $image      = $addon['icon'];
                 $version    = $addon['version'];
                 $type       = $addon['type'];
-                $slug       = $addon['slug'];
+                $slug       = __($addon['slug']);
                 $date       = $addon['date']; //date created
                 $price      = $addon['price'];
                 $pluginPath = $slug.'/'.$slug.'.php';
@@ -34,13 +34,13 @@
                 //check if plugin is downloaded or not
                 if (file_exists( $pathpluginurl )){
                     if (is_plugin_active($pluginPath)){
-                        $buttonText = "Activated";
+						$buttonText = __( 'Activated', 'locatepress' );
                         $url = "#";
                         $btnColor   = 'btn-grey';
 
                     }else{
                         $btnColor   = 'btn-green';
-                        $buttonText = "Activate";
+						$buttonText = __( 'Activate', 'locatepress' );
                         $url = admin_url('plugins.php');
 
                     }
@@ -48,34 +48,33 @@
                 }else{
                     if ($type == "premium"){
                         $btnColor   = 'btn-red';
-                        $buttonText = 'Buy Now : '.$price;
+						$buttonText = sprintf( __( 'Buy Now : %s', 'locatepress' ), $price );
                         $url        = $addon['url'];
                     }else{
 
                         $btnColor   = 'btn-red';
-                        $buttonText = "Download";
+						$buttonText = __( 'Download', 'locatepress' );
                         $url        = $addon['url'];
                     }
                    
                 }
 
                 if ($type == 'free'){
-                    $ribbontext = 'Free';
+					$ribbontext = __( 'Free', 'locatepress' );
                 }else{
-                    $ribbontext = 'Premium ('.$price.')' ;
+					$ribbontext = sprintf( __( 'Premium (%s)', 'locatepress' ), $price );
                 }
 
                 echo '<div class="singleaddon-wrap col-md-3">';
                 echo '<div class="ribbon ribbon-top-right"><span>'.$ribbontext.'</span></div>';
                 echo '<div class="addons-wrap-inner">';
-                echo '<img src="'.$image.'"><div class="addons-content">';
-                echo '<h4 class= "addon-title">'.$title.'</h4>';
-                echo '<a href="'.$url.'" class="addon-detail-button">Addon Details<a/>';
-                echo '<p class= "addon-version"><strong>Version</strong> : '.$version.'</p>';
-                echo '<span><p class= "addon-date"><strong>Release Date</strong> : '.$date.'</p></span>';
-                //echo '<h6>'.$slug.'</h6>';
-                echo '<p>'.$desc.'</p></div>';
-                echo '<a href="'.$url.'" class="addon-button '.$btnColor.'">'.$buttonText.'<a/>';
+                echo '<img src="'.esc_url($image).'"><div class="addons-content">';
+                echo '<h4 class= "addon-title">'.__($title, 'locatepress').'</h4>';
+                echo '<a href="'.$url.'" class="addon-detail-button">'.__('Addon Details', 'locatepress').'<a/>';
+                echo '<p class= "addon-version"><strong>Version</strong> : '.__($version, 'locatepress').'</p>';
+                echo '<span><p class= "addon-date"><strong>Release Date</strong> : '.__($date, 'locatepress').'</p></span>';
+                echo '<p>'.__($desc, 'locatepress').'</p></div>';
+                echo '<a href="'.esc_url($url).'" class="addon-button '.$btnColor.'">'.$buttonText.'<a/>';
                 echo '</div></div>';
             }
         ?>
