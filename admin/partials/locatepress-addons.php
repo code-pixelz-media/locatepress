@@ -24,7 +24,8 @@ if ( ! defined( 'WPINC' ) ) {
 			// Execute
 			$result = curl_exec( $ch );
 			// Closing
-			curl_close( $ch );
+            curl_close( $ch );
+            
 			$addons = json_decode( $result, true );
 			//print_r($data);
 
