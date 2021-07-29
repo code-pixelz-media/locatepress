@@ -10,7 +10,7 @@ if ( ! defined( 'WPINC' ) ) {
 <div class="footer-wrap">
     <div class="row">
         <div class="creator col-md-3">
-            <span><?php _e('Proudly Created by','locatepress') ?> <a href="http://wplocatepress.com/"><?php _e('Locatepress','locatepress') ?></a></span>
+            <span><?php _e('Proudly Created by','locatepress') ?> <a href="<?php echo esc_url('http://wplocatepress.com/');?>"><?php _e('Locatepress','locatepress') ?></a></span>
            
         </div>
 

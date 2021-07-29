@@ -10,7 +10,7 @@ if ( ! defined( 'WPINC' ) ) {
            
             <div class="title">
                 <h1><?php _e( 'Locatepress Settings', 'locatepress' ); ?></h1>
-                <p><a href="http://wplocatepress.com/"><?php _e( 'Locatepress', 'locatepress' ); ?></a></p>
+                <p><a href="<?php echo esc_url('http://wplocatepress.com/');?>"><?php _e( 'Locatepress', 'locatepress' ); ?></a></p>
             </div>
         </div>
         <div class="btn-wrap col-md-6">
