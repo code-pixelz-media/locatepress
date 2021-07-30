@@ -16,13 +16,13 @@ if(isset($lp_options['lp_filter_page'])){
     <div class="form-group lp-options">
         <label for=""><?php _e('Google Map Api Key','locatepress'); ?></label>
         <div class="form-control-wrap">
-            <input class="form-control" name="locate_press_set[lp_map_api_key]"  type="text" placeholder="<?php _e('Map Api Key','locatepress'); ?>" onfocus="this.placeholder=''" onblur="this.placeholder='Map Api Key'" value="<?php if(isset($lp_options['lp_map_api_key'])) : echo $lp_options['lp_map_api_key'];  else : echo 'Google Map api key'; endif;  ?>">
+            <input class="form-control" name="locate_press_set[lp_map_api_key]"  type="text" placeholder="<?php _e('Map Api Key','locatepress'); ?>" onfocus="this.placeholder=''" onblur="this.placeholder='Map Api Key'" value="<?php if(isset($lp_options['lp_map_api_key'])) : esc_html_e($lp_options['lp_map_api_key']); endif;  ?>">
         </div>
     </div>
     <div class="form-group os-options">
         <label for=""><?php _e('Map Box Api Key','locatepress'); ?></label>
         <div class="form-control-wrap">
-            <input class="form-control" name="locate_press_set[os_map_api_key]"  type="text" placeholder="<?php _e('Map Api Key','locatepress'); ?>" onfocus="this.placeholder=''" onblur="this.placeholder='Map Api Key'" value="<?php if(isset($lp_options['os_map_api_key'])) :echo $lp_options['os_map_api_key']; else : echo 'Map box api key'; endif;  ?>">
+            <input class="form-control" name="locate_press_set[os_map_api_key]"  type="text" placeholder="<?php _e('Map Api Key','locatepress'); ?>" onfocus="this.placeholder=''" onblur="this.placeholder='Map Api Key'" value="<?php if(isset($lp_options['os_map_api_key'])) :esc_html_e($lp_options['os_map_api_key']) ; endif;  ?>">
         </div>
     </div>
     <div class="form-group">
@@ -270,13 +270,12 @@ if(isset($lp_options['lp_filter_page'])){
     function set_span_val(val){
             document.getElementById('range-ip-val').innerHTML=val;
     }
-    //console.log('exists');
 
     //js to change options as seleceted in dropdpwn added by openstreet addon
     jQuery(document).ready(function($){
         if (document.querySelector('.os-maptype-options') !== null) {
             var mapType = $('.os-custom-select').val();
-           // console.log(mapType);
+            
            if(mapType !== '' && mapType == 'google-map'){
             $(".lp-options").show();
             $(".os-options").hide();

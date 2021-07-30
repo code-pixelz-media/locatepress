@@ -45,7 +45,7 @@ $icon_meta = get_term_meta ( $tax[0]->term_id, 'location_type-icon', true );
         	<?php echo apply_filters('locatpress_single_address',get_post_meta($post->ID,'lp_location_country',true)); ?>
             <?php echo apply_filters('locatepress_after_single_address','</p>'); ?>
              <?php do_action('before_single_page_map'); ?>
-        	<div class="locatepress-single-map" data-latlong="<?php echo get_post_meta($post->ID,'lp_location_lat_long',true); ?>" data-info="<?php echo  get_post_meta($post->ID,'lp_location_country',true);  ?>"  id="single-map" data-marker='<?php echo wp_get_attachment_url($icon_meta);?>' style="width:100%;height: 300px;"></div>
+        	<div class="locatepress-single-map" data-latlong="<?php echo get_post_meta($post->ID,'lp_location_lat_long',true); ?>" data-info="<?php echo  get_post_meta($post->ID,'lp_location_country',true);  ?>"  id="single-map" data-marker='<?php echo esc_url(wp_get_attachment_url($icon_meta));?>' style="width:100%;height: 300px;"></div>
              <?php do_action('after_single_page_map'); ?>
         </div>
     </div>

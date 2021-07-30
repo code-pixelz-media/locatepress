@@ -238,7 +238,7 @@ class Locatepress_Public {
 		{
 			$output_result = array(
 	    		'success'=> false,
-	    		'listings'  => '<p>Listing Not Found</p>',
+	    		'listings'  => '<p>'.__('Listing Not Found', 'locatepress').'</p>',
 	    		'marker_data'  => $marker_data,
 	    		
 	    		
@@ -289,7 +289,7 @@ class Locatepress_Public {
 
 			$results = array(
 				'success'=>false,
-				'html' => '<p>Listings Not Found </p>',
+				'html' => '<p>'.__("Listings Not Found", "locatepress").' </p>',
 
 			);
 
