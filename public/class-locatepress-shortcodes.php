@@ -327,7 +327,7 @@ class Locatepress_Shortcodes{
 				
 					switch ($value['type']) {
 						case 'text':
-							echo '<input placeholder="'.$value['placeholder'].'" name="'.$value['name'].'" class="'.$value['class'].'" type="text" autocomplete="off" value="'.$this->locatepress_post_values($value['name']).'">';
+							echo '<input placeholder="'.$value['placeholder'].'" name="'.$value['name'].'" class="'.$value['class'].'" type="text" autocomplete="off" value="'.esc_html($this->locatepress_post_values($value['name'])).'">';
 
 						break;
 						case 'div':
@@ -358,11 +358,11 @@ class Locatepress_Shortcodes{
 
 								if(isset($_GET[$value['name']])  &&  ($_GET[$value['name']] == $t->term_id)){
 
-									echo '<option value="'.$t->term_id.'" selected>'.$t->name.'('.$t->count.')</option>';
+									echo '<option value="'.$t->term_id.'" selected>'.esc_html($t->name).'('.esc_html($t->count).')</option>';
 
 									continue;
 								}
-									echo '<option  value="'.$t->term_id.'">'.$t->name.'('.$t->count.')</option>';
+									echo '<option  value="'.$t->term_id.'">'.esc_html($t->name).'('.esc_html($t->count).')</option>';
 								
 							}
 								

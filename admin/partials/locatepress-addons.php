@@ -66,15 +66,15 @@
                 }
 
                 echo '<div class="singleaddon-wrap col-md-3">';
-                echo '<div class="ribbon ribbon-top-right"><span>'.$ribbontext.'</span></div>';
+                echo '<div class="ribbon ribbon-top-right"><span>'.esc_html($ribbontext).'</span></div>';
                 echo '<div class="addons-wrap-inner">';
                 echo '<img src="'.esc_url($image).'"><div class="addons-content">';
-                echo '<h4 class= "addon-title">'.__($title, 'locatepress').'</h4>';
-                echo '<a href="'.$url.'" class="addon-detail-button">'.__('Addon Details', 'locatepress').'<a/>';
-                echo '<p class= "addon-version"><strong>Version</strong> : '.__($version, 'locatepress').'</p>';
-                echo '<span><p class= "addon-date"><strong>Release Date</strong> : '.__($date, 'locatepress').'</p></span>';
-                echo '<p>'.__($desc, 'locatepress').'</p></div>';
-                echo '<a href="'.esc_url($url).'" class="addon-button '.$btnColor.'">'.$buttonText.'<a/>';
+                echo '<h4 class= "addon-title">'.esc_html__($title, 'locatepress').'</h4>';
+                echo '<a href="'.esc_url($url).'" class="addon-detail-button">'.__('Addon Details', 'locatepress').'<a/>';
+                echo '<p class= "addon-version"><strong>'.__('version', 'locatepress').'</strong> : '.esc_html__($version, 'locatepress').'</p>';
+                echo '<span><p class= "addon-date"><strong>'.__('Release Date', 'locatepress').'</strong> : '.esc_html($date).'</p></span>';
+                echo '<p>'.esc_html__($desc, 'locatepress').'</p></div>';
+                echo '<a href="'.esc_url($url).'" class="addon-button '.$btnColor.'">'.esc_html($buttonText).'<a/>';
                 echo '</div></div>';
             }
         ?>
