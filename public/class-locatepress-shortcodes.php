@@ -275,14 +275,21 @@ class Locatepress_Shortcodes
 
         if ($listings_query->have_posts()) {
             do_action('locatepress_before_listing');
+
             echo apply_filters('locatepress_listing_starts', $this->locatepress_start(), 10, 9);
+
             echo apply_filters('before_listing_loop_start', '<div class="lp-listing-container"><div class="lp-display-listing">');
 
             while ($listings_query->have_posts()): $listings_query->the_post();
+
                 include plugin_dir_path(__FILE__) . 'partials/locatepress-listings.php';
+
             endwhile;
+
             wp_reset_postdata();
+
             echo apply_filters('after_listing_loop_ends', '</div></div>');
+
             echo apply_filters('locatepress_listing_ends', $this->locatepress_form_end(), 10, 9);
 
             do_action('locatepress_after_listing');
@@ -311,8 +318,11 @@ class Locatepress_Shortcodes
         echo apply_filters('locatepress_filter_start', $this->locatepress_start(), 10, 9);
 
         echo apply_filters('locatepress_before_form_start', $this->locatepress_before_form_start(), 10, 9);
+
         echo '<div class="lp-search-filter">';
+
         echo apply_filters('locatepress_form_start', $this->locatepress_form_start(), 10, 9);
+
         echo '<ul class="lp-search-filter-elm">';
 
         foreach ($filter_fields as $key => $value) {
@@ -351,6 +361,7 @@ class Locatepress_Shortcodes
 
                         case 'select':
                             $taxitems = $this->locatepress_taxonomy_data($value['tax_slug']);
+
                             echo '<select class="' . $value['class'] . ' select-css" name="' . $value['name'] . '">';
 
                             echo '<option value="All" >' . $value['placeholder'] . '</option>';
@@ -452,7 +463,7 @@ class Locatepress_Shortcodes
     //container Start
     public function locatepress_start()
     {
-        $s_html = '<div class="lp-row">';
+        $s_html  = '<div class="lp-row">';
         $s_html .= '<div class="lp-container">';
         return $s_html;
 

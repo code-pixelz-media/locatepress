@@ -6,6 +6,7 @@ if (!defined('WPINC')) {
 
 $lp_options = get_option('locate_press_set');
 $filter_page = '';
+
 if (isset($lp_options['lp_filter_page'])) {
     $filter_page = $lp_options['lp_filter_page'];
 }
@@ -29,12 +30,12 @@ if (isset($lp_options['lp_filter_page'])) {
         <label for=""><?php _e('Select Page To Display Results', 'locatepress');?></label>
         <div class="form-control-wrap">
              <?php wp_dropdown_pages($args = array(
-    'class' => 'lp-custom-select minimal',
-    'name' => 'locate_press_set[lp_filter_page]',
-    'value' => $filter_page,
-    'selected' => $filter_page,
-    'show_option_none' => __('Select Page', 'locatepress'),
-));?>
+                'class' => 'lp-custom-select minimal',
+                'name' => 'locate_press_set[lp_filter_page]',
+                'value' => $filter_page,
+                'selected' => $filter_page,
+                'show_option_none' => __('Select Page', 'locatepress'),
+            ));?>
         </div>
     </div>
 </div>
@@ -44,29 +45,20 @@ if (isset($lp_options['lp_filter_page'])) {
         <label for="locate_press_set[lp_search_disp]"><?php _e('Search Bar position', 'locatepress');?></label>
         <div class="form-control-wrap">
             <div class="radio-wrap custom">
-                <input type="radio" value="<?php echo esc_attr('top'); ?>" name="locate_press_set[lp_search_disp]" <?php if (isset($lp_options['lp_search_disp'])) {echo checked($lp_options['lp_search_disp'], 'top', false);} else {echo 'checked';}?> >
+                <input type="radio" value="<?php echo esc_attr('top'); ?>" name="locate_press_set[lp_search_disp]" <?php if (isset($lp_options['lp_search_disp'])) { echo checked($lp_options['lp_search_disp'], 'top', false);} else {echo 'checked';}?> >
                 <span class="custom-radio"><?php _e('Top', 'locatepress');?></span>
             </div>
             <div class="radio-wrap custom">
-                <input type="radio" value="<?php echo esc_attr('left'); ?>" name="locate_press_set[lp_search_disp]" <?php if (isset($lp_options['lp_search_disp'])) {
-    echo checked($lp_options['lp_search_disp'], 'left', false);
-}
-?>>
+                <input type="radio" value="<?php echo esc_attr('left'); ?>" name="locate_press_set[lp_search_disp]" <?php if (isset($lp_options['lp_search_disp'])) { echo checked($lp_options['lp_search_disp'], 'left', false);}?>>
                 <span class="custom-radio"><?php _e('Left', 'locatepress');?></span>
             </div>
             <div class="radio-wrap custom">
-                <input type="radio" value="<?php echo esc_attr('right'); ?>" name="locate_press_set[lp_search_disp]" <?php if (isset($lp_options['lp_search_disp'])) {
-    echo checked($lp_options['lp_search_disp'], 'right', false);
-}
-?> >
+                <input type="radio" value="<?php echo esc_attr('right'); ?>" name="locate_press_set[lp_search_disp]" <?php if (isset($lp_options['lp_search_disp'])) { echo checked($lp_options['lp_search_disp'], 'right', false);}?> >
                 <span class="custom-radio"><?php _e('Right', 'locatepress');?></span>
             </div>
 
             <div class="radio-wrap custom">
-                <input type="radio" value="<?php echo esc_attr('buttom'); ?>" name="locate_press_set[lp_search_disp]" <?php if (isset($lp_options['lp_search_disp'])) {
-    echo checked($lp_options['lp_search_disp'], 'buttom', false);
-}
-?> >
+                <input type="radio" value="<?php echo esc_attr('buttom'); ?>" name="locate_press_set[lp_search_disp]" <?php if (isset($lp_options['lp_search_disp'])) { echo checked($lp_options['lp_search_disp'], 'buttom', false);}?> >
                 <span class="custom-radio"><?php _e('Bottom', 'locatepress');?></span>
             </div>
 
@@ -76,10 +68,7 @@ if (isset($lp_options['lp_filter_page'])) {
         <label for=""><?php _e('Disable Keyword Search', 'locatepress');?></label>
         <div class="form-control-wrap">
             <div class="checkbox-wrap custom">
-                <input type="checkbox" name="locate_press_set[lp_ky_search]" value="<?php echo esc_attr('disabled'); ?>" <?php if (isset($lp_options['lp_ky_search'])) {
-    echo checked($lp_options['lp_ky_search'], 'disabled', false);
-}
-?> >
+                <input type="checkbox" name="locate_press_set[lp_ky_search]" value="<?php echo esc_attr('disabled'); ?>" <?php if (isset($lp_options['lp_ky_search'])) { echo checked($lp_options['lp_ky_search'], 'disabled', false);}?> >
                 <span class="custom-checkbox"></span>
             </div>
         </div>
@@ -88,10 +77,7 @@ if (isset($lp_options['lp_filter_page'])) {
         <label for=""><?php _e('Disable Location Search', 'locatepress');?></label>
         <div class="form-control-wrap">
             <div class="checkbox-wrap custom">
-                <input type="checkbox" value="<?php echo esc_attr('disabled'); ?>" name="locate_press_set[lp_location_search]" <?php if (isset($lp_options['lp_location_search'])) {
-    echo checked($lp_options['lp_location_search'], 'disabled', false);
-}
-?>>
+                <input type="checkbox" value="<?php echo esc_attr('disabled'); ?>" name="locate_press_set[lp_location_search]" <?php if (isset($lp_options['lp_location_search'])) { echo checked($lp_options['lp_location_search'], 'disabled', false);}?>>
                 <span class="custom-checkbox"></span>
             </div>
         </div>
@@ -100,10 +86,7 @@ if (isset($lp_options['lp_filter_page'])) {
         <label for=""><?php _e('Disable Location Type Search', 'locatepress');?></label>
         <div class="form-control-wrap">
             <div class="checkbox-wrap custom">
-                <input type="checkbox" value="<?php echo esc_attr('disabled'); ?>" name="locate_press_set[lp_locationtype_search]" <?php if (isset($lp_options['lp_locationtype_search'])) {
-    echo checked($lp_options['lp_locationtype_search'], 'disabled', false);
-}
-?> >
+                <input type="checkbox" value="<?php echo esc_attr('disabled'); ?>" name="locate_press_set[lp_locationtype_search]" <?php if (isset($lp_options['lp_locationtype_search'])) { echo checked($lp_options['lp_locationtype_search'], 'disabled', false);}?> >
                 <span class="custom-checkbox"></span>
             </div>
         </div>
@@ -113,10 +96,7 @@ if (isset($lp_options['lp_filter_page'])) {
         <label for=""><?php _e('Disable Community Search', 'locatepress');?></label>
         <div class="form-control-wrap">
             <div class="checkbox-wrap custom">
-                <input type="checkbox" name="locate_press_set[lp_com_search]" value="<?php echo esc_attr('disabled'); ?>" <?php if (isset($lp_options['lp_com_search'])) {
-    echo checked($lp_options['lp_com_search'], 'disabled', false);
-}
-?>>
+                <input type="checkbox" name="locate_press_set[lp_com_search]" value="<?php echo esc_attr('disabled'); ?>" <?php if (isset($lp_options['lp_com_search'])) { echo checked($lp_options['lp_com_search'], 'disabled', false);}?>>
                 <span class="custom-checkbox"></span>
             </div>
         </div>
@@ -125,10 +105,7 @@ if (isset($lp_options['lp_filter_page'])) {
         <label for=""><?php _e('Disable Reset Button', 'locatepress');?></label>
         <div class="form-control-wrap">
             <div class="checkbox-wrap custom">
-                <input type="checkbox" name="locate_press_set[lp_filter_reset-btn]" value="<?php echo esc_attr('disabled'); ?>" <?php if (isset($lp_options['lp_filter_reset-btn'])) {
-    echo checked($lp_options['lp_filter_reset-btn'], 'disabled', false);
-}
-?>>
+                <input type="checkbox" name="locate_press_set[lp_filter_reset-btn]" value="<?php echo esc_attr('disabled'); ?>" <?php if (isset($lp_options['lp_filter_reset-btn'])) { echo checked($lp_options['lp_filter_reset-btn'], 'disabled', false);}?> >
                 <span class="custom-checkbox"></span>
             </div>
         </div>
@@ -142,70 +119,60 @@ if (isset($lp_options['lp_filter_page'])) {
         <label for="locate_press_set[lp_search_disp]"><?php _e('Map Type', 'locatepress');?></label>
         <div class="form-control-wrap lp-options">
             <div class="radio-wrap custom">
-                <input type="radio" value="<?php echo esc_attr('roadmap'); ?>" name="locate_press_set[lp_map_type]" <?php
-if (isset($lp_options['lp_map_type'])) {
-    echo checked($lp_options['lp_map_type'], 'roadmap', false);
-} else {
-    echo 'checked';
-}
-?>>
+                <input type="radio" value="<?php echo esc_attr('roadmap'); ?>" name="locate_press_set[lp_map_type]" 
+                <?php
+                if (isset($lp_options['lp_map_type'])) {
+
+                    echo checked($lp_options['lp_map_type'], 'roadmap', false);
+
+                } else {
+
+                    echo 'checked';
+                }
+                ?>>
                 <span class="custom-radio"><?php _e('Road Map', 'locatepress');?></span>
             </div>
             <div class="radio-wrap custom">
-                <input type="radio" value="<?php echo esc_attr('hybrid'); ?>" name="locate_press_set[lp_map_type]" <?php if (isset($lp_options['lp_map_type'])) {
-    echo checked($lp_options['lp_map_type'], 'hybrid', false);
-}
-?>>
+                <input type="radio" value="<?php echo esc_attr('hybrid'); ?>" name="locate_press_set[lp_map_type]" <?php if (isset($lp_options['lp_map_type'])) { echo checked($lp_options['lp_map_type'], 'hybrid', false);}?>>
                 <span class="custom-radio"><?php _e('Hybrid', 'locatepress');?></span>
             </div>
             <div class="radio-wrap custom">
-                <input type="radio" value="<?php echo esc_attr('satellite'); ?>" name="locate_press_set[lp_map_type]" <?php if (isset($lp_options['lp_map_type'])) {
-    echo checked($lp_options['lp_map_type'], 'satellite', false);
-}
-?> >
+                <input type="radio" value="<?php echo esc_attr('satellite'); ?>" name="locate_press_set[lp_map_type]" <?php if (isset($lp_options['lp_map_type'])) { echo checked($lp_options['lp_map_type'], 'satellite', false);}?> >
                 <span class="custom-radio"><?php _e('Satellite ', 'locatepress');?></span>
             </div>
 
             <div class="radio-wrap custom">
-                <input type="radio" value="<?php echo esc_attr('terrain'); ?>" name="locate_press_set[lp_map_type]" <?php if (isset($lp_options['lp_map_type'])) {
-    echo checked($lp_options['lp_map_type'], 'terrain', false);
-}
-?> >
+                <input type="radio" value="<?php echo esc_attr('terrain'); ?>" name="locate_press_set[lp_map_type]" <?php if (isset($lp_options['lp_map_type'])) { echo checked($lp_options['lp_map_type'], 'terrain', false);}?> >
                 <span class="custom-radio"><?php _e('Terrain', 'locatepress');?></span>
             </div>
 
         </div>
         <div class="form-control-wrap os-options">
             <div class="radio-wrap custom">
-                <input type="radio" value="<?php echo esc_attr('roadmap'); ?>" name="locate_press_set[os_map_type]" <?php
-if (isset($lp_options['os_map_type'])) {
-    echo checked($lp_options['os_map_type'], 'roadmap', false);
-} else {
-    echo 'checked';
-}
-?>>
+                <input type="radio" value="<?php echo esc_attr('roadmap'); ?>" name="locate_press_set[os_map_type]" 
+                <?php
+                if (isset($lp_options['os_map_type'])) {
+
+                    echo checked($lp_options['os_map_type'], 'roadmap', false);
+
+                } else {
+
+                    echo 'checked';
+                }
+                ?>>
                 <span class="custom-radio"><?php _e('Streets', 'locatepress');?></span>
             </div>
             <div class="radio-wrap custom">
-                <input type="radio" value="<?php echo esc_attr('hybrid'); ?>" name="locate_press_set[os_map_type]" <?php if (isset($lp_options['os_map_type'])) {
-    echo checked($lp_options['os_map_type'], 'hybrid', false);
-}
-?>>
+                <input type="radio" value="<?php echo esc_attr('hybrid'); ?>" name="locate_press_set[os_map_type]" <?php if (isset($lp_options['os_map_type'])) { echo checked($lp_options['os_map_type'], 'hybrid', false); }?>>
                 <span class="custom-radio"><?php _e('Satellite-Streets', 'locatepress');?></span>
             </div>
             <div class="radio-wrap custom">
-                <input type="radio" value="<?php echo esc_attr('satellite'); ?>" name="locate_press_set[os_map_type]" <?php if (isset($lp_options['os_map_type'])) {
-    echo checked($lp_options['os_map_type'], 'satellite', false);
-}
-?> >
+                <input type="radio" value="<?php echo esc_attr('satellite'); ?>" name="locate_press_set[os_map_type]" <?php if (isset($lp_options['os_map_type'])) { echo checked($lp_options['os_map_type'], 'satellite', false);}?> >
                 <span class="custom-radio"><?php _e('Satellite', 'locatepress');?></span>
             </div>
 
             <div class="radio-wrap custom">
-                <input type="radio" value="<?php echo esc_attr('terrain'); ?>" name="locate_press_set[os_map_type]" <?php if (isset($lp_options['os_map_type'])) {
-    echo checked($lp_options['os_map_type'], 'terrain', false);
-}
-?> >
+                <input type="radio" value="<?php echo esc_attr('terrain'); ?>" name="locate_press_set[os_map_type]" <?php if (isset($lp_options['os_map_type'])) { echo checked($lp_options['os_map_type'], 'terrain', false);} ?> >
                 <span class="custom-radio"><?php _e('Outdoors', 'locatepress');?></span>
             </div>
 
@@ -224,10 +191,7 @@ if (isset($lp_options['os_map_type'])) {
         <label for=""><?php _e('Disable Full Screen Control', 'locatepress');?></label>
         <div class="form-control-wrap">
             <div class="checkbox-wrap custom">
-                <input type="checkbox" name="locate_press_set[lp_full_screen_control]" value="<?php echo esc_attr('off'); ?>" <?php if (isset($lp_options['lp_full_screen_control'])) {
-    echo checked($lp_options['lp_full_screen_control'], 'off', false);
-}
-?> >
+                <input type="checkbox" name="locate_press_set[lp_full_screen_control]" value="<?php echo esc_attr('off'); ?>" <?php if (isset($lp_options['lp_full_screen_control'])) { echo checked($lp_options['lp_full_screen_control'], 'off', false);}?> >
                 <span class="custom-checkbox"></span>
             </div>
         </div>
@@ -236,10 +200,7 @@ if (isset($lp_options['os_map_type'])) {
         <label for=""><?php _e('Disable Zoom Control', 'locatepress');?></label>
         <div class="form-control-wrap">
             <div class="checkbox-wrap custom">
-                <input type="checkbox" name="locate_press_set[lp_zoom_control]" value="<?php echo esc_attr('off'); ?>" <?php if (isset($lp_options['lp_zoom_control'])) {
-    echo checked($lp_options['lp_zoom_control'], 'off', false);
-}
-?> >
+                <input type="checkbox" name="locate_press_set[lp_zoom_control]" value="<?php echo esc_attr('off'); ?>" <?php if (isset($lp_options['lp_zoom_control'])) { echo checked($lp_options['lp_zoom_control'], 'off', false); }?> >
                 <span class="custom-checkbox"></span>
             </div>
         </div>
@@ -248,10 +209,7 @@ if (isset($lp_options['os_map_type'])) {
         <label for=""><?php _e('Disable Map Type Control', 'locatepress');?></label>
         <div class="form-control-wrap">
             <div class="checkbox-wrap custom">
-                <input type="checkbox" name="locate_press_set[lp_maptype_control]" value="<?php echo esc_attr('off'); ?>" <?php if (isset($lp_options['lp_maptype_control'])) {
-    echo checked($lp_options['lp_maptype_control'], 'off', false);
-}
-?> >
+                <input type="checkbox" name="locate_press_set[lp_maptype_control]" value="<?php echo esc_attr('off'); ?>" <?php if (isset($lp_options['lp_maptype_control'])) { echo checked($lp_options['lp_maptype_control'], 'off', false); }?> >
                 <span class="custom-checkbox"></span>
             </div>
         </div>
@@ -260,10 +218,7 @@ if (isset($lp_options['os_map_type'])) {
         <label for=""><?php _e('Disable Street View', 'locatepress');?></label>
         <div class="form-control-wrap">
             <div class="checkbox-wrap custom">
-                <input type="checkbox" name="locate_press_set[lp_streetview_control]" value="<?php echo esc_attr('off'); ?>" <?php if (isset($lp_options['lp_streetview_control'])) {
-    echo checked($lp_options['lp_streetview_control'], 'off', false);
-}
-?> >
+                <input type="checkbox" name="locate_press_set[lp_streetview_control]" value="<?php echo esc_attr('off'); ?>" <?php if (isset($lp_options['lp_streetview_control'])) { echo checked($lp_options['lp_streetview_control'], 'off', false); } ?> >
                 <span class="custom-checkbox"></span>
             </div>
         </div>

@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Locatepress
  * Plugin URI:        http://wplocatepress.com/locatepress/
- * Description:       Locatepress is a wordpress plugin used to filter and track the listings with google maps. 
+ * Description:       Locatepress is a wordpress plugin used to filter and track the listings with google maps.
  * Version:           0.1.0
  * Author:            wplocatepress.com
  * Author URI:        http://wplocatepress.com/
@@ -26,8 +26,8 @@
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-	die;
+if (!defined('WPINC')) {
+    die;
 }
 
 /**
@@ -35,17 +35,18 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 0.1.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'LOCATEPRESS_VERSION', '0.1.0' );
+define('LOCATEPRESS_VERSION', '0.1.0');
 
-define( 'LOCATEPRESS_SETTINGS_URL', get_admin_url() . "edit.php?post_type=map_listing&page=locatepress_dashboard" );
+define('LOCATEPRESS_SETTINGS_URL', get_admin_url() . "edit.php?post_type=map_listing&page=locatepress_dashboard");
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-locatepress-activator.php
  */
-function activate_locatepress() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-locatepress-activator.php';
-	Locatepress_Activator::activate();
+function activate_locatepress()
+{
+    require_once plugin_dir_path(__FILE__) . 'includes/class-locatepress-activator.php';
+    Locatepress_Activator::activate();
 
 }
 
@@ -53,13 +54,14 @@ function activate_locatepress() {
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-locatepress-deactivator.php
  */
-function deactivate_locatepress() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-locatepress-deactivator.php';
-	Locatepress_Deactivator::deactivate();
+function deactivate_locatepress()
+{
+    require_once plugin_dir_path(__FILE__) . 'includes/class-locatepress-deactivator.php';
+    Locatepress_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_locatepress' );
-register_deactivation_hook( __FILE__, 'deactivate_locatepress' );
+register_activation_hook(__FILE__, 'activate_locatepress');
+register_deactivation_hook(__FILE__, 'deactivate_locatepress');
 
 /**
  * The core plugin class that is used to define internationalization,
@@ -67,7 +69,7 @@ register_deactivation_hook( __FILE__, 'deactivate_locatepress' );
  */
 
 //require plugin_dir_path( __FILE__ ) . 'includes/class-locatepress.php';
-require plugin_dir_path( __FILE__ ) . 'includes/class-locatepress.php';
+require plugin_dir_path(__FILE__) . 'includes/class-locatepress.php';
 
 /**
  * Begins execution of the plugin.
@@ -78,36 +80,39 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-locatepress.php';
  *
  * @since    0.1.0
  */
-function run_locatepress() {
+function run_locatepress()
+{
 
-	$plugin = new Locatepress();
-	$plugin->run();
+    $plugin = new Locatepress();
+    $plugin->run();
 
 }
 run_locatepress();
-
 
 register_activation_hook(__FILE__, 'locatepress_activate');
 
 add_action('admin_init', 'locatepress_redirect');
 
-function locatepress_activate() {
+function locatepress_activate()
+{
     add_option('locatepress_do_activation_redirect', true);
 }
 
-function locatepress_redirect() {
+function locatepress_redirect()
+{
     if (get_option('locatepress_do_activation_redirect', false)) {
         delete_option('locatepress_do_activation_redirect');
         wp_redirect(LOCATEPRESS_SETTINGS_URL);
     }
 }
 
-function locatepress_add_settings_link( $links ) {
+function locatepress_add_settings_link($links)
+{
     $url = LOCATEPRESS_SETTINGS_URL;
     $settings_link = '<a href="' . $url . '">' . __('Settings', 'locatepress') . '</a>';
     $links[] = $settings_link;
     return $links;
 }
-$plugin = plugin_basename( __FILE__ );
+$plugin = plugin_basename(__FILE__);
 
-add_filter( "plugin_action_links_$plugin", 'locatepress_add_settings_link' );
+add_filter("plugin_action_links_$plugin", 'locatepress_add_settings_link');

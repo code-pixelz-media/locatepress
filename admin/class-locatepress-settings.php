@@ -59,25 +59,27 @@ class Locatepress_Settings
 
         //get Header of plugin
         require_once plugin_dir_path(__FILE__) . 'partials/locatepress-admin-header.php';
-        echo '	<div class="body-wrap">'; //body wrap start
-        echo '	<div id="tabs-wrap" class="tabs-wrap">'; //tabs-wrap start
-        echo '  <ul class="tab-menu">';
+        echo '<div class="body-wrap">'; //body wrap start
+        echo '<div id="tabs-wrap" class="tabs-wrap">'; //tabs-wrap start
+        echo '<ul class="tab-menu">';
         echo '<li class="nav-tab "><a href="#general" class="dashicons-before dashicons-editor-alignleft">' . __('General', 'locatepress') . '</a></li>';
         echo '<li class="nav-tab"><a href="#search-bar" class="dashicons-before dashicons-admin-generic">' . __('Search Bar', 'locatepress') . '</a></li>';
         echo '<li class="nav-tab"><a href="#map-settings" class="dashicons-before dashicons-admin-settings">' . __('Map Settings', 'locatepress') . '</a></li>';
         echo '</ul>'; //tab-menu ends
         echo '<div class="tab-content">'; //tab content start
-        echo '	<form action="options.php" method="post" id="save-settings">' . "\n";
+        echo '<form action="options.php" method="post" id="save-settings">' . "\n";
         settings_fields('locate_press_set_group');
 
         require_once plugin_dir_path(__FILE__) . 'partials/locatepress-admin-display.php';
 
-        echo '	</form>' . "\n";
+        echo '</form>' . "\n";
         echo '</div>'; //tab content end
-        echo '	</div>'; //tabs-wrap ends
-        echo '	</div>'; //body wrap end
+        echo '</div>'; //tabs-wrap ends
+        echo '</div>'; //body wrap end
+
         require_once plugin_dir_path(__FILE__) . 'partials/locatepress-addons.php';
         require_once plugin_dir_path(__FILE__) . 'partials/locatepress-admin-footer.php';
+        
         //get footer of plugin
         echo '</div>' . "\n"; //cpm-plugin-wrap ends
 

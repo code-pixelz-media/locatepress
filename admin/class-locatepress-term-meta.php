@@ -35,12 +35,12 @@ class Locatepress_Term_Meta
     {
 
         echo '<div class="form-field term-locate_press_marker_icon-wrap">';
-        echo '	<input type="hidden" id="location_type-icon" name="location_type-icon" class="custom_media_url" value="">';
-        echo ' 	<div id="location_type-icon-wrapper"></div>';
-        echo '	<p>';
-        echo '  	<input type="button" class="button button-secondary location_type_upload_media_button" id="add_icon_button" 			name="add_icon_button" value="' . __('Add Icon', 'locatepress') . '">';
-        echo '		<input type="button" class="button button-secondary remove_icon_button" id="remove_icon_button" name="remove_icon_button" value="' . __('Remove Icon', 'locatepress') . '">';
-        echo '	</p>';
+        echo '<input type="hidden" id="location_type-icon" name="location_type-icon" class="custom_media_url" value="">';
+        echo '<div id="location_type-icon-wrapper"></div>';
+        echo '<p>';
+        echo '<input type="button" class="button button-secondary location_type_upload_media_button" id="add_icon_button" 			name="add_icon_button" value="' . __('Add Icon', 'locatepress') . '">';
+        echo '<input type="button" class="button button-secondary remove_icon_button" id="remove_icon_button" name="remove_icon_button" value="' . __('Remove Icon', 'locatepress') . '">';
+        echo '</p>';
         echo '</div>';
 
     }
@@ -59,24 +59,25 @@ class Locatepress_Term_Meta
     {
         $icon_id = get_term_meta($term->term_id, 'location_type-icon', true);
 
-        echo ' <tr class="form-field term-group-wrap">';
-        echo '		<th scope="row">';
-        echo '  		<label for="location_type-icon">' . __('Marker Icon', 'locatepress') . '</label>';
-        echo '		</th>';
-        echo '		<td>';
-        echo '			<input type="hidden" id="location_type-icon" name="location_type-icon" value="' . $icon_id . '">';
+        echo '<tr class="form-field term-group-wrap">';
+        echo '<th scope="row">';
+        echo '<label for="location_type-icon">' . __('Marker Icon', 'locatepress') . '</label>';
+        echo '</th>';
+        echo '<td>';
+        echo '<input type="hidden" id="location_type-icon" name="location_type-icon" value="' . $icon_id . '">';
+        echo '<div id="location_type-icon-wrapper">';
 
-        echo '    		<div id="location_type-icon-wrapper">';
         if ($icon_id) {
             echo wp_get_attachment_image($icon_id, 'thumbnail');
         }
-        echo '    		</div>';
-        echo '     		<p>';
-        echo '     			<input type="button" class="button button-secondary location_type_upload_media_button" id="add_icon_button"name="add_icon_button" value="' . __('Add Icon', 'locatepress') . '">';
-        echo '				<input type="button" class="button button-secondary remove_icon_button" id="remove_icon_button" name="remove_icon_button" value="' . __('Remove Icon', 'locatepress') . '">';
-        echo '      		</p>';
-        echo '     </td>';
-        echo ' </tr>';
+        
+        echo '</div>';
+        echo '<p>';
+        echo '<input type="button" class="button button-secondary location_type_upload_media_button" id="add_icon_button"name="add_icon_button" value="' . __('Add Icon', 'locatepress') . '">';
+        echo '<input type="button" class="button button-secondary remove_icon_button" id="remove_icon_button" name="remove_icon_button" value="' . __('Remove Icon', 'locatepress') . '">';
+        echo '</p>';
+        echo '</td>';
+        echo '</tr>';
 
     }
 

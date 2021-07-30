@@ -11,11 +11,9 @@ if (!defined('WPINC')) {
     <div class="row">
         <div class="creator col-md-3">
             <span><?php _e('Proudly Created by', 'locatepress')?> <a href="<?php echo esc_url('http://wplocatepress.com/'); ?>"><?php _e('Locatepress', 'locatepress')?></a></span>
-
         </div>
 
         <div class="col-md-5">
-
         </div>
 
         <div class="copyright col-md-4">
