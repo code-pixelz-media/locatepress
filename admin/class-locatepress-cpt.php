@@ -60,6 +60,7 @@ class Locatepress_Register_Cpt {
             'capability_type'    => ( isset( $fields['capability_type'] ) ) ? $fields['capability_type'] : 'post',
             'has_archive'        => ( isset( $fields['has_archive'] ) ) ? $fields['has_archive'] : true,
             'hierarchical'       => ( isset( $fields['hierarchical'] ) ) ? $fields['hierarchical'] : true,
+            'show_in_rest'       => ( isset( $fields['show_in_rest'] ) ) ? $fields['show_in_rest'] : true,
             'supports'           => ( isset( $fields['supports'] ) ) ? $fields['supports'] : array(
                     'title',
                     'editor',
@@ -229,6 +230,7 @@ class Locatepress_Register_Cpt {
                 'exclude_from_search'   => true,
                 'show_ui'               => true,
                 'show_in_menu'          => true,
+                'show_in_rest'          => true,
                 'query_var'             => true,
                 'show_in_admin_bar'     => true,
                 'show_in_nav_menus'     => true,
