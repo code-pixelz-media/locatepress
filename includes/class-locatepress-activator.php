@@ -4,7 +4,7 @@
  * Fired during plugin activation
  *
  * @link       http://wplocatepress.com/
- * @since      0.1.0
+ * @since      1.0.0
  *
  * @package    Locate_Press
  * @subpackage Locate_Press/includes
@@ -15,7 +15,7 @@
  *
  * This class defines all code necessary to run during the plugin's activation.
  *
- * @since      0.1.0
+ * @since      1.0.0
  * @package    Locate_Press
  * @subpackage Locate_Press/includes
  * @author     wplocatepress.com <wplocatepress.com>
@@ -30,7 +30,7 @@ class Locatepress_Activator {
 
 	/**
 	 * Triggered during the plugin activation.
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 */
 
 

@@ -4,7 +4,7 @@
  * The public-facing functionality of the plugin.
  *
  * @link       http://wplocatepress.com/
- * @since      0.1.0
+ * @since      1.0.0
  *
  * @package    Locate_Press
  * @subpackage Locate_Press/public
@@ -31,7 +31,7 @@ class Locatepress_Public
     /**
      * The ID of this plugin.
      *
-     * @since    0.1.0
+     * @since    1.0.0
      * @access   private
      * @var      string    $plugin_name    The ID of this plugin.
      */
@@ -40,7 +40,7 @@ class Locatepress_Public
     /**
      * The version of this plugin.
      *
-     * @since    0.1.0
+     * @since    1.0.0
      * @access   private
      * @var      string    $version    The current version of this plugin.
      */
@@ -49,14 +49,14 @@ class Locatepress_Public
     /**
      * Initialize the class and set its properties.
      *
-     * @since    0.1.0
+     * @since    1.0.0
      * @param      string    $plugin_name       The name of the plugin.
      * @param      string    $version    The version of this plugin.
      */
     /**
      * Sets Settings Option From Dashboard
      *
-     * @since    0.1.0
+     * @since    1.0.0
      */
 
     private $settings;
@@ -73,7 +73,7 @@ class Locatepress_Public
     /**
      * Register the stylesheets for the public-facing side of the site.
      *
-     * @since    0.1.0
+     * @since    1.0.0
      */
     public function locatepress_public_enqueue_styles()
     {
@@ -99,7 +99,7 @@ class Locatepress_Public
     /**
      * Register the JavaScript for the public-facing side of the site.
      *
-     * @since    0.1.0
+     * @since    1.0.0
      */
     public function locatpress_public_enqueue_scripts()
     {

@@ -4,7 +4,7 @@
  * Fired during plugin deactivation
  *
  * @link       http://wplocatepress.com/
- * @since      0.1.0
+ * @since      1.0.0
  *
  * @package    Locate_Press
  * @subpackage Locate_Press/includes
@@ -15,7 +15,7 @@
  *
  * This class defines all code necessary to run during the plugin's deactivation.
  *
- * @since      0.1.0
+ * @since      1.0.0
  * @package    Locate_Press
  * @subpackage Locate_Press/includes
  * @author     wplocatepress.com <wplocatepress.com>
@@ -33,7 +33,7 @@ class Locatepress_Deactivator {
 	 *
 	 * Long Description.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 */
 	public static function deactivate() {
 		flush_rewrite_rules();

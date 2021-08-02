@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              http://wplocatepress.com/
- * @since             0.1.0
+ * @since             1.0.0
  * @package           Locatepress
  *
  * @wordpress-plugin
  * Plugin Name:       Locatepress
  * Plugin URI:        http://wplocatepress.com/locatepress/
  * Description:       Locatepress is a wordpress plugin used to filter and track the listings with google maps.
- * Version:           0.1.0
+ * Version:           1.0.0
  * Author:            wplocatepress.com
  * Author URI:        http://wplocatepress.com/
  * License:           GPL-2.0+
@@ -32,10 +32,10 @@ if (!defined('WPINC')) {
 
 /**
  * Currently plugin version.
- * Start at version 0.1.0 and use SemVer - https://semver.org
+ * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('LOCATEPRESS_VERSION', '0.1.0');
+define('LOCATEPRESS_VERSION', '1.0.0');
 
 define('LOCATEPRESS_SETTINGS_URL', get_admin_url() . "edit.php?post_type=map_listing&page=locatepress_dashboard");
 
@@ -78,7 +78,7 @@ require plugin_dir_path(__FILE__) . 'includes/class-locatepress.php';
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    0.1.0
+ * @since    1.0.0
  */
 function run_locatepress()
 {
