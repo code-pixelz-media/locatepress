@@ -4,7 +4,7 @@
  * The admin-specific functionality of the plugin.
  *
  * @link       http://wplocatepress.com/
- * @since      0.1.0
+ * @since      1.0.0
  *
  * @package    Locate_Press
  * @subpackage Locate_Press/admin
@@ -32,7 +32,7 @@ class Locatepress_Admin
     /**
      * The ID of this plugin.
      *
-     * @since    0.1.0
+     * @since    1.0.0
      * @access   private
      * @var      string    $plugin_name    The ID of this plugin.
      */
@@ -41,7 +41,7 @@ class Locatepress_Admin
     /**
      * The version of this plugin.
      *
-     * @since    0.1.0
+     * @since    1.0.0
      * @access   private
      * @var      string    $version    The current version of this plugin.
      */
@@ -50,7 +50,7 @@ class Locatepress_Admin
     /**
      * Initialize the class and set its properties.
      *
-     * @since    0.1.0
+     * @since    1.0.0
      * @param      string    $plugin_name       The name of this plugin.
      * @param      string    $version    The version of this plugin.
      */
@@ -66,7 +66,7 @@ class Locatepress_Admin
     /**
      * Register the stylesheets for the admin area.
      *
-     * @since    0.1.0
+     * @since    1.0.0
      */
     public function locatepress_admin_enqueue_styles()
     {
@@ -94,7 +94,7 @@ class Locatepress_Admin
     /**
      * Register the JavaScript for the admin area.
      *
-     * @since    0.1.0
+     * @since    1.0.0
      */
     public function locatepress_admin_enqueue_scripts()
     {

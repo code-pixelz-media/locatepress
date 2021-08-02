@@ -11,7 +11,7 @@ class Locatepress_Shortcodes
     /**
      * The ID of this plugin.
      *
-     * @since    0.1.0
+     * @since    1.0.0
      * @access   private
      * @var      string    $plugin_name    The ID of this plugin.
      */
@@ -20,7 +20,7 @@ class Locatepress_Shortcodes
     /**
      * The version of this plugin.
      *
-     * @since    0.1.0
+     * @since    1.0.0
      * @access   private
      * @var      string    $version    The current version of this plugin.
      */
@@ -28,7 +28,7 @@ class Locatepress_Shortcodes
     /**
      * The filter fields of search bar
      *
-     * @since    0.1.0
+     * @since    1.0.0
      * @access   private
      * @var      string    $version    The current version of this plugin.
      */
@@ -37,7 +37,7 @@ class Locatepress_Shortcodes
     /**
      * The Settings from dashboard
      *
-     * @since    0.1.0
+     * @since    1.0.0
      * @access   private
      * @var      string    $version    The current version of this plugin.
      */
@@ -47,7 +47,7 @@ class Locatepress_Shortcodes
     /**
      * Initialize the class and set its properties.
      *
-     * @since    0.1.0
+     * @since    1.0.0
      * @param      string    $plugin_name       The name of the plugin.
      * @param      string    $version    The version of this plugin.
      */
@@ -187,7 +187,7 @@ class Locatepress_Shortcodes
  * Functionality : returns the listing of locations and shops according to parameters provided while serach or in shortcode attribute
  * Parameters      : $atts(attributes of shortcode(location_types, categories, count, columns))
  * returns          : list of queried location and shops
- * @since 0.1.0
+ * @since 1.0.0
  */
     public function locatepress_listings_shortcode($atts)
     {
@@ -303,7 +303,7 @@ class Locatepress_Shortcodes
  * Functionality : dispays the search bar
  * Parameters      : $atts(attributes of shortcode(map, listing))
  * returns          : search bar with map and lisitng of set true
- * @since 0.1.0
+ * @since 1.0.0
  */
     public function locatepress_search_bar_shortcode($atts)
     {
