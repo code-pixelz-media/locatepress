@@ -349,11 +349,11 @@ class Locatepress_Shortcodes
 
                                 if (isset($_GET[$value['name']]) && ($_GET[$value['name']] == $t->term_id)) {
 
-                                    echo '<option value="' . $t->term_id . '" selected>' . esc_html($t->name) . '(' . esc_html($t->count) . ')</option>';
+                                    echo '<option value="' . $t->term_id . '" selected>' . esc_html($t->name) . '</option>';
 
                                     continue;
                                 }
-                                echo '<option  value="' . $t->term_id . '">' . esc_html($t->name) . '(' . esc_html($t->count) . ')</option>';
+                                echo '<option  value="' . $t->term_id . '">' . esc_html($t->name) .'</option>';
 
                             }
 
