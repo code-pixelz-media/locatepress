@@ -38,8 +38,8 @@ class Locatepress_Term_Meta
         echo '<input type="hidden" id="location_type-icon" name="location_type-icon" class="custom_media_url" value="">';
         echo '<div id="location_type-icon-wrapper"></div>';
         echo '<p>';
-        echo '<input type="button" class="button button-secondary location_type_upload_media_button" id="add_icon_button" 			name="add_icon_button" value="' . __('Add Icon', 'locatepress') . '">';
-        echo '<input type="button" class="button button-secondary remove_icon_button" id="remove_icon_button" name="remove_icon_button" value="' . __('Remove Icon', 'locatepress') . '">';
+        echo '<input type="button" style=" margin: 0px 5px" class="button button-secondary location_type_upload_media_button" id="add_icon_button" name="add_icon_button" value="' . __('Add Icon', 'locatepress') . '">';
+        echo '<input type="button" class="button button-secondary remove_icon_button" id="remove_icon_button" style="display: none;" name="remove_icon_button" value="' . __('Remove Icon', 'locatepress') . '">';
         echo '</p>';
         echo '</div>';
 
@@ -69,12 +69,15 @@ class Locatepress_Term_Meta
 
         if ($icon_id) {
             echo wp_get_attachment_image($icon_id, 'thumbnail');
+            $style = 'display:inline-block';
+        }else{
+            $style = 'display:none';
         }
         
         echo '</div>';
         echo '<p>';
-        echo '<input type="button" class="button button-secondary location_type_upload_media_button" id="add_icon_button"name="add_icon_button" value="' . __('Add Icon', 'locatepress') . '">';
-        echo '<input type="button" class="button button-secondary remove_icon_button" id="remove_icon_button" name="remove_icon_button" value="' . __('Remove Icon', 'locatepress') . '">';
+        echo '<input type="button" style=" margin: 0px 5px" class="button button-secondary location_type_upload_media_button" id="add_icon_button"name="add_icon_button" value="' . __('Add Icon', 'locatepress') . '">';
+        echo '<input type="button" style="'.$style.'" class="button button-secondary remove_icon_button" id="remove_icon_button" name="remove_icon_button" value="' . __('Remove Icon', 'locatepress') . '">';
         echo '</p>';
         echo '</td>';
         echo '</tr>';

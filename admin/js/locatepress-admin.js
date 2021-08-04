@@ -18,6 +18,7 @@ jQuery(document).ready( function($) {
         $('#location_type-icon').val(attachment.id);
         $('#location_type-icon-wrapper').html('<img class="custom_media_image" src="" style="margin:0;padding:0;max-height:100px;float:none;" />');
         $('#location_type-icon-wrapper .custom_media_image').attr('src',attachment.url).css('display','block');
+        $('#remove_icon_button').css('display','inline-block');
       } 
       else 
       {
@@ -35,6 +36,8 @@ locate_press_upload_marker_icon("location_type_upload_media_button");
 $('body').on('click','.remove_icon_button',function(){
   $('#location_type-icon').val('');
   $('#location_type-icon-wrapper').html('<img class="custom_media_image" src="" style="margin:0;padding:0;max-height:100px;float:none;" />');
+  $('#remove_icon_button').css('display','none');
+
 });
 
 $(document).ajaxComplete(function(event, xhr, settings) {
@@ -45,6 +48,9 @@ $(document).ajaxComplete(function(event, xhr, settings) {
     if($response!=""){
     
       $('#location_type-icon-wrapper').html('');
+      $('#remove_icon_button').css('display','none');
+
+
     }
   }
   });
