@@ -98,8 +98,8 @@ class Locatepress_Shortcodes
             ),
             'location_types' => array(
                 'type' => 'select',
-                'title' => __('Location Types', 'locatepress'),
-                'placeholder' => __('All Location Types', 'locatepress'),
+                'title' => __('Lisitng Types', 'locatepress'),
+                'placeholder' => __('All Lisitng Types', 'locatepress'),
                 'name' => 'lp_search_filter_loctype',
                 'settings' => 'lp_locationtype_search',
                 'class' => 'lp-search-filter-loc',
@@ -111,7 +111,7 @@ class Locatepress_Shortcodes
                 'title' => __('Category', 'locatepress'),
                 'placeholder' => __('All categories', 'locatepress'),
                 'name' => 'lp_search_filter_cat',
-                'settings' => 'lp_locationtype_search',
+                'settings' => 'lp_com_search',
                 'class' => 'lp-search-filter-cat',
                 'tax_slug' => 'listing_category',
             ),
@@ -193,85 +193,58 @@ class Locatepress_Shortcodes
     {
 
         ob_start();
-        extract(shortcode_atts(array(
-            'location_types' => '',
-            'categories' => '',
-            'count' => '-1',
-            'columns' => '4',
-        ), $atts, 'locatepress_listings'));
+        $get_location_types = ( isset( $_GET[ 'lp_search_filter_loctype' ] ) && $_GET ['lp_search_filter_loctype' ] ) ? $_GET ['lp_search_filter_loctype'] : '';
+		$get_categories     = ( isset( $_GET ['lp_search_filter_cat'] ) && $_GET ['lp_search_filter_cat'] ) ? $_GET ['lp_search_filter_cat'] : '';
+		extract(
+			shortcode_atts(
+				array(
+					'location_types' => $get_location_types,
+					'categories'     => $get_categories,
+					'count'          => '-1',
+					'columns'        => '4',
+				),
+				$atts,
+				'locatepress_listings'
+			)
+		);
 
-        $tax_query1 = array(
-            'relation' => 'AND',
-        );
-        $tax_query2 = array(
-            'relation' => 'AND',
-        );
-
-        if (!empty($location_types)) {
-            $location_terms_array = explode(',', $location_types);
-            array_push($tax_query1, array(
-                'taxonomy' => 'location_type',
-                'terms' => $location_terms_array,
-                'field' => 'term_id',
-                'operator' => 'IN',
-                'include_children' => false,
-            ));
-        }
-        if (!empty($categories)) {
-            $category_terms_array = explode(',', $categories);
-            array_push($tax_query1, array(
-                'taxonomy' => 'listing_category',
-                'terms' => $category_terms_array,
-                'field' => 'term_id',
-                'operator' => 'IN',
-                'include_children' => false,
-            ));
-        }
-
-        $listing_args = array(
-            'post_type' => array('map_listing'),
-            'post_status' => array('publish'),
-            'posts_per_page' => $count,
-            'tax_query' => $tax_query1,
-
-        );
-        if (!empty($_GET['lp_search_filter_cat']) && $_GET['lp_search_filter_cat'] != 'All') {
-            $cat = $_GET['lp_search_filter_cat'];
-            array_push($tax_query2, array(
-                'taxonomy' => 'listing_category',
-                'terms' => $cat,
-                'field' => 'term_id',
-                'operator' => 'IN',
-                'include_children' => false,
-            ));
-
-        }
-        if (!empty($_GET['lp_search_filter_loctype']) && $_GET['lp_search_filter_loctype'] != 'All') {
-            $loctype = $_GET['lp_search_filter_loctype'];
-            array_push($tax_query2, array(
-                'taxonomy' => 'location_type',
-                'terms' => $loctype,
-                'field' => 'term_id',
-                'operator' => 'IN',
-                'include_children' => false,
-            ));
-        }
-
-        $listing_args_2 = array(
-            'post_type' => array('map_listing'),
-            'post_status' => array('publish'),
-            'posts_per_page' => $count,
-            'tax_query' => $tax_query2,
-
-        );
-
-        if (!empty($_GET['lp_search_filter_loctype']) || !empty($_GET['lp_search_filter_cat'])) {
-            $listings_query = new WP_Query($listing_args_2);
-
-        } else {
-            $listings_query = new WP_Query($listing_args);
-
-        }
+		$tax_query = [];
+		if ( ! empty( $location_types ) ) {
+			$location_terms_array = explode( ',', $location_types );
+			array_push(
+				$tax_query,
+				array(
+					'taxonomy'         => 'location_type',
+					'terms'            => $location_terms_array,
+					'field'            => 'term_id',
+					'operator'         => 'IN',
+					'include_children' => false,
+				)
+			);
+		}
+		if ( ! empty( $categories ) ) {
+			$category_terms_array = explode( ',', $categories );
+			array_push(
+				$tax_query,
+				array(
+					'taxonomy'         => 'listing_category',
+					'terms'            => $category_terms_array,
+					'field'            => 'term_id',
+					'operator'         => 'IN',
+					'include_children' => false,
+				)
+			);
+		}
+		$listing_args = array(
+			'post_type'      => array( 'map_listing' ),
+			'post_status'    => array( 'publish' ),
+			'posts_per_page' => $count,
+		);
+		if ( ! empty( $tax_query ) ) {
+			$tax_query['relation']     = 'AND';
+			$listing_args['tax_query'] = $tax_query;
+		}
+		$listings_query = new WP_Query( $listing_args );
 
         if ($listings_query->have_posts()) {
             do_action('locatepress_before_listing');
@@ -364,7 +337,7 @@ class Locatepress_Shortcodes
 
                             echo '<select class="' . $value['class'] . ' select-css" name="' . $value['name'] . '">';
 
-                            echo '<option value="All" >' . $value['placeholder'] . '</option>';
+                            echo '<option value="" >' . $value['placeholder'] . '</option>';
 
                             foreach ($taxitems as $t) {
 

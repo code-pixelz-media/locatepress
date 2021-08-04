@@ -149,40 +149,49 @@ class Locatepress_Public
     public function locatepress_ajax_search_filter()
     {
 
-        $keyword = $_POST['data']['lp_search_keyword'];
-        $location_type = $_POST['data']['lp_search_filter_loctype'];
-        $category_listing = $_POST['data']['lp_search_filter_cat'];
-        $location_search = $_POST['data']['lp_search_location']; //meta query
+        $keyword = isset( $_POST['data']['lp_search_keyword']) ? $_POST['data']['lp_search_keyword'] : '';
+        $location_type = isset( $_POST['data']['lp_search_filter_loctype']) ? $_POST['data']['lp_search_filter_loctype'] : '';
+        $category_listing = isset( $_POST['data']['lp_search_filter_cat']) ? $_POST['data']['lp_search_filter_cat'] : '';;
+        //$location_search = $_POST['data']['lp_search_location']; //meta query
+
         $lp_search_args = array(
-            'post_type' => 'map_listing',
-            'post_status' => 'publish',
-            'meta_key' => 'featured-listing-checkbox',
-            'orderby' => 'meta_value',
+            'post_type'     => 'map_listing',
+            'post_status'   => 'publish',
+            'meta_key'      => 'featured-listing-checkbox',
+            'orderby'       => 'meta_value',
         );
         if (!empty(trim($keyword))) {
 
             $lp_search_args['s'] = $keyword;
         }
 
-        if (!empty($location_type) || !empty($category_listing)) {
+        $tax_query = [];
 
-            $lp_search_args['tax_query'] = array(
-                'relation' => 'AND',
-                array(
-                    'taxonomy' => 'location_type',
-                    'terms' => array($location_type),
-                    'field' => 'term_id',
-
-                ),
-                array(
-                    'taxonomy' => 'listing_category',
-                    'terms' => array($category_listing),
-                    'field' => 'term_id',
-                ),
+        if (!empty($location_type)){
+            array_push($tax_query,
+            array(
+                'taxonomy' => 'location_type',
+                'terms' => array($location_type),
+                'field' => 'term_id'
+            )
             );
-
+        }
+        if (!empty($category_listing)){
+            array_push($tax_query,
+            array(
+                'taxonomy' => 'listing_category',
+                'terms' => array($category_listing),
+                'field' => 'term_id'
+            )
+            );
         }
 
+        if ( ! empty( $tax_query ) ) {
+			$tax_query['relation']     = 'AND';
+			$lp_search_args['tax_query'] = $tax_query;
+		}
+
+        
         $filter_args = apply_filters('locatepress_search_filter_query', $lp_search_args);
 
         $lp_search_filter_query = new WP_Query($filter_args);

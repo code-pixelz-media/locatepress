@@ -24,7 +24,7 @@ if (isset($lp_options['lp_filter_page'])) {
         <label for=""><?php _e('Map Box Api Key', 'locatepress');?></label>
         <div class="form-control-wrap">
             <input class="form-control" name="locate_press_set[os_map_api_key]"  type="text" placeholder="<?php _e('Map Api Key', 'locatepress');?>" onfocus="this.placeholder=''" onblur="this.placeholder='Map Api Key'" value="<?php if (isset($lp_options['os_map_api_key'])): esc_html_e($lp_options['os_map_api_key']);endif;?>">
-        </div>
+        </div>  
     </div>
     <div class="form-group">
         <label for=""><?php _e('Select Page To Display Results', 'locatepress');?></label>
@@ -83,7 +83,7 @@ if (isset($lp_options['lp_filter_page'])) {
         </div>
     </div>
     <div class="form-group">
-        <label for=""><?php _e('Disable Location Type Search', 'locatepress');?></label>
+        <label for=""><?php _e('Disable Listing Type Search', 'locatepress');?></label>
         <div class="form-control-wrap">
             <div class="checkbox-wrap custom">
                 <input type="checkbox" value="<?php echo esc_attr('disabled'); ?>" name="locate_press_set[lp_locationtype_search]" <?php if (isset($lp_options['lp_locationtype_search'])) { echo checked($lp_options['lp_locationtype_search'], 'disabled', false);}?> >
@@ -93,7 +93,7 @@ if (isset($lp_options['lp_filter_page'])) {
     </div>
 
     <div class="form-group">
-        <label for=""><?php _e('Disable Community Search', 'locatepress');?></label>
+        <label for=""><?php _e('Disable Category Search', 'locatepress');?></label>
         <div class="form-control-wrap">
             <div class="checkbox-wrap custom">
                 <input type="checkbox" name="locate_press_set[lp_com_search]" value="<?php echo esc_attr('disabled'); ?>" <?php if (isset($lp_options['lp_com_search'])) { echo checked($lp_options['lp_com_search'], 'disabled', false);}?>>
