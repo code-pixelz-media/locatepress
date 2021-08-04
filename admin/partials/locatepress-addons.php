@@ -27,7 +27,7 @@
             $image          = $addon['icon'];
             $version        = $addon['version'];
             $type           = $addon['type'];
-            $slug           = __($addon['slug']);
+            $slug           = $addon['slug'];
             $date           = $addon['date']; //date created
             $price          = $addon['price'];
             $pluginPath     = $slug . '/' . $slug . '.php';
@@ -37,26 +37,26 @@
             if (file_exists($pathpluginurl)) {
                 if (is_plugin_active($pluginPath)) {
                     $buttonText = __('Activated', 'locatepress');
-                    $url = "#";
-                    $btnColor = 'btn-grey';
+                    $url        = "#";
+                    $btnColor   = 'btn-grey';
 
                 } else {
-                    $btnColor = 'btn-green';
+                    $btnColor   = 'btn-green';
                     $buttonText = __('Activate', 'locatepress');
-                    $url = admin_url('plugins.php');
+                    $url        = admin_url('plugins.php');
 
                 }
 
             } else {
                 if ($type == "premium") {
-                    $btnColor = 'btn-red';
+                    $btnColor   = 'btn-red';
                     $buttonText = sprintf(__('Buy Now : %s', 'locatepress'), $price);
-                    $url = $addon['url'];
+                    $url        = $addon['url'];
                 } else {
 
-                    $btnColor = 'btn-red';
+                    $btnColor   = 'btn-red';
                     $buttonText = __('Download', 'locatepress');
-                    $url = $addon['url'];
+                    $url        = $addon['url'];
                 }
 
             }
