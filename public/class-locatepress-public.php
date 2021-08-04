@@ -149,10 +149,9 @@ class Locatepress_Public
     public function locatepress_ajax_search_filter()
     {
 
-        $keyword = isset( $_POST['data']['lp_search_keyword']) ? $_POST['data']['lp_search_keyword'] : '';
-        $location_type = isset( $_POST['data']['lp_search_filter_loctype']) ? $_POST['data']['lp_search_filter_loctype'] : '';
-        $category_listing = isset( $_POST['data']['lp_search_filter_cat']) ? $_POST['data']['lp_search_filter_cat'] : '';;
-        //$location_search = $_POST['data']['lp_search_location']; //meta query
+        $keyword            = sanitize_text_field(isset( $_POST['data']['lp_search_keyword']) ? $_POST['data']['lp_search_keyword'] : '');
+        $location_type      = sanitize_text_field(isset( $_POST['data']['lp_search_filter_loctype']) ? $_POST['data']['lp_search_filter_loctype'] : '');
+        $category_listing   = sanitize_text_field (isset( $_POST['data']['lp_search_filter_cat']) ? $_POST['data']['lp_search_filter_cat'] : '');
 
         $lp_search_args = array(
             'post_type'     => 'map_listing',
@@ -179,16 +178,16 @@ class Locatepress_Public
         if (!empty($category_listing)){
             array_push($tax_query,
             array(
-                'taxonomy' => 'listing_category',
-                'terms' => array($category_listing),
-                'field' => 'term_id'
+                'taxonomy'  => 'listing_category',
+                'terms'     => array($category_listing),
+                'field'     => 'term_id'
             )
             );
         }
 
         if ( ! empty( $tax_query ) ) {
-			$tax_query['relation']     = 'AND';
-			$lp_search_args['tax_query'] = $tax_query;
+			$tax_query['relation']          = 'AND';
+			$lp_search_args['tax_query']    = $tax_query;
 		}
 
         
@@ -202,25 +201,23 @@ class Locatepress_Public
             $i = 0;
             while ($lp_search_filter_query->have_posts()): $lp_search_filter_query->the_post();
 
-                $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
-
-                $terms = get_the_terms(get_the_ID(), 'location_type');
-                $term_name = $terms[0]->name;
-
-                $lp_country = get_post_meta(get_the_id(), 'lp_location_country', true);
-                $icon_meta = get_term_meta($terms[0]->term_id, 'location_type-icon', true);
-                $coordinates = get_post_meta(get_the_id(), 'lp_location_lat_long', true);
-                $explode_coord = explode('/', $coordinates);
-                $marker_data[$i] = array(
-                    'latitude' => $explode_coord[0],
-                    'longitude' => $explode_coord[1],
-                    'p_id' => get_the_id(),
-                    'marker_icon' => wp_get_attachment_url($icon_meta),
-                    'title' => get_the_title(),
-                    'permalink' => get_the_permalink(),
-                    'location_type_id' => $terms[0]->term_id,
-                    'featured_image' => $featured_img_url,
-                    'location' => $lp_country,
+                $featured_img_url   = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+                $terms              = get_the_terms(get_the_ID(), 'location_type');
+                $term_name          = $terms[0]->name;
+                $lp_country         = get_post_meta(get_the_id(), 'lp_location_country', true);
+                $icon_meta          = get_term_meta($terms[0]->term_id, 'location_type-icon', true);
+                $coordinates        = get_post_meta(get_the_id(), 'lp_location_lat_long', true);
+                $explode_coord      = explode('/', $coordinates);
+                $marker_data[$i]    = array(
+                    'latitude'          => esc_html($explode_coord[0]),
+                    'longitude'         => esc_html($explode_coord[1]),
+                    'p_id'              => esc_html(get_the_id()),
+                    'marker_icon'       => esc_url(wp_get_attachment_url($icon_meta)),
+                    'title'             => esc_html(get_the_title()),
+                    'permalink'         => esc_url(get_the_permalink()),
+                    'location_type_id'  => esc_html($terms[0]->term_id),
+                    'featured_image'    => esc_url($featured_img_url),
+                    'location'          => esc_html($lp_country),
                 );
                 ob_start();
                 include plugin_dir_path(__FILE__) . 'partials/locatepress-listings.php';
@@ -259,9 +256,9 @@ class Locatepress_Public
         $idArr = array_unique($_POST['data']);
 
         $visbleargs = array(
-            'post__in' => $idArr,
-            'post_type' => array('map_listing'),
-            'post_status' => array('publish'),
+            'post__in'      => $idArr,
+            'post_type'     => array('map_listing'),
+            'post_status'   => array('publish'),
         );
 
         // The Query
