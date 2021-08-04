@@ -130,7 +130,7 @@ class Locatepress_Admin
     public function locatpress_add_plugin_page_settings_link()
     {
         $url            = get_admin_url() . "options-general.php?page=my-plugin";
-        $settings_link  = '<a href="' . $url . '">' . __('Settings', 'textdomain') . '</a>';
+        $settings_link  = '<a href="' . esc_url ($url) . '">' . __('Settings', 'textdomain') . '</a>';
         $links[]        = $settings_link;
         return $links;
     }

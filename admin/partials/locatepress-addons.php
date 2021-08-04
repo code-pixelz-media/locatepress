@@ -22,16 +22,16 @@
         $addons = json_decode($body, true);
 
         foreach ($addons as $addon) {
-            $title = $addon['name'];
-            $desc = $addon['about'];
-            $image = $addon['icon'];
-            $version = $addon['version'];
-            $type = $addon['type'];
-            $slug = __($addon['slug']);
-            $date = $addon['date']; //date created
-            $price = $addon['price'];
-            $pluginPath = $slug . '/' . $slug . '.php';
-            $pathpluginurl = WP_PLUGIN_DIR . '/' . $pluginPath;
+            $title          = $addon['name'];
+            $desc           = $addon['about'];
+            $image          = $addon['icon'];
+            $version        = $addon['version'];
+            $type           = $addon['type'];
+            $slug           = __($addon['slug']);
+            $date           = $addon['date']; //date created
+            $price          = $addon['price'];
+            $pluginPath     = $slug . '/' . $slug . '.php';
+            $pathpluginurl  = WP_PLUGIN_DIR . '/' . $pluginPath;
             
             //check if plugin is downloaded or not
             if (file_exists($pathpluginurl)) {
