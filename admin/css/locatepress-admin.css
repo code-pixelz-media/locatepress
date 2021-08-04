@@ -558,7 +558,7 @@
     padding: 10px 25px;
     text-shadow: none;
     text-transform: uppercase;
-
+    margin: 0 0 15px 10px ; 
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -1610,3 +1610,4 @@ a.addon-detail-button:hover{
     background: none;
     color: #00C071 !important;
 }
+
