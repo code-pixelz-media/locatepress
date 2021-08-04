@@ -55,10 +55,10 @@ class Locatepress_Shortcodes
     public function __construct($plugin_name, $version)
     {
 
-        $this->plugin_name = $plugin_name;
-        $this->version = $version;
-        $this->settings = get_option('locate_press_set');
-        $lp_options = get_option('locate_press_set');
+        $this->plugin_name  = $plugin_name;
+        $this->version      = $version;
+        $this->settings     = get_option('locate_press_set');
+        $lp_options         = get_option('locate_press_set');
 
         if (isset($lp_options['lp_map_js'])) {
 
@@ -69,67 +69,70 @@ class Locatepress_Shortcodes
             $map_type = 'google-map';
         }
         $this->fields = array(
-            'keyword_filter' => array(
-                'type' => 'text',
-                'title' => __('Keyword Search', 'locatepress'),
-                'placeholder' => __('Search...', 'locatepress'),
-                'name' => 'lp_search_keyword',
-                'settings' => 'lp_ky_search',
-                'class' => 'lp-input-keyword',
+            'keyword_filter'    => array(
+                'type'          => 'text',
+                'title'         => __('Keyword Search', 'locatepress'),
+                'placeholder'   => __('Search...', 'locatepress'),
+                'name'          => 'lp_search_keyword',
+                'settings'      => 'lp_ky_search',
+                'class'         => 'lp-input-keyword',
 
             ),
+
             'location_search' =>
             $map_type == 'google-map' ?
             array(
-                'type' => 'text',
-                'title' => __('Location Search', 'locatepress'),
-                'placeholder' => __('Location Search', 'locatepress'),
-                'name' => 'lp_search_filter_loc',
-                'settings' => 'lp_location_search',
-                'class' => 'lp-loc-search',
+                'type'          => 'text',
+                'title'         => __('Location Search', 'locatepress'),
+                'placeholder'   => __('Location Search', 'locatepress'),
+                'name'          => 'lp_search_filter_loc',
+                'settings'      => 'lp_location_search',
+                'class'         => 'lp-loc-search',
             ) :
             array(
-                'type' => 'div',
-                'title' => __('Location Search', 'locatepress'),
-                'placeholder' => __('Location Search', 'locatepress'),
-                'name' => 'lp_search_filter_loc',
-                'settings' => 'lp_location_search',
-                'class' => 'lp-loc-search',
-            ),
-            'location_types' => array(
-                'type' => 'select',
-                'title' => __('Lisitng Types', 'locatepress'),
-                'placeholder' => __('All Lisitng Types', 'locatepress'),
-                'name' => 'lp_search_filter_loctype',
-                'settings' => 'lp_locationtype_search',
-                'class' => 'lp-search-filter-loc',
-                'tax_slug' => 'location_type',
-            ),
-            'category' => array(
-
-                'type' => 'select',
-                'title' => __('Category', 'locatepress'),
-                'placeholder' => __('All categories', 'locatepress'),
-                'name' => 'lp_search_filter_cat',
-                'settings' => 'lp_com_search',
-                'class' => 'lp-search-filter-cat',
-                'tax_slug' => 'listing_category',
-            ),
-            'resetbutton' => array(
-                'type' => 'button',
-                'placeholder' => __('Reset', 'locatepress'),
-                'settings' => 'lp_filter_reset-btn',
-                'class' => 'lp-filter-form-reset',
-
+                'type'          => 'div',
+                'title'         => __('Location Search', 'locatepress'),
+                'placeholder'   => __('Location Search', 'locatepress'),
+                'name'          => 'lp_search_filter_loc',
+                'settings'      => 'lp_location_search',
+                'class'         => 'lp-loc-search',
             ),
 
-            'filterbutton' => array(
-                'type' => 'submit',
-                'placeholder' => __('Filter', 'locatepress'),
-                'settings' => '',
-                'name' => 'lp_filter_submit',
-                'class' => 'lp-filter-form-reset',
-                'value' => '',
+            'location_types'    => array(
+                'type'          => 'select',
+                'title'         => __('Lisitng Types', 'locatepress'),
+                'placeholder'   => __('All Lisitng Types', 'locatepress'),
+                'name'          => 'lp_search_filter_loctype',
+                'settings'      => 'lp_locationtype_search',
+                'class'         => 'lp-search-filter-loc',
+                'tax_slug'      => 'location_type',
+            ),
+
+            'category'          => array(
+                'type'          => 'select',
+                'title'         => __('Category', 'locatepress'),
+                'placeholder'   => __('All categories', 'locatepress'),
+                'name'          => 'lp_search_filter_cat',
+                'settings'      => 'lp_com_search',
+                'class'         => 'lp-search-filter-cat',
+                'tax_slug'      => 'listing_category',
+            ),
+
+            'resetbutton'       => array(
+                'type'          => 'button',
+                'placeholder'   => __('Reset', 'locatepress'),
+                'settings'      => 'lp_filter_reset-btn',
+                'class'         => 'lp-filter-form-reset',
+
+            ),
+
+            'filterbutton'      => array(
+                'type'          => 'submit',
+                'placeholder'   => __('Filter', 'locatepress'),
+                'settings'      => '',
+                'name'          => 'lp_filter_submit',
+                'class'         => 'lp-filter-form-reset',
+                'value'         => '',
             ),
         );
 
@@ -150,9 +153,9 @@ class Locatepress_Shortcodes
     {
 
         $tax = get_terms(array(
-            'taxonomy' => $catSlug,
-            'hide_empty' => true,
-            'exclude' => 1,
+            'taxonomy'      => $catSlug,
+            'hide_empty'    => true,
+            'exclude'       => 1,
         ));
 
         return $tax;
@@ -164,8 +167,8 @@ class Locatepress_Shortcodes
         ob_start();
 
         extract(shortcode_atts(array(
-            'width' => '100%',
-            'height' => '400px',
+            'width'     => '100%',
+            'height'    => '400px',
 
         ), $atts, 'locatepress_map'));
 
@@ -173,8 +176,7 @@ class Locatepress_Shortcodes
 
         echo apply_filters('locatepress_before_map', '<div class="lp-map-container">');
 
-        echo '<div class="lp-display-map" id="lp-display-map" style="height:' . $height . ';width:' . $width . ';">';
-        echo '</div>';
+        echo '<div class="lp-display-map" id="lp-display-map" style="height:' . $height . ';width:' . $width . ';"></div>';
 
         echo apply_filters('locatepress_after_map', '</div>');
 
@@ -195,11 +197,12 @@ class Locatepress_Shortcodes
         ob_start();
         $get_location_types = ( isset( $_GET[ 'lp_search_filter_loctype' ] ) && $_GET ['lp_search_filter_loctype' ] ) ? $_GET ['lp_search_filter_loctype'] : '';
 		$get_categories     = ( isset( $_GET ['lp_search_filter_cat'] ) && $_GET ['lp_search_filter_cat'] ) ? $_GET ['lp_search_filter_cat'] : '';
+        
 		extract(
 			shortcode_atts(
 				array(
-					'location_types' => $get_location_types,
-					'categories'     => $get_categories,
+					'location_types' => sanitize_text_field($get_location_types),
+					'categories'     => sanitize_text_field($get_categories),
 					'count'          => '-1',
 					'columns'        => '4',
 				),
@@ -209,8 +212,10 @@ class Locatepress_Shortcodes
 		);
 
 		$tax_query = [];
+        
 		if ( ! empty( $location_types ) ) {
-			$location_terms_array = explode( ',', $location_types );
+			$location_terms_array = explode( ',', sanitize_text_field ($location_types)  );
+            
 			array_push(
 				$tax_query,
 				array(
@@ -223,7 +228,7 @@ class Locatepress_Shortcodes
 			);
 		}
 		if ( ! empty( $categories ) ) {
-			$category_terms_array = explode( ',', $categories );
+			$category_terms_array = explode( ',', sanitize_text_field($categories) );
 			array_push(
 				$tax_query,
 				array(
@@ -238,8 +243,9 @@ class Locatepress_Shortcodes
 		$listing_args = array(
 			'post_type'      => array( 'map_listing' ),
 			'post_status'    => array( 'publish' ),
-			'posts_per_page' => $count,
+			'posts_per_page' => sanitize_text_field($count),
 		);
+        
 		if ( ! empty( $tax_query ) ) {
 			$tax_query['relation']     = 'AND';
 			$listing_args['tax_query'] = $tax_query;
