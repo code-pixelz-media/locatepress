@@ -156,8 +156,7 @@ class Locatepress_Public
         $lp_search_args = array(
             'post_type'     => 'map_listing',
             'post_status'   => 'publish',
-            'meta_key'      => 'featured-listing-checkbox',
-            'orderby'       => 'meta_value',
+            
         );
         if (!empty(trim($keyword))) {
 

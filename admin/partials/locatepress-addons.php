@@ -1,3 +1,10 @@
+<?php
+    // If this file is called directly, abort.
+
+    if (!defined('WPINC')) {
+        die;
+    }
+?>
 <div class="addon-wrap">
     <div class="row">
         <div class="addon-logo-wrap col-md-6">
