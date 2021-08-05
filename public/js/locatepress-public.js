@@ -30,6 +30,7 @@ LocatePress.App = (function ($) {
 					pan_map_according_to_url();
 					markerArrList = [];
 					locatePressSetMarkers(results.marker_data);
+					get_and_display_visible_markers();
 
 				}
 				if (checkel(LpListing)) {
