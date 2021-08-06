@@ -166,18 +166,28 @@ LocatePress.App = (function ($) {
 			} else {
 				iconUrl = lp_settings.map.lp_default_marker;
 			}
-			icons = {
-				url: iconUrl,
-				scaledSize: new google.maps.Size(40, 40),
-
-			};
+			
 			var mlist = new google.maps.Marker({
 				position: new google.maps.LatLng(mark[k].latitude, mark[k].longitude),
 				title: mark[k].title,
-				icon: icons,
 				custom: mark[k].p_id
 
 			});
+
+			if (iconUrl) {
+				icons = {
+					url: iconUrl,
+					scaledSize: new google.maps.Size(40, 40),
+				};
+
+				//add custom icon if available
+				mlist.setIcon(icons);
+			}else{
+				
+				mlist.setIcon(null);
+
+			}
+
 
 
 			mlist.setMap(LocatePressMap);
