@@ -254,7 +254,7 @@ class Locatepress_Register_Cpt {
                 'taxonomies'            => array(
 
                     array(
-                        'taxonomy'          => 'location_type',
+                        'taxonomy'          => 'listing_type',
                         'plural'            => 'Listing Types',
                         'single'            => 'Listing Type',
                         'post_types'        => array( 'map_listing' ),

@@ -6,7 +6,7 @@ if (!defined('WPINC')) {
 }
 
 $featured_img_url 	= get_the_post_thumbnail_url(get_the_ID(), 'medium');
-$terms 				= get_the_terms(get_the_ID(), 'location_type');
+$terms 				= get_the_terms(get_the_ID(), 'listing_type');
 $term_name 			= $terms[0]->name;
 ?>
 <?php apply_filters('locatepress_listing_loop_start', get_the_id());?>

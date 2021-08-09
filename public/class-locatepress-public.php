@@ -150,7 +150,7 @@ class Locatepress_Public
     {
 
         $keyword            = sanitize_text_field(isset( $_POST['data']['lp_search_keyword']) ? $_POST['data']['lp_search_keyword'] : '');
-        $location_type      = sanitize_text_field(isset( $_POST['data']['lp_search_filter_loctype']) ? $_POST['data']['lp_search_filter_loctype'] : '');
+        $listing_type      = sanitize_text_field(isset( $_POST['data']['lp_search_filter_loctype']) ? $_POST['data']['lp_search_filter_loctype'] : '');
         $category_listing   = sanitize_text_field (isset( $_POST['data']['lp_search_filter_cat']) ? $_POST['data']['lp_search_filter_cat'] : '');
 
         $lp_search_args = array(
@@ -165,11 +165,11 @@ class Locatepress_Public
 
         $tax_query = [];
 
-        if (!empty($location_type)){
+        if (!empty($listing_type)){
             array_push($tax_query,
             array(
-                'taxonomy' => 'location_type',
-                'terms' => array($location_type),
+                'taxonomy' => 'listing_type',
+                'terms' => array($listing_type),
                 'field' => 'term_id'
             )
             );
@@ -201,10 +201,10 @@ class Locatepress_Public
             while ($lp_search_filter_query->have_posts()): $lp_search_filter_query->the_post();
 
                 $featured_img_url   = get_the_post_thumbnail_url(get_the_ID(), 'medium');
-                $terms              = get_the_terms(get_the_ID(), 'location_type');
+                $terms              = get_the_terms(get_the_ID(), 'listing_type');
                 $term_name          = $terms[0]->name;
                 $lp_country         = get_post_meta(get_the_id(), 'lp_location_country', true);
-                $icon_meta          = get_term_meta($terms[0]->term_id, 'location_type-icon', true);
+                $icon_meta          = get_term_meta($terms[0]->term_id, 'listing_type-icon', true);
                 $coordinates        = get_post_meta(get_the_id(), 'lp_location_lat_long', true);
                 $explode_coord      = explode('/', $coordinates);
                 $marker_data[$i]    = array(
@@ -214,7 +214,7 @@ class Locatepress_Public
                     'marker_icon'       => esc_url(wp_get_attachment_url($icon_meta)),
                     'title'             => esc_html(get_the_title()),
                     'permalink'         => esc_url(get_the_permalink()),
-                    'location_type_id'  => esc_html($terms[0]->term_id),
+                    'listing_type_id'  => esc_html($terms[0]->term_id),
                     'featured_image'    => esc_url($featured_img_url),
                     'location'          => esc_html($lp_country),
                 );

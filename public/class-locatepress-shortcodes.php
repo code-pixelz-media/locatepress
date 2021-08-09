@@ -98,14 +98,14 @@ class Locatepress_Shortcodes
                 'class'         => 'lp-loc-search',
             ),
 
-            'location_types'    => array(
+            'lisitng_types'    => array(
                 'type'          => 'select',
                 'title'         => __('Lisitng Types', 'locatepress'),
                 'placeholder'   => __('All Lisitng Types', 'locatepress'),
                 'name'          => 'lp_search_filter_loctype',
                 'settings'      => 'lp_locationtype_search',
                 'class'         => 'lp-search-filter-loc',
-                'tax_slug'      => 'location_type',
+                'tax_slug'      => 'listing_type',
             ),
 
             'category'          => array(
@@ -187,7 +187,7 @@ class Locatepress_Shortcodes
 
 /**
  * Functionality : returns the listing of locations and shops according to parameters provided while serach or in shortcode attribute
- * Parameters      : $atts(attributes of shortcode(location_types, categories, count, columns))
+ * Parameters      : $atts(attributes of shortcode(listing_types, categories, count, columns))
  * returns          : list of queried location and shops
  * @since 1.0.0
  */
@@ -195,13 +195,13 @@ class Locatepress_Shortcodes
     {
 
         ob_start();
-        $get_location_types = ( isset( $_GET[ 'lp_search_filter_loctype' ] ) && $_GET ['lp_search_filter_loctype' ] ) ? $_GET ['lp_search_filter_loctype'] : '';
+        $get_lisitng_types = ( isset( $_GET[ 'lp_search_filter_loctype' ] ) && $_GET ['lp_search_filter_loctype' ] ) ? $_GET ['lp_search_filter_loctype'] : '';
 		$get_categories     = ( isset( $_GET ['lp_search_filter_cat'] ) && $_GET ['lp_search_filter_cat'] ) ? $_GET ['lp_search_filter_cat'] : '';
         
 		extract(
 			shortcode_atts(
 				array(
-					'location_types' => sanitize_text_field($get_location_types),
+					'listing_types' => sanitize_text_field($get_lisitng_types),
 					'categories'     => sanitize_text_field($get_categories),
 					'count'          => '-1',
 					'columns'        => '4',
@@ -213,13 +213,13 @@ class Locatepress_Shortcodes
 
 		$tax_query = [];
         
-		if ( ! empty( $location_types ) ) {
-			$location_terms_array = explode( ',', sanitize_text_field ($location_types)  );
+		if ( ! empty( $listing_types ) ) {
+			$location_terms_array = explode( ',', sanitize_text_field ($listing_types)  );
             
 			array_push(
 				$tax_query,
 				array(
-					'taxonomy'         => 'location_type',
+					'taxonomy'         => 'listing_type',
 					'terms'            => $location_terms_array,
 					'field'            => 'term_id',
 					'operator'         => 'IN',
@@ -385,9 +385,9 @@ class Locatepress_Shortcodes
 
         if ($listing == 'true') {
             if (isset($_GET['lp_search_filter_loctype'])) {
-                $location_type = $_GET['lp_search_filter_loctype'];
+                $listing_type = $_GET['lp_search_filter_loctype'];
             } else {
-                $location_type = '';
+                $listing_type = '';
             }
 
             if (isset($_GET['lp_search_filter_cat'])) {
@@ -396,7 +396,7 @@ class Locatepress_Shortcodes
                 $category_type = '';
             }
 
-            echo do_shortcode('[locatepress_listing location_types="' . $location_type . '" categories="' . $category_type . '" count="-1"]');
+            echo do_shortcode('[locatepress_listing listing_types="' . $listing_type . '" categories="' . $category_type . '" count="-1"]');
 
         }
 
