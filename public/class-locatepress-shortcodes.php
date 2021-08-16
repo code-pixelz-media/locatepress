@@ -197,7 +197,7 @@ class Locatepress_Shortcodes
         ob_start();
         //$get_listing = sanitize_text_field(isset($_GET[ 'lp_search_filter_loctype' ]));
 
-        $get_lisitng_types = ( isset( $_GET ['lp_search_filter_loctype'] ) && $_GET ['lp_search_filter_loctype'] ) ? sanitize_text_field (  $_GET ['lp_search_filter_loctype'] ) : '';
+        $get_lisitng_types  = ( isset( $_GET ['lp_search_filter_loctype'] ) && $_GET ['lp_search_filter_loctype'] ) ? sanitize_text_field (  $_GET ['lp_search_filter_loctype'] ) : '';
 		$get_categories     = ( isset( $_GET ['lp_search_filter_cat'] ) && $_GET ['lp_search_filter_cat'] ) ? sanitize_text_field ( $_GET ['lp_search_filter_cat'] ) : '';
         
 		extract(
@@ -216,7 +216,7 @@ class Locatepress_Shortcodes
 		$tax_query = [];
         
 		if ( ! empty( $listing_types ) ) {
-			$location_terms_array = explode( ',', sanitize_text_field ($listing_types)  );
+			$location_terms_array = explode( ',', $listing_types  );
             
 			array_push(
 				$tax_query,
@@ -230,7 +230,7 @@ class Locatepress_Shortcodes
 			);
 		}
 		if ( ! empty( $categories ) ) {
-			$category_terms_array = explode( ',', sanitize_text_field($categories) );
+			$category_terms_array = explode( ',', $categories );
 			array_push(
 				$tax_query,
 				array(
@@ -310,9 +310,9 @@ class Locatepress_Shortcodes
 
             if (!isset($this->settings[$value['settings']])) {
                 do_action('locatepress_before_' . $key);
-                echo '<li class="lp_' . $key . '">';
+                echo '<li class="lp_' . esc_attr( $key ) . '">';
                 if (!empty($value['title'])) {
-                    echo '<h3>' . $value['title'] . '</h3>';
+                    echo '<h3>' . esc_attr( $value['title']) . '</h3>';
 
                 }
 
@@ -320,42 +320,42 @@ class Locatepress_Shortcodes
 
                     switch ($value['type']) {
                         case 'text':
-                            echo '<input placeholder="' . $value['placeholder'] . '" name="' . $value['name'] . '" class="' . $value['class'] . '" type="text" autocomplete="off" value="' . esc_html($this->locatepress_post_values($value['name'])) . '">';
+                            echo '<input placeholder="' . esc_attr( $value['placeholder'] ) . '" name="' . esc_attr( $value['name'] ) . '" class="' . esc_attr( $value['class'] ) . '" type="text" autocomplete="off" value="' . esc_attr ($this->locatepress_post_values($value['name'])) . '">';
 
                             break;
                         case 'div':
-                            echo '<div id="' . $value['class'] . '"></div>';
+                            echo '<div id="' . esc_attr( $value['class'] ) . '"></div>';
                             echo '<pre id="result"></pre>';
                             break;
 
                         case 'button':
 
-                            echo '<input type="button" id="lp-' . $key . '"  class="' . $value['class'] . '"  value="' . $value['placeholder'] . '">';
+                            echo '<input type="button" id="lp-' . esc_attr( $key ) . '"  class="' . esc_attr ($value['class'] ) . '"  value="' . esc_attr ( $value['placeholder'] ) . '">';
 
                             break;
 
                         case 'submit':
 
-                            echo '<input type="submit" id="lp-' . $key . '" name="' . $value['name'] . '"  class="' . $value['class'] . '"  value="' . $value['placeholder'] . '">';
+                            echo '<input type="submit" id="lp-' . esc_attr( $key ) . '" name="' . esc_attr( $value['name'] ). '"  class="' . esc_attr( $value['class'] ) . '"  value="' . esc_attr( $value['placeholder'] ) . '">';
 
                             break;
 
                         case 'select':
-                            $taxitems = $this->locatepress_taxonomy_data($value['tax_slug']);
+                            $taxitems = $this->locatepress_taxonomy_data( esc_attr( $value['tax_slug'] ) );
 
-                            echo '<select class="' . $value['class'] . ' select-css" name="' . $value['name'] . '">';
+                            echo '<select class="' . esc_attr( $value['class'] ) . ' select-css" name="' . esc_attr( $value['name'] ) . '">';
 
-                            echo '<option value="" >' . $value['placeholder'] . '</option>';
+                            echo '<option value="" >' . esc_attr( $value['placeholder'] ) . '</option>';
 
                             foreach ($taxitems as $t) {
 
                                 if (isset($_GET[$value['name']]) && ($_GET[$value['name']] == $t->term_id)) {
 
-                                    echo '<option value="' . $t->term_id . '" selected>' . esc_html($t->name) . '</option>';
+                                    echo '<option value="' . esc_attr( $t->term_id ). '" selected>' . esc_html($t->name) . '</option>';
 
                                     continue;
                                 }
-                                echo '<option  value="' . $t->term_id . '">' . esc_html($t->name) .'</option>';
+                                echo '<option  value="' .esc_attr( $t->term_id ) . '">' . esc_html($t->name) .'</option>';
 
                             }
 
@@ -363,7 +363,7 @@ class Locatepress_Shortcodes
                             break;
 
                         default:
-                            echo '<p>' . $value['type'] . __('is not supported', 'locatepress') . ' </p>';
+                            echo '<p>' . esc_html( $value['type'] ) . __('is not supported', 'locatepress') . ' </p>';
                             break;
                     }
                 }
@@ -455,7 +455,9 @@ class Locatepress_Shortcodes
     {
 
         if (isset($_GET[$name])) {
-            return $_GET[$name];
+
+            return sanitize_text_field( $_GET[$name] ) ;
+
         } else {
 
             return false;
