@@ -166,7 +166,7 @@ LocatePress.App = (function ($) {
 			} else {
 				iconUrl = lp_settings.map.lp_default_marker;
 			}
-			
+
 			var mlist = new google.maps.Marker({
 				position: new google.maps.LatLng(mark[k].latitude, mark[k].longitude),
 				title: mark[k].title,
@@ -182,8 +182,8 @@ LocatePress.App = (function ($) {
 
 				//add custom icon if available
 				mlist.setIcon(icons);
-			}else{
-				
+			} else {
+
 				mlist.setIcon(null);
 
 			}
@@ -287,20 +287,25 @@ LocatePress.App = (function ($) {
 						//fData.lp_search_filter_loc=$(LpLocSearch).val();
 						get_and_display_visible_markers();
 						LocatePressMap.fitBounds(place.geometry.viewport);
+
 					} else {
 						LocatePressMap.setCenter(place.geometry.location);
 
 					}
 
 				});
+			} else {
+				//console.log('okay');
 			}
 		}
 
 		if (checkel(LpLoctype)) {
 
 			LpLoctype.change(function () {
+				
 				fData.lp_search_filter_loctype = $(this).val();
 				make_ajax_request(fData);
+				
 			});
 		}
 
@@ -357,12 +362,14 @@ LocatePress.App = (function ($) {
 			if (LpLocSearch.val() !== '') {
 				geocodeAddress(locationq);
 			}
-			// 
+			
 		} else {
 			return;
 		}
 
 	}
+
+
 
 	function get_and_display_visible_markers() {
 		if (checkel(LpListing)) {
