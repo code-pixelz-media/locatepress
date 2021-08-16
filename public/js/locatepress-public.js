@@ -377,6 +377,7 @@ LocatePress.App = (function ($) {
 
 				var visibleItems = showVisibleMarkers();
 				if (visibleItems.length > 0) {
+					//console.log(visibleItems);
 					locatepressAutoCompleteListings(visibleItems);
 				}
 

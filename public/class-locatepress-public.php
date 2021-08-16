@@ -252,7 +252,7 @@ class Locatepress_Public
     public function locatepress_listings_visible_markers()
     {
 
-        $idArr = array_unique(sanitize_text_field($_POST['data']));
+        $idArr = array_unique($_POST['data']);
 
         $visbleargs = array(
             'post__in'      => $idArr,
