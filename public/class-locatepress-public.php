@@ -149,9 +149,9 @@ class Locatepress_Public
     public function locatepress_ajax_search_filter()
     {
 
-        $keyword            = sanitize_text_field(isset( $_POST['data']['lp_search_keyword']) ? $_POST['data']['lp_search_keyword'] : '');
-        $listing_type      = sanitize_text_field(isset( $_POST['data']['lp_search_filter_loctype']) ? $_POST['data']['lp_search_filter_loctype'] : '');
-        $category_listing   = sanitize_text_field (isset( $_POST['data']['lp_search_filter_cat']) ? $_POST['data']['lp_search_filter_cat'] : '');
+        $keyword            = isset( $_POST['data']['lp_search_keyword']) ? sanitize_text_field( $_POST['data']['lp_search_keyword'] ) : '';
+        $listing_type       = isset( $_POST['data']['lp_search_filter_loctype']) ? sanitize_text_field( $_POST['data']['lp_search_filter_loctype'] ): '';
+        $category_listing   = isset( $_POST['data']['lp_search_filter_cat']) ? sanitize_text_field( $_POST['data']['lp_search_filter_cat'] ) : '';
 
         $lp_search_args = array(
             'post_type'     => 'map_listing',
