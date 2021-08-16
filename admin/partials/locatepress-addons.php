@@ -83,7 +83,7 @@
             echo '<p class= "addon-version"><strong>' . __('version', 'locatepress') . '</strong> : ' . esc_html__($version, 'locatepress') . '</p>';
             echo '<span><p class= "addon-date"><strong>' . __('Release Date', 'locatepress') . '</strong> : ' . esc_html($date) . '</p></span>';
             echo '<p>' . esc_html__($desc, 'locatepress') . '</p></div>';
-            echo '<a href="' . esc_url($url) . '" class="addon-button ' . $btnColor . '">' . esc_html($buttonText) . '<a/>';
+            echo '<a href="' . esc_url($url) . '" class="addon-button ' . esc_attr($btnColor) . '">' . esc_html($buttonText) . '<a/>';
             echo '</div></div>';
         }
         ?>
