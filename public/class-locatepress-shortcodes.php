@@ -195,14 +195,16 @@ class Locatepress_Shortcodes
     {
 
         ob_start();
-        $get_lisitng_types = ( isset( $_GET[ 'lp_search_filter_loctype' ] ) && $_GET ['lp_search_filter_loctype' ] ) ? $_GET ['lp_search_filter_loctype'] : '';
-		$get_categories     = ( isset( $_GET ['lp_search_filter_cat'] ) && $_GET ['lp_search_filter_cat'] ) ? $_GET ['lp_search_filter_cat'] : '';
+        //$get_listing = sanitize_text_field(isset($_GET[ 'lp_search_filter_loctype' ]));
+
+        $get_lisitng_types = ( isset( $_GET ['lp_search_filter_loctype'] ) && $_GET ['lp_search_filter_loctype'] ) ? sanitize_text_field (  $_GET ['lp_search_filter_loctype'] ) : '';
+		$get_categories     = ( isset( $_GET ['lp_search_filter_cat'] ) && $_GET ['lp_search_filter_cat'] ) ? sanitize_text_field ( $_GET ['lp_search_filter_cat'] ) : '';
         
 		extract(
 			shortcode_atts(
 				array(
-					'listing_types' => sanitize_text_field($get_lisitng_types),
-					'categories'     => sanitize_text_field($get_categories),
+					'listing_types'  => $get_lisitng_types,
+					'categories'     => $get_categories,
 					'count'          => '-1',
 					'columns'        => '4',
 				),
@@ -384,17 +386,9 @@ class Locatepress_Shortcodes
         echo apply_filters('locatepress_after_form_end', $this->locatepress_after_form_end(), 10, 9);
 
         if ($listing == 'true') {
-            if (isset($_GET['lp_search_filter_loctype'])) {
-                $listing_type = $_GET['lp_search_filter_loctype'];
-            } else {
-                $listing_type = '';
-            }
-
-            if (isset($_GET['lp_search_filter_cat'])) {
-                $category_type = $_GET['lp_search_filter_cat'];
-            } else {
-                $category_type = '';
-            }
+            
+            $listing_type = ( isset( $_GET ['lp_search_filter_loctype'] ) && $_GET ['lp_search_filter_loctype'] ) ? sanitize_text_field (  $_GET ['lp_search_filter_loctype'] ) : '';
+            $category_type = ( isset( $_GET ['lp_search_filter_cat'] ) && $_GET ['lp_search_filter_cat'] ) ? sanitize_text_field ( $_GET ['lp_search_filter_cat'] ) : '';
 
             echo do_shortcode('[locatepress_listing listing_types="' . $listing_type . '" categories="' . $category_type . '" count="-1"]');
 
@@ -414,7 +408,7 @@ class Locatepress_Shortcodes
         } else {
             $searchbar_align = 'top';
         }
-        echo '<div class="lp-wrap search-align-' . $searchbar_align . '" >';
+        echo '<div class="lp-wrap search-align-' . esc_html($searchbar_align) . '" >';
 
     }
     //container after form ends

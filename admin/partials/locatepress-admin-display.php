@@ -30,11 +30,11 @@ if (isset($lp_options['lp_filter_page'])) {
         <label for=""><?php _e('Select Page To Display Results', 'locatepress');?></label>
         <div class="form-control-wrap">
              <?php wp_dropdown_pages($args = array(
-                'class' => 'lp-custom-select minimal',
-                'name' => 'locate_press_set[lp_filter_page]',
-                'value' => $filter_page,
-                'selected' => $filter_page,
-                'show_option_none' => __('Select Page', 'locatepress'),
+                'class'             => 'lp-custom-select minimal',
+                'name'              => 'locate_press_set[lp_filter_page]',
+                'value'             => esc_html($filter_page),
+                'selected'          => esc_html($filter_page),
+                'show_option_none'  => __('Select Page', 'locatepress'),
             ));?>
         </div>
     </div>

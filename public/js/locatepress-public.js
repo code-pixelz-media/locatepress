@@ -30,7 +30,7 @@ LocatePress.App = (function ($) {
 					pan_map_according_to_url();
 					markerArrList = [];
 					locatePressSetMarkers(results.marker_data);
-					get_and_display_visible_markers();
+					//get_and_display_visible_markers();
 
 				}
 				if (checkel(LpListing)) {
@@ -295,7 +295,7 @@ LocatePress.App = (function ($) {
 
 				});
 			} else {
-				//console.log('okay');
+				console.log('okay');
 			}
 		}
 
@@ -362,7 +362,7 @@ LocatePress.App = (function ($) {
 			if (LpLocSearch.val() !== '') {
 				geocodeAddress(locationq);
 			}
-			
+			// 
 		} else {
 			return;
 		}

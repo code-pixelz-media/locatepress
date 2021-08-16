@@ -47,9 +47,10 @@ class Locatepress_Term_Meta
 
     public function locatepress_save_image_data($term_id, $tt_id)
     {
+        $icon = sanitize_text_field($_POST['listing_type-icon']);
 
-        if (isset($_POST['listing_type-icon']) && '' !== $_POST['listing_type-icon']) {
-            $image = $_POST['listing_type-icon'];
+        if (isset($icon) && '' !== $icon) {
+            $image = $icon;
             add_term_meta($term_id, 'listing_type-icon', $image, true);
         }
 
@@ -64,7 +65,7 @@ class Locatepress_Term_Meta
         echo '<label for="listing_type-icon">' . __('Marker Icon', 'locatepress') . '</label>';
         echo '</th>';
         echo '<td>';
-        echo '<input type="hidden" id="listing_type-icon" name="listing_type-icon" value="' . $icon_id . '">';
+        echo '<input type="hidden" id="listing_type-icon" name="listing_type-icon" value="' . esc_html($icon_id) . '">';
         echo '<div id="listing_type-icon-wrapper">';
 
         if ($icon_id) {
@@ -77,7 +78,7 @@ class Locatepress_Term_Meta
         echo '</div>';
         echo '<p>';
         echo '<input type="button" style=" margin: 0px 5px" class="button button-secondary listing_type_upload_media_button" id="add_icon_button"name="add_icon_button" value="' . __('Add Icon', 'locatepress') . '">';
-        echo '<input type="button" style="'.$style.'" class="button button-secondary remove_icon_button" id="remove_icon_button" name="remove_icon_button" value="' . __('Remove Icon', 'locatepress') . '">';
+        echo '<input type="button" style="'.esc_html($style).'" class="button button-secondary remove_icon_button" id="remove_icon_button" name="remove_icon_button" value="' . __('Remove Icon', 'locatepress') . '">';
         echo '</p>';
         echo '</td>';
         echo '</tr>';
@@ -86,9 +87,10 @@ class Locatepress_Term_Meta
 
     public function locatepress_updated_listing_type_icon($term, $taxonomy)
     {
+        $icon = sanitize_text_field($_POST['listing_type-icon']);
 
-        if (isset($_POST['listing_type-icon']) && '' !== $_POST['listing_type-icon']) {
-            $image = $_POST['listing_type-icon'];
+        if (isset($icon) && '' !== $icon) {
+            $image = $icon;
             update_term_meta($term, 'listing_type-icon', $image);
         } else {
             update_term_meta($term, 'listing_type-icon', '');

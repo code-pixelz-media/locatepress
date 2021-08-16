@@ -214,7 +214,7 @@ class Locatepress_Public
                     'marker_icon'       => esc_url(wp_get_attachment_url($icon_meta)),
                     'title'             => esc_html(get_the_title()),
                     'permalink'         => esc_url(get_the_permalink()),
-                    'listing_type_id'  => esc_html($terms[0]->term_id),
+                    'listing_type_id'   => esc_html($terms[0]->term_id),
                     'featured_image'    => esc_url($featured_img_url),
                     'location'          => esc_html($lp_country),
                 );
@@ -252,7 +252,7 @@ class Locatepress_Public
     public function locatepress_listings_visible_markers()
     {
 
-        $idArr = array_unique($_POST['data']);
+        $idArr = array_unique(sanitize_text_field($_POST['data']));
 
         $visbleargs = array(
             'post__in'      => $idArr,
