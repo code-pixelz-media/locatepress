@@ -30,10 +30,10 @@ function load_map() {
 
 
 
-
+//if no location is set initally use add a marker on clicked position for once then drag the marker
   function placeMarker() {
     google.maps.event.addListenerOnce(locatePressAdminMap, 'click', function (event) {
-    
+
 
       marker = new google.maps.Marker({
         position: event.latLng,
@@ -41,28 +41,29 @@ function load_map() {
         anchorPoint: new google.maps.Point(0, -29),
         draggable: true,
       });
-  
+
       google.maps.event.addListener(marker, 'dragend', function () {
-  
+
         geocoder.geocode({ 'latLng': marker.getPosition() }, function (results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[0]) {
               jQuery('#lp_location_lat_long').val(marker.getPosition().lat() + '/' + marker.getPosition().lng());
               jQuery('#country').val(results[0].formatted_address);
-  
+
               infowindow.setContent(results[0].formatted_address);
               infowindow.open(locatePressAdminMap, marker);
             }
           }
         });
       });
-  
-  
+
+
     });
 
   };
 
-  function defaultMarker(latitude, longitude){
+  //if location is set already and set marker to that given position
+  function defaultMarker(latitude, longitude) {
 
     marker = new google.maps.Marker({
       position: { lat: latitude, lng: longitude },
@@ -87,18 +88,13 @@ function load_map() {
     });
   }
 
-  
-  if (isNaN(lats) && isNaN(longs)){
+
+  if (isNaN(lats) && isNaN(longs)) {
     placeMarker();
-  }else{
+  } else {
     defaultMarker(lats, longs);
 
   }
-
-
-
-
-
 
   if (dSets !== '') {
     locatePressAdminMap.setCenter(marker.position);
