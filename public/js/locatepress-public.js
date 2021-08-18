@@ -1,6 +1,3 @@
-
-
-
 var LocatePress = {};
 
 LocatePress.App = (function ($) {
@@ -54,7 +51,7 @@ LocatePress.App = (function ($) {
 			var marker = markerArrList[i];
 
 			if (bnds.contains(marker.getPosition()) === true) {
-
+				
 				popList.push(marker.custom);
 
 			}
@@ -63,6 +60,7 @@ LocatePress.App = (function ($) {
 				LpListing.empty();
 			}
 		}
+		//console.log (popList);
 		return popList;
 	}
 
@@ -232,7 +230,9 @@ LocatePress.App = (function ($) {
 			formDataObj[kv.name] = kv.value;
 
 		});
-
+		//var x = showVisibleMarkers();
+		//formDataObj['data'] = x;
+		console.log(formDataObj);
 		return formDataObj;
 
 	}
@@ -295,7 +295,7 @@ LocatePress.App = (function ($) {
 
 				});
 			} else {
-				console.log('okay');
+				//console.log('okay');
 			}
 		}
 
