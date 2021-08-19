@@ -30,11 +30,10 @@ function load_map() {
 
 
 
-//if no location is set initally use add a marker on clicked position for once then drag the marker
+  //if no location is set initally use add a marker on clicked position for once then drag the marker
   function placeMarker() {
+
     google.maps.event.addListenerOnce(locatePressAdminMap, 'click', function (event) {
-
-
       marker = new google.maps.Marker({
         position: event.latLng,
         map: locatePressAdminMap,
@@ -42,21 +41,7 @@ function load_map() {
         draggable: true,
       });
 
-      google.maps.event.addListener(marker, 'dragend', function () {
-
-        geocoder.geocode({ 'latLng': marker.getPosition() }, function (results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            if (results[0]) {
-              jQuery('#lp_location_lat_long').val(marker.getPosition().lat() + '/' + marker.getPosition().lng());
-              jQuery('#country').val(results[0].formatted_address);
-
-              infowindow.setContent(results[0].formatted_address);
-              infowindow.open(locatePressAdminMap, marker);
-            }
-          }
-        });
-      });
-
+      dragableMarker();
 
     });
 
@@ -72,13 +57,19 @@ function load_map() {
       draggable: true,
     });
 
-    google.maps.event.addListener(marker, 'dragend', function () {
+    dragableMarker();
+  }
 
+  //make marker dragabale and get location detail and fill in respective fields
+  function dragableMarker() {
+
+    google.maps.event.addListener(marker, 'dragend', function () {
       geocoder.geocode({ 'latLng': marker.getPosition() }, function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
           if (results[0]) {
-            jQuery('#lp_location_lat_long').val(marker.getPosition().lat() + '/' + marker.getPosition().lng());
-            jQuery('#country').val(results[0].formatted_address);
+
+            document.getElementById('country').value = results[0].formatted_address;
+            document.getElementById('lp_location_lat_long').value = marker.getPosition().lat() + '/' + marker.getPosition().lng();
 
             infowindow.setContent(results[0].formatted_address);
             infowindow.open(locatePressAdminMap, marker);
@@ -86,6 +77,7 @@ function load_map() {
         }
       });
     });
+
   }
 
 
@@ -163,3 +155,5 @@ function fillInAddress() {
 }
 
 google.maps.event.addDomListener(window, 'load', load_map);
+
+

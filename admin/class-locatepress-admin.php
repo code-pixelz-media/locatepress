@@ -87,7 +87,9 @@ class Locatepress_Admin
         wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/locatepress-admin.css', array(), $this->version, 'all');
 
         // Enqueued for font awesome
+        
         wp_enqueue_style('fonts', 'https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
+        //wp_enqueue_style('font-awesome', 'https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css');
 
     }
 
@@ -112,14 +114,21 @@ class Locatepress_Admin
         $locate_press_options = get_option('locate_press_set');
 
         $locate_press_api_key = $locate_press_options['lp_map_api_key'];
+        
 
         wp_enqueue_script($this->plugin_name . '-admin', plugin_dir_url(__FILE__) . 'js/locatepress-admin.js', array('jquery'), $this->version, true);
 
         wp_enqueue_script('jquery-ui-accordion');
 
         wp_enqueue_script('googlemaps', 'https://maps.googleapis.com/maps/api/js?&key=' . $locate_press_api_key . '&libraries=places', array(), '', false);
+        
+        wp_enqueue_script('fa-js', 'https://kit.fontawesome.com/212ae5222e.js', array(), '', false);
+
+        wp_enqueue_media();
 
         wp_register_script('map-script', plugin_dir_url(__FILE__) . 'js/locatepress-map.js', array('jquery'), $this->version, true);
+
+        wp_register_script('gallery-script', plugin_dir_url(__FILE__) . 'js/locatepress-gallery.js', array('jquery'), $this->version, true);
 
         wp_enqueue_script('jquery-ui-tabs');
 

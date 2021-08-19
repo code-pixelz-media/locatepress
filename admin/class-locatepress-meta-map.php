@@ -5,7 +5,7 @@ if (!defined('WPINC')) {
     die;
 }
 
-class Locatepress_Register_Metabox
+class Locatepress_Register_Metabox_Map
 {
 
     public function locatepress_init_metabox()
@@ -47,11 +47,11 @@ class Locatepress_Register_Metabox
         $lp_lc = get_post_meta($post->ID, 'lp_location_country', true);
 
         echo '<table class="form-table">';
-
         echo '<tr class="lp-geo-data">';
-
-        echo '<input type="hidden" id="lp_location_lat_long" name="lp_location_lat_long" class="lp_location_lat_long_field widefat" placeholder="' . esc_attr__('Latitude/Longitude', 'locatepress') . '" value="' . esc_attr($lp_lt) . '" autocomplete="off">';
-
+        echo '<td>';
+        echo '<label for="lp_location_lat_long">' . __('Latitude/Longitude :', 'locatepress') . '</label>';
+        echo '<input type="text" id="lp_location_lat_long" name="lp_location_lat_long" class="lp_location_lat_long_field widefat" placeholder="' . esc_attr__('Latitude/Longitude', 'locatepress') . '" value="' . esc_attr($lp_lt) . '" autocomplete="off">';
+        echo '</td>';
         echo '<td>';
         echo '<label for="lp_location_country">' . __('Address :', 'locatepress') . '</label>';
         echo '<input type="text" name="lp_location_country" id="country" class="lp_location_Country_field widefat" placeholder="' . esc_attr__('Country', 'locatepress') . '" value="' . esc_attr($lp_lc) . '">';
@@ -59,7 +59,7 @@ class Locatepress_Register_Metabox
         echo '<tr/>';
         echo '</table>';
         echo '<input id="lp-search-input" class="controls google-map-admin-search-input" type="text" placeholder="' . esc_attr__('Search Location', 'locatepress') . '" style="width:50%" onFocus="geolocate()" >';
-        echo '<div id="lp-meta-map-canvas" data-latlong="' . esc_html($lp_lt) . '" style="height: 500px; ">' . "\n";
+        echo '<div id="lp-meta-map-canvas" data-latlong="' . esc_attr($lp_lt) . '" style="height: 500px; ">' . "\n";
         echo '</div>';
 
         wp_enqueue_script('map-script');
