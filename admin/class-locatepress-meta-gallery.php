@@ -39,7 +39,7 @@ class Locatepress_Register_Metabox_Gallery{
                 {
                 for( $i = 0; $i < count( $image_gallery_data['img_url'] ); $i++ )
                 {
-                echo '<div class="gallery_single_row auto-car-image">';
+                echo '<div class="gallery_single_row locatepress-image">';
                     echo '<div class="gallery_area_div image_container ">';?>
                         <img class="gallery_img_img" src="<?php esc_html_e( $image_gallery_data['img_url'][$i] ); ?>" height="55" width="55" onclick="open_media_uploader_image_this(this)"/>
                         <input type="hidden"
@@ -113,7 +113,7 @@ class Locatepress_Register_Metabox_Gallery{
             {
                 if ( '' != $_POST['image_gallery_data']['img_url'][$i])
                 {
-                    $image_gallery_data['img_url'][]  = htmlentities($_POST['image_gallery_data']['img_url'][ $i ]);
+                    $image_gallery_data['img_url'][]  = esc_url($_POST['image_gallery_data']['img_url'][ $i ]);
                 }
             }
 

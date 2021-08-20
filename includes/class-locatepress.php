@@ -148,6 +148,8 @@ class Locatepress {
 		require_once plugin_dir_path(dirname(__FILE__)) .'admin/class-locatepress-meta-map.php';
 		require_once plugin_dir_path(dirname(__FILE__)) .'admin/class-locatepress-meta-listing-details.php';
 		require_once plugin_dir_path(dirname(__FILE__)) .'admin/class-locatepress-meta-gallery.php';
+		require_once plugin_dir_path(dirname(__FILE__)) .'admin/class-locatepress-meta-logo.php';
+
 
 
 
@@ -206,6 +208,8 @@ class Locatepress {
 
 		$plugin_meta_gallery  =  new Locatepress_Register_Metabox_Gallery($this->locatepress_get_plugin_name(),$this->locatepress_get_version());
 
+		$plugin_meta_logo  =  new Locatepress_Register_Metabox_Logo($this->locatepress_get_plugin_name(),$this->locatepress_get_version());
+
 		$plugin_settings = new Locatepress_Settings($this->locatepress_get_plugin_name(),$this->locatepress_get_version());
 
 		$plugin_term_meta = new Locatepress_Term_Meta($this->locatepress_get_plugin_name(),$this->locatepress_get_version());
@@ -227,6 +231,10 @@ class Locatepress {
 		$this->loader->add_action( 'load-post.php', $plugin_meta_gallery, 'init_metabox' );
 
 		$this->loader->add_action( 'load-post-new.php', $plugin_meta_gallery, 'init_metabox' );
+
+		$this->loader->add_action( 'load-post.php', $plugin_meta_logo, 'init_metabox' );
+
+		$this->loader->add_action( 'load-post-new.php', $plugin_meta_logo, 'init_metabox' );
 
 		$this->loader->add_action( 'init', $plugin_term_meta, 'locatepress_initialize_term_meta' );
 		

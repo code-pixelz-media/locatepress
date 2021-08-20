@@ -63,4 +63,7 @@ function remove_img(value) {
   jQuery(function() {
     jQuery("#img_box_container").sortable();
   });
+
+
+  
   

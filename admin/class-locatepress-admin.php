@@ -130,6 +130,8 @@ class Locatepress_Admin
 
         wp_register_script('gallery-script', plugin_dir_url(__FILE__) . 'js/locatepress-gallery.js', array('jquery'), $this->version, true);
 
+        wp_register_script('logo-script', plugin_dir_url(__FILE__) . 'js/locatepress-listing-logo.js', array('jquery'), $this->version, true);
+
         wp_enqueue_script('jquery-ui-tabs');
 
         wp_enqueue_script('admin-script', plugin_dir_url(__FILE__) . 'js/admin-script.js');
