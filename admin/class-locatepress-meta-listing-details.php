@@ -64,9 +64,50 @@ class Locatepress_Register_Metabox_Listing_Details {
 		echo '	<tr>';
 		echo '		<th><label for="locatepress_business_hour" class="locatepress_business_hour_label">' . __( 'Business Hour', 'locatepress' ) . '</label></th>';
 		echo '		<td>';
-		wp_editor( $locatepress_business_hour, 'locatepress_business_hour', array( 'media_buttons' => true ) );
+		wp_editor( $locatepress_business_hour, 'locatepress_business_hour', 
+		array( 
+			'media_buttons' => false,
+     		'textarea_rows' => 8,
+      		'wpautop' => true,
+			'quicktags' => false,
+      		'tinymce' => array(
+				'toolbar1' => 'formatselect,bold, italic,underline,strikethrough,bullist,numlist,alignleft,aligncenter,alignright,blockquote,link,undo,redo',
+				'toolbar2' => '',
+			  )
+        	
+			)
+		 );
 		echo '		</td>';
 		echo '	</tr>';
+
+		echo '	<tr>';
+		echo '		<th><label for="locatepress_social_profiles-url" class="locatepress_social_profiles-url">' . __( 'Social Profiles', 'locatepress' ) . '</label></th>';
+		echo '		<td>';
+		echo '			<input type="url" id="locatepress_social_profiles" name="locatepress_social-profiles" class="locatepress_social_profiles_field" placeholder="' . esc_attr__( 'https://www.youtube.com/', 'locatepress' ) . '" value="' . esc_attr( $locatepress_yt_url ) . '">';
+		echo '		</td>';
+		echo '	</tr>';
+
+		// echo'<!-- Add font awesome icons -->
+		// <a href="#" class="fa fa-facebook"></a>
+		// <a href="#" class="fa fa-twitter"></a>
+		// <a href="#" class="fa fa-google"></a>
+		// <a href="#" class="fa fa-linkedin"></a>
+		// <a href="#" class="fa fa-youtube"></a>
+		// <a href="#" class="fa fa-instagram"></a>
+		// <a href="#" class="fa fa-pinterest"></a>
+		// <a href="#" class="fa fa-snapchat-ghost"></a>
+		// <a href="#" class="fa fa-skype"></a>
+		// <a href="#" class="fa fa-android"></a>
+		// <a href="#" class="fa fa-dribbble"></a>
+		// <a href="#" class="fa fa-vimeo"></a>
+		// <a href="#" class="fa fa-tumblr"></a>
+		// <a href="#" class="fa fa-vine"></a>
+		// <a href="#" class="fa fa-foursquare"></a>
+		// <a href="#" class="fa fa-stumbleupon"></a>
+		// <a href="#" class="fa fa-flickr"></a>
+		// <a href="#" class="fa fa-yahoo"></a>
+		// <a href="#" class="fa fa-reddit"></a>
+		// <a href="#" class="fa fa-rss"></a>';
         
 
 		echo '	<tr>';
