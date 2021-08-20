@@ -64,7 +64,7 @@ class Locatepress_Register_Metabox_Listing_Details {
 		echo '	<tr>';
 		echo '		<th><label for="locatepress_business_hour" class="locatepress_business_hour_label">' . __( 'Business Hour', 'locatepress' ) . '</label></th>';
 		echo '		<td>';
-		wp_editor( $locatepress_business_hour, 'locatepress_business_hour', array( 'media_buttons' => false ) );
+		wp_editor( $locatepress_business_hour, 'locatepress_business_hour', array( 'media_buttons' => true ) );
 		echo '		</td>';
 		echo '	</tr>';
         
