@@ -232,7 +232,7 @@ LocatePress.App = (function ($) {
 		});
 		//var x = showVisibleMarkers();
 		//formDataObj['data'] = x;
-		console.log(formDataObj);
+		//console.log(formDataObj);
 		return formDataObj;
 
 	}
@@ -408,6 +408,11 @@ jQuery(document).ready(function () {
 	LocatePress.App.init();
 
 });
+
+jQuery(document).on("click", '[data-toggle="lightbox"]', function(event) {
+	event.preventDefault();
+	jQuery(this).ekkoLightbox();
+  });
 
 
 

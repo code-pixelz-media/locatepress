@@ -146,4 +146,19 @@ class Locatepress_Admin
         return $links;
     }
 
+    public function locatepress_add_sidebar() {
+        $args = array(
+          'name'          => __('Locatepress Single Page Sidebar','locatepress'),
+          'id'            => 'locatepress-sidebar',
+          'description'   => __( 'sidebar displayed in locatepress plugins single page' ),
+          'before_widget' => '<div id="%1$s" class="widget %2$s">',
+          'after_widget'  => '</div>',
+          'before_title'  => '<h3 class="widget-title">',
+          'after_title'   => '</h3>',
+        );
+      
+        register_sidebar( $args );
+      
+      }
+
 }

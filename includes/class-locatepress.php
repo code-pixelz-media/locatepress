@@ -218,6 +218,8 @@ class Locatepress {
 		
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'locatepress_admin_enqueue_scripts' );
 
+		$this->loader->add_action( 'widgets_init', $plugin_admin, 'locatepress_add_sidebar' );
+
 		$this->loader->add_action( 'init', $plugin_cpt, 'locatepress_create_custom_post_type', 10 );
 
 		$this->loader->add_action( 'load-post.php', $plugin_meta_map, 'locatepress_init_metabox' );
