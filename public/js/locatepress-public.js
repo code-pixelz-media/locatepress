@@ -6,6 +6,8 @@ LocatePress.App = (function ($) {
 		LpLocSearch = $('.lp-loc-search'),
 		LpLoctype = $('.lp-search-filter-loc'),
 		LpCat = $('.lp-search-filter-cat'),
+		LpLat = $('.lp_location_lat'),
+		LpLng = $('.lp_location_lng'),
 		LpListing = $('.lp-display-listing'),
 		LpMap = $('#lp-display-map'),
 		LpReset = $('#lp-resetbutton'),
@@ -69,7 +71,7 @@ LocatePress.App = (function ($) {
 				var lati = parseFloat(latiLong[0]);
 				var longi = parseFloat(latiLong[1]);
 				var singlePageMap = new google.maps.Map(singleMapDiv, {
-					zoom: 17,
+					zoom: 15,
 					center: new google.maps.LatLng(lati, longi),
 					mapTypeId: google.maps.MapTypeId.ROADMAP
 				});
@@ -96,7 +98,7 @@ LocatePress.App = (function ($) {
 
 		var LocatePressMapOptions = {
 			zoom: 2,
-			center: new google.maps.LatLng(-33.92, 151.25),
+			center: new google.maps.LatLng(43.4130, 34.2993),
 
 		}
 		if (lp_settings.map.lp_zoom_control === 'off') {
@@ -132,69 +134,73 @@ LocatePress.App = (function ($) {
 		infos = new google.maps.InfoWindow();
 		bounds = new google.maps.LatLngBounds();
 
-		for (var k = 0; k < mark.length; k++) {
+		if (mark.length != 0) {
+			for (var k = 0; k < mark.length; k++) {
 
-			var iconUrl;
+				var iconUrl;
 
-			if (mark[k].marker_icon) {
-				iconUrl = mark[k].marker_icon;
+				if (mark[k].marker_icon) {
+					iconUrl = mark[k].marker_icon;
 
-			} else {
-				iconUrl = lp_settings.map.lp_default_marker;
-			}
+				} else {
+					iconUrl = lp_settings.map.lp_default_marker;
+				}
 
-			var mlist = new google.maps.Marker({
-				position: new google.maps.LatLng(mark[k].latitude, mark[k].longitude),
-				title: mark[k].title,
-				custom: mark[k].p_id
+				var mlist = new google.maps.Marker({
+					position: new google.maps.LatLng(mark[k].latitude, mark[k].longitude),
+					title: mark[k].title,
+					custom: mark[k].p_id
 
-			});
+				});
 
-			if (iconUrl) {
-				icons = {
-					url: iconUrl,
-					scaledSize: new google.maps.Size(40, 40),
-				};
+				if (iconUrl) {
+					icons = {
+						url: iconUrl,
+						scaledSize: new google.maps.Size(40, 40),
+					};
 
-				//add custom icon if available
-				mlist.setIcon(icons);
-			} else {
+					//add custom icon if available
+					mlist.setIcon(icons);
+				} else {
 
-				mlist.setIcon(null);
-
-			}
-
-
-
-			mlist.setMap(LocatePressMap);
-			markerArrList.push(mlist);
-
-			bounds.extend(mlist.position);
-
-			google.maps.event.addListener(mlist, 'click', (function (mlist, k) {
-				return function () {
-					var contInfo = `<div class="marker-container">
-		          					<img src="${mark[k].featured_image}" class='info-marker'>
-		          					<p class="info-title">${mark[k].title}</p>
-		          					<p class = "info-location">${mark[k].location}</p>
-		          					<a href="${mark[k].permalink}"><button class="load-link">View Location</button></a>
-		          					</div>`;
-					infos.setContent(contInfo);
-					infos.open(LocatePressMap, mlist);
-					LocatePressMap.panTo(this.getPosition());
+					mlist.setIcon(null);
 
 				}
 
-			})(mlist, k));
 
+
+				mlist.setMap(LocatePressMap);
+				markerArrList.push(mlist);
+
+				bounds.extend(mlist.position);
+
+				google.maps.event.addListener(mlist, 'click', (function (mlist, k) {
+					return function () {
+						var contInfo = `<div class="marker-container">
+								  <img src="${mark[k].featured_image}" class='info-marker'>
+								  <p class="info-title">${mark[k].title}</p>
+								  <p class = "info-location">${mark[k].location}</p>
+								  <a href="${mark[k].permalink}"><button class="load-link">View Location</button></a>
+								  </div>`;
+						infos.setContent(contInfo);
+						infos.open(LocatePressMap, mlist);
+						LocatePressMap.panTo(this.getPosition());
+
+					}
+
+				})(mlist, k));
+
+			}
+			//add marker cluster
+			new MarkerClusterer(LocatePressMap, markerArrList, {
+				imagePath:
+					"https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+			});
+
+			LocatePressMap.fitBounds(bounds);
+		}else{
+			return;
 		}
-		//add marker cluster
-		new MarkerClusterer(LocatePressMap, markerArrList, {
-			imagePath:
-				"https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
-		});
-
-		LocatePressMap.fitBounds(bounds);
 
 	}
 
@@ -215,7 +221,7 @@ LocatePress.App = (function ($) {
 
 
 
-	
+
 	function checkel(el) {
 		if (typeof el.get(0) !== 'undefined') {
 			return true;
@@ -254,6 +260,7 @@ LocatePress.App = (function ($) {
 
 						fData.lp_location_latitude = lat;
 						fData.lp_location_longitude = lng;
+						
 						make_ajax_request(fData);
 						LocatePressMap.fitBounds(place.geometry.viewport);
 
@@ -306,11 +313,15 @@ LocatePress.App = (function ($) {
 				LpLocSearch.val('');
 				LpLoctype.val('');
 				LpCat.val('');
+				LpLat.val('');
+				LpLng.val('');
 
 				fData.lp_search_filter_loc = '';
 				fData.lp_search_filter_loctype = '';
 				fData.lp_search_keyword = '';
 				fData.lp_search_filter_cat = '';
+				fData.lp_location_latitude = '';
+				fData.lp_location_longitude = '';
 				make_ajax_request(fData);
 			});
 		}
@@ -425,10 +436,31 @@ jQuery(document).ready(function () {
 
 });
 
-jQuery(document).on("click", '[data-toggle="lightbox"]', function (event) {
-	event.preventDefault();
-	jQuery(this).ekkoLightbox();
-});
+// Initialize popup as usual
+jQuery('.image-link').magnificPopup({
+	type: 'image',
+	gallery:{
+		enabled:true
+	  },
+	mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+  
+	zoom: {
+	  enabled: true, // By default it's false, so don't forget to enable it
+  
+	  duration: 300, // duration of the effect, in milliseconds
+	  easing: 'ease-in-out', // CSS transition easing function
+  
+	  // The "opener" function should return the element from which popup will be zoomed in
+	  // and to which popup will be scaled down
+	  // By defailt it looks for an image tag:
+	  opener: function(openerElement) {
+		// openerElement is the element on which popup was initialized, in this case its <a> tag
+		// you don't need to add "opener" option if this code matches your needs, it's defailt one.
+		return openerElement.is('img') ? openerElement : openerElement.find('img');
+	  }
+	}
+  
+  });
 
 
 

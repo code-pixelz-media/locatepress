@@ -94,7 +94,7 @@ class Locatepress_Public
 
         wp_enqueue_style('bootstrap', plugin_dir_url(__FILE__) . 'css/bootstrap.css', array(), $this->version, 'all');
 
-        wp_enqueue_style('ekkocss', 'https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css', array(), $this->version, 'all');
+        wp_enqueue_style('magnific-pop-css', 'https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css', array(), $this->version, 'all');
 
         wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
@@ -140,11 +140,6 @@ class Locatepress_Public
 
         wp_enqueue_script('bootstrapjs', plugin_dir_url(__FILE__) . 'js/bootstrap.js', array('jquery'), $this->version, false);
 
-
-        wp_register_script('ekko-lighbox', 'https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js', array(), '', false);
-
-        wp_enqueue_script('ekko-lighbox');
-
         wp_register_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/locatepress-public.js', array('jquery'), $this->version, true);
 
         wp_localize_script($this->plugin_name, 'lp_settings', array(
@@ -152,6 +147,10 @@ class Locatepress_Public
             'map' => $this->settings,
         ));
         wp_enqueue_script($this->plugin_name);
+
+        wp_register_script('magnific-pop', 'https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js', array(), '', false);
+
+        wp_enqueue_script('magnific-pop');
 
 
     }
@@ -355,20 +354,11 @@ class Locatepress_Public
         $image_gallery_data = get_post_meta($post_id, 'image_gallery_data', true);
         $html = '';
         if ($image_gallery_data['img_url'] != '') {
-            $html = '<div class="container">';
-            $html .= '<div class="row">';
-            for ($i = 0; $i < count($image_gallery_data['img_url']); $i++) {
-
-                if ($i % 3 === 0 && $i > 0) {
-                    $html .= '</div><div class="row">';
-
-                }
-                $html .= '<a href="' . esc_url($image_gallery_data['img_url'][$i]) . '" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">';
-                $html .= '<img src="' . esc_url($image_gallery_data['img_url'][$i]) . '" class="img-fluid rounded"></a>';
-
+            $html = '<div class="lp_image_gallery">';
+            foreach ($image_gallery_data['img_url'] as $url){
+                $html .= '<a href="'.$url.'" class="lp_slider_image" ><img src ="'.$url.'"></a>';
             }
 
-            $html .= '</div>';
             $html .= '</div>';
 
         }
