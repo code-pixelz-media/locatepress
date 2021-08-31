@@ -437,7 +437,7 @@ jQuery(document).ready(function () {
 });
 
 // Initialize popup as usual
-jQuery('.image-link').magnificPopup({
+jQuery('.lp_slider_image').magnificPopup({
 	type: 'image',
 	gallery:{
 		enabled:true
