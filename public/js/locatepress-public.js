@@ -27,7 +27,7 @@ LocatePress.App = (function ($) {
 					pan_map_according_to_url();
 					markerArrList = [];
 					locatePressSetMarkers(results.marker_data);
-					//get_and_display_visible_markers();
+					get_and_display_visible_markers();
 
 				}
 				if (checkel(LpListing)) {
@@ -40,29 +40,7 @@ LocatePress.App = (function ($) {
 			}
 		}, 'JSON');
 	}
-	//show visible markers listings
 
-	function showVisibleMarkers() {
-
-		var bnds = LocatePressMap.getBounds();
-
-		var popList = [];
-		for (var i = 0; i < markerArrList.length; i++) {
-			var marker = markerArrList[i];
-
-			if (bnds.contains(marker.getPosition()) === true) {
-				
-				popList.push(marker.custom);
-
-			}
-			else {
-
-				LpListing.empty();
-			}
-		}
-		//console.log (popList);
-		return popList;
-	}
 
 	//Autocomplete Function
 
@@ -230,27 +208,14 @@ LocatePress.App = (function ($) {
 			formDataObj[kv.name] = kv.value;
 
 		});
-		//var x = showVisibleMarkers();
-		//formDataObj['data'] = x;
-		//console.log(formDataObj);
+
 		return formDataObj;
 
 	}
 
 
 
-	function locatepressAutoCompleteListings(id) {
-
-		var dataPost = { 'action': 'locatepress_listings_visible_markers', 'data': id, }
-		jQuery.post(lp_settings.ajaxUrl, dataPost, function (responseList) {
-			LpListing.empty();
-			LpListing.prepend(responseList.html);
-
-		}, 'JSON');
-
-	}
-
-
+	
 	function checkel(el) {
 		if (typeof el.get(0) !== 'undefined') {
 			return true;
@@ -289,19 +254,23 @@ LocatePress.App = (function ($) {
 
 						fData.lp_location_latitude = lat;
 						fData.lp_location_longitude = lng;
-						//console.log(fData);
-
-
 						make_ajax_request(fData);
-
-						//fData.lp_search_filter_loc=$(LpLocSearch).val();
-						//get_and_display_visible_markers();
 						LocatePressMap.fitBounds(place.geometry.viewport);
 
 					} else {
 						LocatePressMap.setCenter(place.geometry.location);
 
 					}
+
+					LpLocSearch.keyup(function () {
+						if (this.value.length === 0) {
+							fData.lp_location_latitude = "";
+							fData.lp_location_longitude = "";
+							make_ajax_request(fData);
+
+						}
+
+					});
 
 				});
 			} else {
@@ -312,10 +281,10 @@ LocatePress.App = (function ($) {
 		if (checkel(LpLoctype)) {
 
 			LpLoctype.change(function () {
-				
+
 				fData.lp_search_filter_loctype = $(this).val();
 				make_ajax_request(fData);
-				
+
 			});
 		}
 
@@ -335,34 +304,18 @@ LocatePress.App = (function ($) {
 				LpForm.get(0).reset();
 				LpKeyword.val('');
 				LpLocSearch.val('');
-				LpLoctype.val('All');
-				LpCat.val('All');
+				LpLoctype.val('');
+				LpCat.val('');
 
 				fData.lp_search_filter_loc = '';
-				fData.lp_search_filter_loctype = 'All';
+				fData.lp_search_filter_loctype = '';
 				fData.lp_search_keyword = '';
-				fData.lp_search_filter_cat = 'All';
+				fData.lp_search_filter_cat = '';
 				make_ajax_request(fData);
 			});
 		}
 	}
-	function geocodeAddress(address) {
 
-		var geocoder = new google.maps.Geocoder();
-
-		geocoder.geocode({ 'address': address }, function (results, status) {
-			if (status == 'OK') {
-
-
-				LocatePressMap.fitBounds(results[0].geometry.viewport);
-
-				get_and_display_visible_markers();
-			} else {
-
-				return;
-			}
-		});
-	}
 
 	function pan_map_according_to_url() {
 		var queryString = window.location.search;
@@ -378,6 +331,41 @@ LocatePress.App = (function ($) {
 		}
 
 	}
+	//show visible markers listings
+
+	function showVisibleMarkers() {
+
+		var bnds = LocatePressMap.getBounds();
+
+		var popList = [];
+		for (var i = 0; i < markerArrList.length; i++) {
+			var marker = markerArrList[i];
+
+			if (bnds.contains(marker.getPosition()) === true) {
+
+				popList.push(marker.custom);
+
+			}
+			else {
+
+				LpListing.empty();
+			}
+		}
+		//console.log (popList);
+		return popList;
+	}
+
+	function locatepressAutoCompleteListings(id) {
+
+		var dataPost = { 'action': 'locatepress_listings_visible_markers', 'data': id, }
+		jQuery.post(lp_settings.ajaxUrl, dataPost, function (responseList) {
+			LpListing.empty();
+			LpListing.prepend(responseList.html);
+
+		}, 'JSON');
+
+	}
+
 
 
 
@@ -395,6 +383,24 @@ LocatePress.App = (function ($) {
 		} else {
 			return;
 		}
+	}
+
+	function geocodeAddress(address) {
+
+		var geocoder = new google.maps.Geocoder();
+
+		geocoder.geocode({ 'address': address }, function (results, status) {
+			if (status == 'OK') {
+
+
+				LocatePressMap.fitBounds(results[0].geometry.viewport);
+
+				get_and_display_visible_markers();
+			} else {
+
+				return;
+			}
+		});
 	}
 
 
@@ -419,10 +425,10 @@ jQuery(document).ready(function () {
 
 });
 
-jQuery(document).on("click", '[data-toggle="lightbox"]', function(event) {
+jQuery(document).on("click", '[data-toggle="lightbox"]', function (event) {
 	event.preventDefault();
 	jQuery(this).ekkoLightbox();
-  });
+});
 
 
 

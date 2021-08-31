@@ -138,6 +138,9 @@ class Locatepress_Public
 
         wp_enqueue_script('jquery');
 
+        wp_enqueue_script('bootstrapjs', plugin_dir_url(__FILE__) . 'js/bootstrap.js', array('jquery'), $this->version, false);
+
+
         wp_register_script('ekko-lighbox', 'https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js', array(), '', false);
 
         wp_enqueue_script('ekko-lighbox');
@@ -150,7 +153,6 @@ class Locatepress_Public
         ));
         wp_enqueue_script($this->plugin_name);
 
-        wp_enqueue_script('bootstrapjs', plugin_dir_url(__FILE__) . 'js/bootstrap.js', array('jquery'), $this->version, false);
 
     }
 
