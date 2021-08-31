@@ -284,8 +284,18 @@ LocatePress.App = (function ($) {
 					}
 
 					if (place.geometry.viewport) {
+						var lat = place.geometry.location.lat();
+						var lng = place.geometry.location.lng();
+
+						fData.lp_location_latitude = lat;
+						fData.lp_location_longitude = lng;
+						//console.log(fData);
+
+
+						make_ajax_request(fData);
+
 						//fData.lp_search_filter_loc=$(LpLocSearch).val();
-						get_and_display_visible_markers();
+						//get_and_display_visible_markers();
 						LocatePressMap.fitBounds(place.geometry.viewport);
 
 					} else {

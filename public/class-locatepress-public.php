@@ -160,6 +160,8 @@ class Locatepress_Public
         $keyword = isset($_POST['data']['lp_search_keyword']) ? sanitize_text_field($_POST['data']['lp_search_keyword']) : '';
         $listing_type = isset($_POST['data']['lp_search_filter_loctype']) ? sanitize_text_field($_POST['data']['lp_search_filter_loctype']) : '';
         $category_listing = isset($_POST['data']['lp_search_filter_cat']) ? sanitize_text_field($_POST['data']['lp_search_filter_cat']) : '';
+        $latti = isset($_POST['data']['lp_location_latitude']) ? sanitize_text_field($_POST['data']['lp_location_latitude']) : '';
+        $longi = isset($_POST['data']['lp_location_longitude']) ? sanitize_text_field($_POST['data']['lp_location_longitude']) : '';
 
         $lp_search_args = array(
             'post_type' => 'map_listing',
@@ -172,6 +174,18 @@ class Locatepress_Public
         }
 
         $tax_query = [];
+
+                if(!empty($latti) && !empty($longi)){
+
+            $lp_search_args['geo_query'] =  array(
+                'lat_field' => 'lp_location_latitude',  // this is the name of the meta field storing latitude
+                'lng_field' => 'lp_location_longitude', // this is the name of the meta field storing longitude 
+                'latitude'  => $latti,    // this is the latitude of the point we are getting distance from
+                'longitude' => $longi,   // this is the longitude of the point we are getting distance from
+                'distance'  => 10,           // this is the maximum distance to search
+                'units'     => 'miles'       // this supports options: miles, mi, kilometers, km
+            );
+        }
 
         if (!empty($listing_type)) {
             array_push($tax_query,

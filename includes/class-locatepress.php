@@ -134,6 +134,12 @@ class Locatepress {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-locatepress-shortcodes.php';
 
 		/**
+		 * The class responsible for adding geo_query in default wp_query.
+		 */
+
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-geo-query.php';
+
+		/**
 		 * The class responsible for defining custom post type on admin
 		 * side of the site.
 		 */ 

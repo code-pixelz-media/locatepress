@@ -41,6 +41,21 @@ function load_map() {
         draggable: true,
       });
 
+      geocoder.geocode({ 'latLng': marker.getPosition() }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          if (results[0]) {
+
+            document.getElementById('country').value = results[0].formatted_address;
+            document.getElementById('lp_location_lat_long').value = marker.getPosition().lat() + '/' + marker.getPosition().lng();
+            document.getElementById('lp_location_latitude').value = marker.getPosition().lat();
+            document.getElementById('lp_location_longitude').value = marker.getPosition().lng();
+
+            infowindow.setContent(results[0].formatted_address);
+            infowindow.open(locatePressAdminMap, marker);
+          }
+        }
+      });
+
       dragableMarker();
 
     });
@@ -70,6 +85,8 @@ function load_map() {
 
             document.getElementById('country').value = results[0].formatted_address;
             document.getElementById('lp_location_lat_long').value = marker.getPosition().lat() + '/' + marker.getPosition().lng();
+            document.getElementById('lp_location_latitude').value = marker.getPosition().lat();
+            document.getElementById('lp_location_longitude').value = marker.getPosition().lng();
 
             infowindow.setContent(results[0].formatted_address);
             infowindow.open(locatePressAdminMap, marker);

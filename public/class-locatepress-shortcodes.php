@@ -306,6 +306,11 @@ class Locatepress_Shortcodes
 
         echo '<ul class="lp-search-filter-elm">';
 
+        echo '<input type= "hidden" name="lp_location_latitude" value="">';
+
+        echo '<input type= "hidden" name="lp_location_longitude" value="">';
+
+
         foreach ($filter_fields as $key => $value) {
 
             if (!isset($this->settings[$value['settings']])) {
