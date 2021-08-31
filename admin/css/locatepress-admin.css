@@ -1040,6 +1040,10 @@
     content: "\f223";
 }
 
+.cpm-plugin-wrap .tabs-wrap #geo-location-search .tab-title:before{
+    content: "\f179";
+}
+
 .addon-wrap .addon-logo-wrap .title .addon-wrap-title{
    margin-bottom: 40px;
 }

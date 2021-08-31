@@ -158,6 +158,9 @@ class Locatepress_Public
 
     public function locatepress_ajax_search_filter()
     {
+        $lp_options = get_option('locate_press_set');
+        $unit = isset($lp_options['lp_distance_unit']) ? sanitize_text_field($lp_options['lp_distance_unit']) : sanitize_text_field('km');
+        $distance = isset($lp_options['lp_search_radius']) ? sanitize_text_field($lp_options['lp_search_radius']) : sanitize_text_field('10');
 
         $keyword = isset($_POST['data']['lp_search_keyword']) ? sanitize_text_field($_POST['data']['lp_search_keyword']) : '';
         $listing_type = isset($_POST['data']['lp_search_filter_loctype']) ? sanitize_text_field($_POST['data']['lp_search_filter_loctype']) : '';
@@ -177,15 +180,15 @@ class Locatepress_Public
 
         $tax_query = [];
 
-                if(!empty($latti) && !empty($longi)){
+        if(!empty($latti) && !empty($longi)){
 
             $lp_search_args['geo_query'] =  array(
                 'lat_field' => 'lp_location_latitude',  // this is the name of the meta field storing latitude
                 'lng_field' => 'lp_location_longitude', // this is the name of the meta field storing longitude 
                 'latitude'  => $latti,    // this is the latitude of the point we are getting distance from
                 'longitude' => $longi,   // this is the longitude of the point we are getting distance from
-                'distance'  => 10,           // this is the maximum distance to search
-                'units'     => 'miles'       // this supports options: miles, mi, kilometers, km
+                'distance'  => $distance,           // this is the maximum distance to search
+                'units'     => $unit       // this supports options: miles, mi, kilometers, km
             );
         }
 
@@ -225,7 +228,12 @@ class Locatepress_Public
 
                 $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
                 $terms = get_the_terms(get_the_ID(), 'listing_type');
-                $term_name = $terms[0]->name;
+                if(!empty($terms)){
+                    $term_name = $terms[0]->name;
+                }else{
+                    $term_name = '';
+                }
+                
                 $lp_country = get_post_meta(get_the_id(), 'lp_location_country', true);
                 $icon_meta = get_term_meta($terms[0]->term_id, 'listing_type-icon', true);
                 $coordinates = get_post_meta(get_the_id(), 'lp_location_lat_long', true);
