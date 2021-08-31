@@ -461,7 +461,3 @@ jQuery('.lp_slider_image').magnificPopup({
 	}
   
   });
-
-
-
-
