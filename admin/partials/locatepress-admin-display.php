@@ -26,7 +26,7 @@ if(isset($lp_options['lp_distance_unit'])){
             <input class="form-control" name="locate_press_set[lp_map_api_key]"  type="text" placeholder="<?php _e('Map Api Key', 'locatepress');?>" onfocus="this.placeholder=''" onblur="this.placeholder='Map Api Key'" value="<?php if (isset($lp_options['lp_map_api_key'])): esc_html_e($lp_options['lp_map_api_key']);endif;?>">
         </div>
     </div>
-    <?php do_action('locatepress_google_map_api_key_field');?>
+    <?php do_action('locatepress_after_google_map_api_key_field');?>
 
     <div class="form-group">
         <label for=""><?php _e('Select Page To Display Results', 'locatepress');?></label>
@@ -112,6 +112,23 @@ if(isset($lp_options['lp_distance_unit'])){
             </div>
         </div>
     </div>
+    <div class="form-group">
+	    <label for=""><?php _e('Default Search Radius','locatepress'); ?></label>
+	    <div class="form-control-wrap">
+            <input class="form-control" name="locate_press_set[lp_search_radius]"  type="text" placeholder="<?php _e('0', 'locatepress');?>" onfocus="this.placeholder=''" onblur="this.placeholder='0'" value="<?php if (isset($lp_options['lp_search_radius'])): esc_html_e($lp_options['lp_search_radius']);endif;?>">
+	    </div>
+	</div>
+
+    <div class="form-group">
+	    <label for=""><?php _e('Distance Unit','locatepress'); ?></label>
+	    <div class="form-control-wrap">
+            <select name="locate_press_set[lp_distance_unit]" class="lp-custom-select minimal" id="locate_press_set[lp_distance_unit]">
+				<option class="level-0" <?php selected( $selected, 'km' ); ?> value="<?php echo esc_attr('km');?>"><?php _e('KM', 'locatepress')?></option>
+				<option class="level-0" <?php selected( $selected, 'mile' ); ?> value="<?php echo esc_attr('mile');?>"><?php _e('Miles', 'locatepress')?></option>
+			</select>
+	       	
+	    </div>
+	</div>
 
 </div>
 <div id="map-settings">
@@ -226,26 +243,10 @@ if(isset($lp_options['lp_distance_unit'])){
         </div>
     </div>
 </div>
-<div id="geo-location-search">
+<!-- <div id="geo-location-search">
     <h2 class="tab-title"><?php _e('Search Result Setting', 'locatepress');?></h2>
-    <div class="form-group">
-	    <label for=""><?php _e('Default Search Radius','locatepress'); ?></label>
-	    <div class="form-control-wrap">
-            <input class="form-control" name="locate_press_set[lp_search_radius]"  type="text" placeholder="<?php _e('0', 'locatepress');?>" onfocus="this.placeholder=''" onblur="this.placeholder='0'" value="<?php if (isset($lp_options['lp_search_radius'])): esc_html_e($lp_options['lp_search_radius']);endif;?>">
-	    </div>
-	</div>
 
-    <div class="form-group">
-	    <label for=""><?php _e('Distance Unit','locatepress'); ?></label>
-	    <div class="form-control-wrap">
-            <select name="locate_press_set[lp_distance_unit]" class="lp-custom-select minimal" id="locate_press_set[lp_distance_unit]">
-				<option class="level-0" <?php selected( $selected, 'km' ); ?> value="<?php echo esc_attr('km');?>"><?php _e('KM', 'locatepress')?></option>
-				<option class="level-0" <?php selected( $selected, 'mile' ); ?> value="<?php echo esc_attr('mile');?>"><?php _e('Miles', 'locatepress')?></option>
-			</select>
-	       	
-	    </div>
-	</div>
-</div>
+</div> -->
 
 
 
