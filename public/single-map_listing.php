@@ -18,7 +18,11 @@ global $post;
 
 echo do_action('before_single_page_starts');
 $tax = get_the_terms($post->ID, 'listing_type');
-$icon_meta = get_term_meta($tax[0]->term_id, 'listing_type-icon', true);
+if (!empty($tax)){
+    $icon_meta = get_term_meta($tax[0]->term_id, 'listing_type-icon', true);
+}else{
+    $icon_meta = '';
+}
 
 ?>
 

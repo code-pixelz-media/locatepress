@@ -353,15 +353,19 @@ class Locatepress_Public
     {
         $image_gallery_data = get_post_meta($post_id, 'image_gallery_data', true);
         $html = '';
-        if ($image_gallery_data['img_url'] != '') {
-            $html = '<div class="lp_image_gallery">';
-            foreach ($image_gallery_data['img_url'] as $url){
-                $html .= '<a href="'.$url.'" class="lp_slider_image" ><img src ="'.$url.'"></a>';
+        if(!empty($image_gallery_data)){
+            if ($image_gallery_data['img_url'] != '') {
+                $html = '<div class="lp_image_gallery">';
+                foreach ($image_gallery_data['img_url'] as $url){
+                    $html .= '<a href="'.$url.'" class="lp_slider_image" ><img src ="'.$url.'"></a>';
+                }
+    
+                $html .= '</div>';
+    
             }
 
-            $html .= '</div>';
-
         }
+
 
         return apply_filters('locatepress_single_listing_gallery', $html);
         ;
@@ -430,31 +434,49 @@ class Locatepress_Public
         $locatepress_fb = get_post_meta($post_id, 'locatepress_fb-url', true);
 
         $locatepress_twir = get_post_meta($post_id, 'locatepress_twir-url', true);
+        $list = array();
 
         $html ='';
 
+        if ($locatepress_fb != ''){
+            $data = '<a href="'.esc_url($locatepress_fb).'" class="fa fa-facebook"></a>';
+            array_push($list,$locatepress_fb);
+        }
+
+        if ($locatepress_ig != ''){
+            $data .= '<a href="'.esc_url($locatepress_ig).'" class="fa fa-instagram"></a>';
+            array_push($list,$locatepress_ig);
+
+        }
+
+        if ($locatepress_pin != ''){
+            $data .= '<a href="'.esc_url($locatepress_pin).'" class="fa fa-pinterest"></a>';
+            array_push($list,$locatepress_pin);
+
+        }
+
+        if ($locatepress_yt != ''){
+            $data .= '<a href="'.esc_url($locatepress_yt).'" class="fa fa-youtube"></a>';
+            array_push($list,$locatepress_yt);
+
+        }
+        if ($locatepress_twir != ''){
+            $data .= '<a href="'.esc_url($locatepress_twir).'" class="fa fa-twitter"></a>';
+            array_push($list,$locatepress_twir);
+
+        }
+
+        if (!empty($list)){
+
             $html = '<div class="lp-social-profile">';
             $html .= '<p class="lp-social-profile-title">' . __('Social Profile', 'locatepress') . '</p>';
+            $html .= $data;
 
-            if ($locatepress_fb != ''){
-                $html .= '<a href="'.esc_url($locatepress_fb).'" class="fa fa-facebook"></a>';
-            }
-
-            if ($locatepress_ig != ''){
-                $html .= '<a href="'.esc_url($locatepress_ig).'" class="fa fa-instagram"></a>';
-            }
-
-            if ($locatepress_pin != ''){
-                $html .= '<a href="'.esc_url($locatepress_pin).'" class="fa fa-pinterest"></a>';
-            }
-
-            if ($locatepress_yt != ''){
-                $html .= '<a href="'.esc_url($locatepress_yt).'" class="fa fa-youtube"></a>';
-            }
-            if ($locatepress_twir != ''){
-                $html .= '<a href="'.esc_url($locatepress_twir).'" class="fa fa-twitter"></a>';
-            }
             $html .= '</div>';
+
+        }
+
+           
     
             return apply_filters('locatepress_single_social_profile', $html);
 

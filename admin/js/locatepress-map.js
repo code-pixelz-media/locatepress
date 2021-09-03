@@ -15,7 +15,7 @@ function load_map() {
   var longs = parseFloat(dSetsArr[1]);
   locatePressAdminMap = new google.maps.Map(mapDivs, {
     center: { lat: -33.8688, lng: 151.2195 },
-    zoom: 2
+    zoom: 17
   });
   var geocoder = new google.maps.Geocoder();
 
@@ -81,9 +81,26 @@ function load_map() {
     google.maps.event.addListener(marker, 'dragend', function () {
       geocoder.geocode({ 'latLng': marker.getPosition() }, function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
+
+          // for(var i=0; i<results[1].address_components.length; i++){
+
+          var address = results[0].address_components;
+          var array = {};
+
+					jQuery.each(address, function(k,v1) {jQuery.each(v1.types, function(k2, v2){array[v2]=v1.long_name});});
+					console.log(address);
+
+					console.log(array);
+            // if(results[1].address_components[i].types[0] == "administrative_area_level_1"){
+
+              
+            //   }
+          // }
           if (results[0]) {
+            //console.log(results[1].formatted_address);
 
             document.getElementById('country').value = results[0].formatted_address;
+            
             document.getElementById('lp_location_lat_long').value = marker.getPosition().lat() + '/' + marker.getPosition().lng();
             document.getElementById('lp_location_latitude').value = marker.getPosition().lat();
             document.getElementById('lp_location_longitude').value = marker.getPosition().lng();

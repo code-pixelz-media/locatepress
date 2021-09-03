@@ -249,6 +249,13 @@ LocatePress.App = (function ($) {
 
 				google.maps.event.addListener(autocompleteSearch, 'place_changed', function (e) {
 					var place = autocompleteSearch.getPlace();
+					var components =place.address_components;
+					var array = {};
+
+					$.each(components, function(k,v1) {$.each(v1.types, function(k2, v2){array[v2]=v1.long_name});});
+					console.log(place.address_components);
+
+					console.log(array);
 					if (!place.geometry) {
 						window.alert("Autocomplete's returned place contains no geometry");
 						return;
