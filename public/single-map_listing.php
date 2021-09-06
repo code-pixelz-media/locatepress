@@ -8,7 +8,7 @@
  * @subpackage Twenty_Nineteen
  * @since Twenty Nineteen 1.0
  */
-// If this file is called directly, abort.
+// If this file is called direcgit ptly, abort.
 if (!defined('WPINC')) {
     die;
 }
@@ -18,9 +18,9 @@ global $post;
 
 echo do_action('before_single_page_starts');
 $tax = get_the_terms($post->ID, 'listing_type');
-if (!empty($tax)){
+if (!empty($tax)) {
     $icon_meta = get_term_meta($tax[0]->term_id, 'listing_type-icon', true);
-}else{
+} else {
     $icon_meta = '';
 }
 
@@ -57,6 +57,10 @@ if (!empty($tax)){
 
             <?php do_action('after_sinlge_listing_gallery');?>
 
+
+        </div>
+
+        <div class="col-md-4">
             <?php echo apply_filters('locatepress_single_address_title', '<span class="address-span"><b>' . __('Address :', 'locatepress') . '</b></span>'); ?>
 
             <?php echo apply_filters('locatepress_before_single_address', '<p class="lp-address-meta">'); ?>
@@ -77,9 +81,6 @@ if (!empty($tax)){
 
             <?php do_action('after_single_page_map');?>
 
-        </div>
-
-        <div class="col-md-4">
 
             <?php do_action('before_sinlge_listing_business_hour');?>
 

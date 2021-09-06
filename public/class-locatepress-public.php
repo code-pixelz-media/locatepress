@@ -152,14 +152,13 @@ class Locatepress_Public
 
         wp_enqueue_script('magnific-pop');
 
-
     }
 
     public function locatepress_ajax_search_filter()
     {
         $lp_options = get_option('locate_press_set');
         $unit = isset($lp_options['lp_distance_unit']) ? sanitize_text_field($lp_options['lp_distance_unit']) : sanitize_text_field('km');
-        $distance = isset($lp_options['lp_search_radius']) ? sanitize_text_field($lp_options['lp_search_radius']) : sanitize_text_field('10');
+        $distance = isset($lp_options['lp_search_radius']) ? sanitize_text_field($lp_options['lp_search_radius']) : sanitize_text_field('0');
 
         $keyword = isset($_POST['data']['lp_search_keyword']) ? sanitize_text_field($_POST['data']['lp_search_keyword']) : '';
         $listing_type = isset($_POST['data']['lp_search_filter_loctype']) ? sanitize_text_field($_POST['data']['lp_search_filter_loctype']) : '';
@@ -179,15 +178,15 @@ class Locatepress_Public
 
         $tax_query = [];
 
-        if(!empty($latti) && !empty($longi)){
+        if (!empty($latti) && !empty($longi)) {
 
-            $lp_search_args['geo_query'] =  array(
-                'lat_field' => 'lp_location_latitude',  // this is the name of the meta field storing latitude
-                'lng_field' => 'lp_location_longitude', // this is the name of the meta field storing longitude 
-                'latitude'  => $latti,    // this is the latitude of the point we are getting distance from
-                'longitude' => $longi,   // this is the longitude of the point we are getting distance from
-                'distance'  => $distance,           // this is the maximum distance to search
-                'units'     => $unit       // this supports options: miles, mi, kilometers, km
+            $lp_search_args['geo_query'] = array(
+                'lat_field' => 'lp_location_latitude', // this is the name of the meta field storing latitude
+                'lng_field' => 'lp_location_longitude', // this is the name of the meta field storing longitude
+                'latitude' => $latti, // this is the latitude of the point we are getting distance from
+                'longitude' => $longi, // this is the longitude of the point we are getting distance from
+                'distance' => $distance, // this is the maximum distance to search
+                'units' => $unit, // this supports options: miles, mi, kilometers, km
             );
         }
 
@@ -227,12 +226,12 @@ class Locatepress_Public
 
                 $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
                 $terms = get_the_terms(get_the_ID(), 'listing_type');
-                if(!empty($terms)){
+                if (!empty($terms)) {
                     $term_name = $terms[0]->name;
-                }else{
+                } else {
                     $term_name = '';
                 }
-                
+
                 $lp_country = get_post_meta(get_the_id(), 'lp_location_country', true);
                 $icon_meta = get_term_meta($terms[0]->term_id, 'listing_type-icon', true);
                 $coordinates = get_post_meta(get_the_id(), 'lp_location_lat_long', true);
@@ -353,22 +352,21 @@ class Locatepress_Public
     {
         $image_gallery_data = get_post_meta($post_id, 'image_gallery_data', true);
         $html = '';
-        if(!empty($image_gallery_data)){
+        if (!empty($image_gallery_data)) {
             if ($image_gallery_data['img_url'] != '') {
                 $html = '<div class="lp_image_gallery">';
-                foreach ($image_gallery_data['img_url'] as $url){
-                    $html .= '<a href="'.$url.'" class="lp_slider_image" ><img src ="'.$url.'"></a>';
+                foreach ($image_gallery_data['img_url'] as $url) {
+                    $html .= '<a href="' . $url . '" class="lp_slider_image" ><img src ="' . $url . '"></a>';
                 }
-    
+
                 $html .= '</div>';
-    
+
             }
 
         }
 
-
         return apply_filters('locatepress_single_listing_gallery', $html);
-        ;
+
     }
 
     /**
@@ -383,14 +381,14 @@ class Locatepress_Public
     public static function locatepress_single_contact_no($post_id)
     {
         $locatepress_contact_no = get_post_meta($post_id, 'locatepress_contact_no', true);
-        $html ='';
+        $html = '';
         if ($locatepress_contact_no != '') {
-            $html  = '<p class="lp-contact">';
+            $html = '<p class="lp-contact">';
             $html .= '<i class="fa fa-phone" aria-hidden="true"></i>';
             $html .= esc_html($locatepress_contact_no);
             $html .= '</p>';
         }
-        return  apply_filters('locatepress_single_contact_no', $html);;
+        return apply_filters('locatepress_single_contact_no', $html);
     }
 
     /**
@@ -407,8 +405,8 @@ class Locatepress_Public
         $locatepress_business_hour = get_post_meta($post_id, 'locatepress_business_hour', true);
         $html = '';
         if ($locatepress_business_hour != '') {
-            $html  = '<div class="lp-business-hour">';
-            $html .= '<p class="lp-business-hour-title">' . __('Business Hour', 'locatepress') . '</p>';
+            $html = '<div class="lp-business-hour">';
+            $html .= '<h3 class="lp-business-hour-title">' . __('Business Hour', 'locatepress') . '</h3>';
             $html .= $locatepress_business_hour;
             $html .= '</div>';
         }
@@ -436,49 +434,47 @@ class Locatepress_Public
         $locatepress_twir = get_post_meta($post_id, 'locatepress_twir-url', true);
         $list = array();
 
-        $html ='';
+        $html = '';
 
-        if ($locatepress_fb != ''){
-            $data = '<a href="'.esc_url($locatepress_fb).'" class="fa fa-facebook"></a>';
-            array_push($list,$locatepress_fb);
+        if ($locatepress_fb != '') {
+            $data = '<a href="' . esc_url($locatepress_fb) . '" class="fa fa-facebook"></a>';
+            array_push($list, $locatepress_fb);
         }
 
-        if ($locatepress_ig != ''){
-            $data .= '<a href="'.esc_url($locatepress_ig).'" class="fa fa-instagram"></a>';
-            array_push($list,$locatepress_ig);
-
-        }
-
-        if ($locatepress_pin != ''){
-            $data .= '<a href="'.esc_url($locatepress_pin).'" class="fa fa-pinterest"></a>';
-            array_push($list,$locatepress_pin);
+        if ($locatepress_ig != '') {
+            $data .= '<a href="' . esc_url($locatepress_ig) . '" class="fa fa-instagram"></a>';
+            array_push($list, $locatepress_ig);
 
         }
 
-        if ($locatepress_yt != ''){
-            $data .= '<a href="'.esc_url($locatepress_yt).'" class="fa fa-youtube"></a>';
-            array_push($list,$locatepress_yt);
-
-        }
-        if ($locatepress_twir != ''){
-            $data .= '<a href="'.esc_url($locatepress_twir).'" class="fa fa-twitter"></a>';
-            array_push($list,$locatepress_twir);
+        if ($locatepress_pin != '') {
+            $data .= '<a href="' . esc_url($locatepress_pin) . '" class="fa fa-pinterest"></a>';
+            array_push($list, $locatepress_pin);
 
         }
 
-        if (!empty($list)){
+        if ($locatepress_yt != '') {
+            $data .= '<a href="' . esc_url($locatepress_yt) . '" class="fa fa-youtube"></a>';
+            array_push($list, $locatepress_yt);
+
+        }
+        if ($locatepress_twir != '') {
+            $data .= '<a href="' . esc_url($locatepress_twir) . '" class="fa fa-twitter"></a>';
+            array_push($list, $locatepress_twir);
+
+        }
+
+        if (!empty($list)) {
 
             $html = '<div class="lp-social-profile">';
-            $html .= '<p class="lp-social-profile-title">' . __('Social Profile', 'locatepress') . '</p>';
+            $html .= '<h3 class="lp-social-profile-title">' . __('Social Profile', 'locatepress') . '</h3>';
             $html .= $data;
 
             $html .= '</div>';
 
         }
 
-           
-    
-            return apply_filters('locatepress_single_social_profile', $html);
+        return apply_filters('locatepress_single_social_profile', $html);
 
     }
 
