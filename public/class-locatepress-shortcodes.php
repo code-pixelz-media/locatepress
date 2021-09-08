@@ -311,6 +311,7 @@ class Locatepress_Shortcodes
         echo '<input class="lp_location_lng" type= "hidden" name="lp_location_longitude" value="">';
 
 
+
         foreach ($filter_fields as $key => $value) {
 
             if (!isset($this->settings[$value['settings']])) {

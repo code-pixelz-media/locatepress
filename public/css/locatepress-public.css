@@ -512,8 +512,8 @@ a.lp_slider_image img{
 }
 .col-md-4 .lp-business-hour {
     margin-bottom: 40px;
+    
 }
-
 
 
 .lp-social-profile a {
@@ -521,7 +521,7 @@ a.lp_slider_image img{
     position: relative;
     width: 35px;
     height: 35px;
-    margin: 0 3px;
+    margin: 0 10px 0 0;
     border-radius: 50%;
     cursor: pointer;
     font-size: 17px;
@@ -560,6 +560,24 @@ a.lp_slider_image img{
 }
 .lp_single_featured_image {
     margin: 30px 0;
+}
+
+.lp_single_featured_image img {
+  width: 100%;
+  height: auto; 
+}
+
+.lp-business-hour-title{
+  margin-top: 50px;
+  margin-bottom: 15px;
+}
+
+.lp-social-profile-title{
+  margin-bottom: 20px;
+}
+
+.edgtf-ls-bg-time{
+  float: right;
 }
 
 

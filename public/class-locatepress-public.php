@@ -385,7 +385,7 @@ class Locatepress_Public
         if ($locatepress_contact_no != '') {
             $html = '<p class="lp-contact">';
             $html .= '<i class="fa fa-phone" aria-hidden="true"></i>';
-            $html .= esc_html($locatepress_contact_no);
+            $html .= '<span class="lp_single_contact_no">'.esc_html($locatepress_contact_no).'</span>';
             $html .= '</p>';
         }
         return apply_filters('locatepress_single_contact_no', $html);
@@ -411,6 +411,49 @@ class Locatepress_Public
             $html .= '</div>';
         }
         return apply_filters('locatepress_single_business_hour', $html);
+    }
+
+    /**
+     * gets the address of listing post type
+     *
+     * @since      1.0.0
+     * @access public
+     * @static
+     * @return html
+     */
+
+    public static function locatepress_single_address($post_id)
+    {
+        $lp_location_country = get_post_meta($post_id, 'lp_location_country', true);
+        $html = '';
+        if ($lp_location_country != '') {
+            $html = '<div class="lp-address-meta">';
+            $html .= $lp_location_country;
+            $html .= '</div>';
+        }
+        return apply_filters('locatpress_single_address', $html);
+    }
+    
+
+    /**
+     * gets the logo of listing post type
+     *
+     * @since      1.0.0
+     * @access public
+     * @static
+     * @return html
+     */
+
+    public static function locatepress_single_listing_logo($post_id)
+    {
+        $locatepress_logo = get_post_meta($post_id, 'locatepress_logo', true);
+        $html = '';
+        if ($locatepress_logo != '') {
+            $html = '<span class="lp-lisiting-logo">';
+            $html .= wp_get_attachment_image($locatepress_logo, 'thumbnail');
+            $html .= '</span>';
+        }
+        return apply_filters('locatepress_single_listing_logo', $html);
     }
 
     /**
