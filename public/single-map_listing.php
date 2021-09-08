@@ -39,7 +39,7 @@ if (!empty($tax)) {
         <?php echo Locatepress_Public::locatepress_single_contact_no($post->ID) ?>
 
         <?php do_action('after_sinlge_listing_contact_no');?>
-        
+
         <?php echo apply_filters('locatepress_after_single_title', '</div>') ?>
 
         
@@ -49,9 +49,7 @@ if (!empty($tax)) {
         <div class="col-md-8">
             <?php do_action('before_single_page_featured_image');?>
 
-            <div class="lp_single_featured_image">
-        	<img src="<?php echo esc_url(get_the_post_thumbnail_url($post->ID, 'large')); ?>">
-            </div>
+            <?php echo Locatepress_Public::locatepress_single_listing_gallery($post->ID) ?>
 
             <?php do_action('after_single_page_featured_image');?>
 
@@ -60,12 +58,6 @@ if (!empty($tax)) {
         	<?php echo apply_filters('single_page_content', get_the_content()) ?>
 
             <?php do_action('after_single_page_content');?>
-
-            <?php do_action('before_sinlge_listing_gallery');?>
-
-            <?php //echo Locatepress_Public::locatepress_single_listing_gallery($post->ID) ?>
-
-            <?php do_action('after_sinlge_listing_gallery');?>
 
             <?php do_action('before_single_page_map');?>
 

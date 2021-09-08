@@ -94,7 +94,9 @@ class Locatepress_Public
 
         wp_enqueue_style('bootstrap', plugin_dir_url(__FILE__) . 'css/bootstrap.css', array(), $this->version, 'all');
 
-        wp_enqueue_style('magnific-pop-css', 'https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css', array(), $this->version, 'all');
+        wp_enqueue_style('owl-min-css', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/assets/owl.carousel.min.css', array(), $this->version, 'all');
+
+        wp_enqueue_style('owl-carasoul-css', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/assets/owl.theme.default.min.css', array(), $this->version, 'all');
 
         wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
@@ -148,9 +150,9 @@ class Locatepress_Public
         ));
         wp_enqueue_script($this->plugin_name);
 
-        wp_register_script('magnific-pop', 'https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js', array(), '', false);
+        wp_register_script('owl-carousel-js', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/owl.carousel.min.js', array(), '', false);
 
-        wp_enqueue_script('magnific-pop');
+        wp_enqueue_script('owl-carousel-js');
 
     }
 
@@ -348,21 +350,37 @@ class Locatepress_Public
      * @return html
      */
 
+
     public static function locatepress_single_listing_gallery($post_id)
     {
         $image_gallery_data = get_post_meta($post_id, 'image_gallery_data', true);
         $html = '';
         if (!empty($image_gallery_data)) {
             if ($image_gallery_data['img_url'] != '') {
-                $html = '<div class="lp_image_gallery">';
+                $html = '<div id="sync1" class="owl-carousel owl-theme">';
                 foreach ($image_gallery_data['img_url'] as $url) {
-                    $html .= '<a href="' . $url . '" class="lp_slider_image" ><img src ="' . $url . '"></a>';
+                    $html .= '<div class="item">';
+                    $html .= '<img src ="' . $url . '">';
+                    $html .='</div>';
+                }
+
+                $html .= '</div>';
+
+                $html .= '<div id="sync2" class="owl-carousel owl-theme">';
+                foreach ($image_gallery_data['img_url'] as $url) {
+                    $html .= '<div class="item">';
+                    $html .= '<img src ="' . $url . '">';
+                    $html .='</div>';
                 }
 
                 $html .= '</div>';
 
             }
 
+        }else{
+            $html = '<div class="lp_single_featured_image">';
+        	$html .= '<img src="'.esc_url(get_the_post_thumbnail_url($post->ID, 'large')).'">';
+            $html .= '</div>';
         }
 
         return apply_filters('locatepress_single_listing_gallery', $html);
@@ -447,10 +465,11 @@ class Locatepress_Public
     public static function locatepress_single_listing_logo($post_id)
     {
         $locatepress_logo = get_post_meta($post_id, 'locatepress_logo', true);
+        $locatepress_logo_url = wp_get_attachment_image_url($locatepress_logo);
         $html = '';
         if ($locatepress_logo != '') {
             $html = '<span class="lp-lisiting-logo">';
-            $html .= wp_get_attachment_image($locatepress_logo, 'thumbnail');
+            $html .= '<img src= '.$locatepress_logo_url.'>';
             $html .= '</span>';
         }
         return apply_filters('locatepress_single_listing_logo', $html);
