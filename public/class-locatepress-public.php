@@ -452,18 +452,11 @@ class Locatepress_Public
     {
         $locatepress_business_hour = get_post_meta($post_id, 'locatepress_business_hour', true);
         $html = '';
-        $allowed_html = array(
-            'input' => array(
-                'type'  => array(),
-                'id'    => array(),
-                'name'  => array(),
-                'value' => array()
-             ),
-        );
+      
         if ($locatepress_business_hour != '') {
             $html = '<div class="lp-business-hour">';
             $html .= '<h3 class="lp-business-hour-title">' . __('Business Hour', 'locatepress') . '</h3>';
-            $html .= wp_kses($locatepress_business_hour, $allowed_html);
+            $html .= wp_kses_post($locatepress_business_hour);
             $html .= '</div>';
         }
         return apply_filters('locatepress_single_business_hour', $html);
@@ -503,7 +496,7 @@ class Locatepress_Public
     public static function locatepress_single_listing_logo($post_id)
     {
         $locatepress_logo = get_post_meta($post_id, 'locatepress_logo', true);
-        $locatepress_logo_url = wp_get_attachment_image_url($locatepress_logo);
+        $locatepress_logo_url = wp_get_attachment_image_url($locatepress_logo, 'full');
         $html = '';
         if ($locatepress_logo != '') {
             $html = '<span class="lp-lisiting-logo">';
