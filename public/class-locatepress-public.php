@@ -368,8 +368,12 @@ class Locatepress_Public
 
                 $html .= '<div id="sync2" class="owl-carousel owl-theme">';
                 foreach ($image_gallery_data['img_url'] as $url) {
+
+                    $id = attachment_url_to_postid($url);
+                    $locatepress_image_url = wp_get_attachment_image_url($id, 'medium');
+
                     $html .= '<div class="item">';
-                    $html .= '<img src ="' . esc_url($url) . '">';
+                    $html .= '<img src ="' . esc_url($locatepress_image_url) . '">';
                     $html .='</div>';
                 }
 
@@ -424,13 +428,10 @@ class Locatepress_Public
         $html = '';
         if ($locatepress_video_url != '') {
             $html = '<div class="lp-single-video">';
-            $html .= '<h3 class="lp-single-video">' . __('Video', 'locatepress') . '</h3>';
+            $html .= '<h3 class="lp-single-video-title">' . __('Video', 'locatepress') . '</h3>';
 
             $html .= wp_video_shortcode( [
                 'src'      => esc_url($locatepress_video_url),
-                'poster'   => '',
-                'height'   => '',
-                'width'    => '',
             ] );
 
             $html .= '</div>';
