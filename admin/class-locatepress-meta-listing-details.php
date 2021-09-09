@@ -41,6 +41,9 @@ class Locatepress_Register_Metabox_Listing_Details {
 		$locatepress_pin_url = get_post_meta( $post->ID, 'locatepress_pin-url', true );
 		$locatepress_fb_url = get_post_meta( $post->ID, 'locatepress_fb-url', true );
 		$locatepress_twir_url = get_post_meta( $post->ID, 'locatepress_twir-url', true );
+		$locatepress_video_url = get_post_meta( $post->ID, 'locatepress_video_url', true );
+
+
 
 		// Set default values.
 		if( empty( $locatepress_contact_no ) ) $locatepress_contact_no = '';
@@ -50,6 +53,8 @@ class Locatepress_Register_Metabox_Listing_Details {
 		if( empty( $locatepress_pin_url ) ) $locatepress_pin_url = '';
 		if( empty( $locatepress_fb_url ) ) $locatepress_fb_url = '';
 		if( empty( $locatepress_twir_url ) ) $locatepress_twir_url = '';
+		if( empty( $locatepress_video_url ) ) $locatepress_video_url = '';
+
 
 		// Form fields.
 		echo '<table class="form-table">';
@@ -77,6 +82,13 @@ class Locatepress_Register_Metabox_Listing_Details {
         	
 			)
 		 );
+		echo '		</td>';
+		echo '	</tr>';
+
+		echo '	<tr>';
+		echo '		<th><label for="locatepress_video_url" class="locatepress_video_url_label">' . __( 'Video Url', 'locatepress' ) . '</label></th>';
+		echo '		<td>';
+		echo '			<input type="url" id="locatepress_video_url" name="locatepress_video_url" class="locatepress_video_url_field" placeholder="' . esc_attr__( 'https://www.youtube.com/', 'locatepress' ) . '" value="' . esc_attr( $locatepress_video_url ) . '">';
 		echo '		</td>';
 		echo '	</tr>';
         
@@ -154,6 +166,8 @@ class Locatepress_Register_Metabox_Listing_Details {
 		$locatepress_new_pin_url = isset( $_POST[ 'locatepress_pin-url' ] ) ? esc_url( $_POST[ 'locatepress_pin-url' ] ) : '';
 		$locatepress_new_fb_url = isset( $_POST[ 'locatepress_fb-url' ] ) ? esc_url( $_POST[ 'locatepress_fb-url' ] ) : '';
 		$locatepress_new_twir_url = isset( $_POST[ 'locatepress_twir-url' ] ) ? esc_url( $_POST[ 'locatepress_twir-url' ] ) : '';
+		$locatepress_video_url = isset( $_POST[ 'locatepress_video_url' ] ) ? esc_url( $_POST[ 'locatepress_video_url' ] ) : '';
+
 
 		// Update the meta field in the database.
 		update_post_meta( $post_id, 'locatepress_contact_no', $locatepress_new_contact_no );
@@ -163,6 +177,8 @@ class Locatepress_Register_Metabox_Listing_Details {
 		update_post_meta( $post_id, 'locatepress_pin-url', $locatepress_new_pin_url );
 		update_post_meta( $post_id, 'locatepress_fb-url', $locatepress_new_fb_url );
 		update_post_meta( $post_id, 'locatepress_twir-url', $locatepress_new_twir_url );
+		update_post_meta( $post_id, 'locatepress_video_url', $locatepress_video_url );
+
 
 	}
 

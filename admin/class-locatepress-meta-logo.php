@@ -54,8 +54,8 @@ class Locatepress_Register_Metabox_Logo{
         
         echo '</div>';
         echo '<p>';
-        echo '<input type="button" style=" margin: 0px 5px" class="button button-secondary listing_type_upload_logo_button" id="add_icon_button" name="add_icon_button" value="' . __('Add Image', 'locatepress') . '">';
-        echo '<input type="button" style="'.esc_html($style).'" class="button button-secondary remove_logo_button" id="remove_icon_button" name="remove_icon_button" value="' . __('Remove Image', 'locatepress') . '">';
+        echo '<input type="button" style=" margin: 0px 5px" class="button button-secondary listing_type_upload_logo_button" id="add_logo_button" name="add_logo_button" value="' . __('Add Image', 'locatepress') . '">';
+        echo '<input type="button" style="'.esc_html($style).'" class="button button-secondary remove_logo_button" id="remove_logo_button" name="remove_logo_button" value="' . __('Remove Image', 'locatepress') . '">';
         echo '</p>';
         echo '</td>';
         echo '</tr>';

@@ -360,7 +360,7 @@ class Locatepress_Public
                 $html = '<div id="sync1" class="owl-carousel owl-theme">';
                 foreach ($image_gallery_data['img_url'] as $url) {
                     $html .= '<div class="item">';
-                    $html .= '<img src ="' . $url . '">';
+                    $html .= '<img src ="' . esc_url($url) . '">';
                     $html .='</div>';
                 }
 
@@ -369,7 +369,7 @@ class Locatepress_Public
                 $html .= '<div id="sync2" class="owl-carousel owl-theme">';
                 foreach ($image_gallery_data['img_url'] as $url) {
                     $html .= '<div class="item">';
-                    $html .= '<img src ="' . $url . '">';
+                    $html .= '<img src ="' . esc_url($url) . '">';
                     $html .='</div>';
                 }
 
@@ -410,6 +410,36 @@ class Locatepress_Public
     }
 
     /**
+     * gets the video of listing post type
+     *
+     * @since      1.0.0
+     * @access public
+     * @static
+     * @return html
+     */
+
+    public static function locatepress_single_video($post_id)
+    {
+        $locatepress_video_url = get_post_meta($post_id, 'locatepress_video_url', true);
+        $html = '';
+        if ($locatepress_video_url != '') {
+            $html = '<div class="lp-single-video">';
+            $html .= '<h3 class="lp-single-video">' . __('Video', 'locatepress') . '</h3>';
+
+            $html .= wp_video_shortcode( [
+                'src'      => esc_url($locatepress_video_url),
+                'poster'   => '',
+                'height'   => '',
+                'width'    => '',
+            ] );
+
+            $html .= '</div>';
+           
+        }
+        return apply_filters('locatepress_single_video', $html);
+    }
+
+    /**
      * gets the business hour of listing post type
      *
      * @since      1.0.0
@@ -422,10 +452,18 @@ class Locatepress_Public
     {
         $locatepress_business_hour = get_post_meta($post_id, 'locatepress_business_hour', true);
         $html = '';
+        $allowed_html = array(
+            'input' => array(
+                'type'  => array(),
+                'id'    => array(),
+                'name'  => array(),
+                'value' => array()
+             ),
+        );
         if ($locatepress_business_hour != '') {
             $html = '<div class="lp-business-hour">';
             $html .= '<h3 class="lp-business-hour-title">' . __('Business Hour', 'locatepress') . '</h3>';
-            $html .= $locatepress_business_hour;
+            $html .= wp_kses($locatepress_business_hour, $allowed_html);
             $html .= '</div>';
         }
         return apply_filters('locatepress_single_business_hour', $html);
@@ -446,7 +484,7 @@ class Locatepress_Public
         $html = '';
         if ($lp_location_country != '') {
             $html = '<div class="lp-address-meta">';
-            $html .= $lp_location_country;
+            $html .= esc_html($lp_location_country);
             $html .= '</div>';
         }
         return apply_filters('locatpress_single_address', $html);
@@ -469,7 +507,7 @@ class Locatepress_Public
         $html = '';
         if ($locatepress_logo != '') {
             $html = '<span class="lp-lisiting-logo">';
-            $html .= '<img src= '.$locatepress_logo_url.'>';
+            $html .= '<img src= '.esc_url($locatepress_logo_url).'>';
             $html .= '</span>';
         }
         return apply_filters('locatepress_single_listing_logo', $html);
@@ -497,6 +535,7 @@ class Locatepress_Public
         $list = array();
 
         $html = '';
+        $data = '';
 
         if ($locatepress_fb != '') {
             $data = '<a href="' . esc_url($locatepress_fb) . '" class="fa fa-facebook"></a>';

@@ -47,7 +47,7 @@ if (!empty($tax)) {
 
     <div class="row">
         <div class="col-md-8">
-            <?php do_action('before_single_page_featured_image');?>
+            <?php do_action('before_single_page_featured_image');?> 
 
             <?php echo Locatepress_Public::locatepress_single_listing_gallery($post->ID) ?>
 
@@ -59,9 +59,15 @@ if (!empty($tax)) {
 
             <?php do_action('after_single_page_content');?>
 
+            <?php do_action('before_single_page_video');?>
+
+            <?php echo Locatepress_Public::locatepress_single_video($post->ID) ?>
+
+            <?php do_action('after_single_page_video');?>
+
             <?php do_action('before_single_page_map');?>
 
-            <?php echo apply_filters('locatepress_single_address_title', '<span class="address-span"><b>' . __('Location :', 'locatepress') . '</b></span>'); ?>
+            <?php echo apply_filters('locatepress_single_address_title', '<span class="address-span"><h3>' . __('Location ', 'locatepress') . '</h3></span>'); ?>
 
             <div class="locatepress-single-map" data-latlong="<?php echo esc_html(get_post_meta($post->ID, 'lp_location_lat_long', true)); ?>" data-info="<?php echo esc_html(get_post_meta($post->ID, 'lp_location_country', true)); ?>"  id="single-map" data-marker='<?php echo esc_url(wp_get_attachment_url($icon_meta)); ?>' style="width:100%;height: 300px;"></div>
 

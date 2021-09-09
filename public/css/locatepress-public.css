@@ -568,7 +568,6 @@ a.lp_slider_image img{
 }
 
 .lp-business-hour-title{
-  margin-top: 50px;
   margin-bottom: 15px;
 }
 
@@ -582,73 +581,79 @@ a.lp_slider_image img{
 
 .lp-lisiting-logo img{
  height: auto;
- width: 100%;
+ width: 80px;
 }
 
 span.lp-lisiting-logo{
   margin-right: 10px;
+  margin-top: 20px;
 }
 
 .plugin-main-title{
   display: flex;
+  
 }
 
-#sync1 .item {
-  background: #0c83e7;
-  padding: 80px 0px;
-  margin: 5px;
-  color: #fff;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  text-align: center;
+span.lp_single_contact_no{
+  margin-left: 10px;
 }
 
-#sync2 .item {
-  background: #c9c9c9;
-  padding: 10px 0px;
-  margin: 5px;
-  color: #fff;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  text-align: center;
-  cursor: pointer;
-}
-#sync2 .item h1 {
-  font-size: 18px;
-}
-#sync2 .current .item {
-  background: #0c83e7;
+.owl-item .item img{
+  margin-top: 15px;
 }
 
-.owl-theme .owl-nav {
-  /*default owl-theme theme reset .disabled:hover links */
-}
-.owl-theme .owl-nav [class*=owl-] {
-  transition: all 0.3s ease;
-}
-.owl-theme .owl-nav [class*=owl-].disabled:hover {
-  background-color: #d6d6d6;
-}
 
-#sync1.owl-theme {
-  position: relative;
-}
-#sync1.owl-theme .owl-next,
-#sync1.owl-theme .owl-prev {
-  width: 22px;
-  height: 40px;
-  margin-top: -20px;
+.owl-prev, .owl-next{
   position: absolute;
   top: 50%;
+  transform: translateY(-50%);
+  height: auto;
+  width: 30px;
+
 }
-#sync1.owl-theme .owl-prev {
-  left: 10px;
+
+.owl-prev{
+  left:1%;
 }
-#sync1.owl-theme .owl-next {
-  right: 10px;
+
+.owl-next{
+  right: 1%;
 }
+
+#sync2 .owl-nav{
+  visibility: hidden;
+}
+
+#sync2 .owl-stage-outer .owl-stage .owl-item .item img{
+  opacity: 0.2;
+}
+
+#sync2 .owl-stage-outer .owl-stage .owl-item .item img:hover{
+  opacity: 1;
+  cursor: pointer;
+  border: 2px solid purple;
+}
+
+#sync2 .owl-stage-outer .owl-stage .owl-item .item{
+  margin-right: 15px;
+}
+
+
+span.address-span {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.lp-address-meta{
+  margin-top: 20px;
+}
+
+.owl-prev svg, .owl-next svg{
+  height: auto;
+  width: 10px;
+}
+
 
 
 
