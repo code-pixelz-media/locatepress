@@ -613,7 +613,7 @@ span.lp_single_contact_no{
 }
 
 .lp-social-profile {
-  margin-bottom: 30px;
+  margin-bottom: 38px;
 }
 
 .locatepress-single-listing-wrap{
@@ -766,9 +766,13 @@ span.lp-lisiting-logo {
   margin-bottom: 10px;
 }
 
-.plugin-main-title h2{
-  font-size: 3rem;
+span.lp_single_address {
+  margin-left: 10px;
 }
+.locatepress-single-listing-wrap .plugin-main-title h1 {
+  font-size: 37px;
+}
+
 
 
 
