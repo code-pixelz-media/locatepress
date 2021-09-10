@@ -350,7 +350,6 @@ class Locatepress_Public
      * @return html
      */
 
-
     public static function locatepress_single_listing_gallery($post_id)
     {
         $image_gallery_data = get_post_meta($post_id, 'image_gallery_data', true);
