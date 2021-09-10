@@ -476,9 +476,12 @@ class Locatepress_Public
         $lp_location_country = get_post_meta($post_id, 'lp_location_country', true);
         $html = '';
         if ($lp_location_country != '') {
-            $html = '<div class="lp-address-meta">';
+
+            
+            $html = '<p class="lp-contact"><i class="fa fa-map-marker" aria-hidden="true"></i><span class="lp_single_address">';
             $html .= esc_html($lp_location_country);
-            $html .= '</div>';
+            $html .='</span></p>';
+
         }
         return apply_filters('locatpress_single_address', $html);
     }
