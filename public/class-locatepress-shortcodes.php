@@ -80,17 +80,8 @@ class Locatepress_Shortcodes
             ),
 
             'location_search' =>
-            $map_type == 'google-map' ?
             array(
                 'type'          => 'text',
-                'title'         => __('Location Search', 'locatepress'),
-                'placeholder'   => __('Location Search', 'locatepress'),
-                'name'          => 'lp_search_filter_loc',
-                'settings'      => 'lp_location_search',
-                'class'         => 'lp-loc-search',
-            ) :
-            array(
-                'type'          => 'div',
                 'title'         => __('Location Search', 'locatepress'),
                 'placeholder'   => __('Location Search', 'locatepress'),
                 'name'          => 'lp_search_filter_loc',

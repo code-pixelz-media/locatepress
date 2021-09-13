@@ -382,7 +382,9 @@ class Locatepress_Public
 
         }else{
             $html = '<div class="lp_single_featured_image">';
-        	$html .= '<img src="'.esc_url(get_the_post_thumbnail_url($post->ID, 'large')).'">';
+        	if( has_post_thumbnail() ){
+                $html .= '<img src="'.esc_url( get_the_post_thumbnail_url($post_id, 'large') ).'">' ;
+            };
             $html .= '</div>';
         }
 
