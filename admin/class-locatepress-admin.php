@@ -113,7 +113,7 @@ class Locatepress_Admin
 
         $locate_press_options = get_option('locate_press_set');
 
-        $locate_press_api_key = $locate_press_options['lp_map_api_key'];
+        $locate_press_api_key = isset($locate_press_options['lp_map_api_key']) ? esc_html($locate_press_options['lp_map_api_key'] ) : '' ;
         
 
         wp_enqueue_script($this->plugin_name . '-admin', plugin_dir_url(__FILE__) . 'js/locatepress-admin.js', array('jquery'), $this->version, true);
