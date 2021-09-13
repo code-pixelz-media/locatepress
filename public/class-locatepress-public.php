@@ -150,6 +150,8 @@ class Locatepress_Public
         ));
         wp_enqueue_script($this->plugin_name);
 
+        wp_enqueue_script('single-slider-owl', plugin_dir_url(__FILE__) . 'js/single-slider.js', array('jquery'), $this->version, false);
+
         wp_register_script('owl-carousel-js', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/owl.carousel.min.js', array(), '', false);
 
         wp_enqueue_script('owl-carousel-js');
