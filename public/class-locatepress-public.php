@@ -350,7 +350,6 @@ class Locatepress_Public
      * @return html
      */
 
-
     public static function locatepress_single_listing_gallery($post_id)
     {
         $image_gallery_data = get_post_meta($post_id, 'image_gallery_data', true);
@@ -383,7 +382,9 @@ class Locatepress_Public
 
         }else{
             $html = '<div class="lp_single_featured_image">';
-        	$html .= '<img src="'.esc_url(get_the_post_thumbnail_url($post->ID, 'large')).'">';
+        	if( has_post_thumbnail() ){
+                $html .= '<img src="'.esc_url( get_the_post_thumbnail_url($post_id, 'large') ).'">' ;
+            };
             $html .= '</div>';
         }
 
@@ -477,9 +478,12 @@ class Locatepress_Public
         $lp_location_country = get_post_meta($post_id, 'lp_location_country', true);
         $html = '';
         if ($lp_location_country != '') {
-            $html = '<div class="lp-address-meta">';
+
+            
+            $html = '<p class="lp-contact"><i class="fa fa-map-marker" aria-hidden="true"></i><span class="lp_single_address">';
             $html .= esc_html($lp_location_country);
-            $html .= '</div>';
+            $html .='</span></p>';
+
         }
         return apply_filters('locatpress_single_address', $html);
     }

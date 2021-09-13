@@ -2,6 +2,10 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+p{
+  text-align: justify;
+}
+
 .lp-row  {
 
   max-width: 100% !important;
@@ -521,7 +525,7 @@ a.lp_slider_image img{
     position: relative;
     width: 35px;
     height: 35px;
-    margin: 0 10px 0 0;
+    margin: 0 15px 40px 0px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 17px;
@@ -558,6 +562,7 @@ a.lp_slider_image img{
   background: #E60023;
   color: #fff;
 }
+
 .lp_single_featured_image {
     margin: 30px 0;
 }
@@ -568,11 +573,11 @@ a.lp_slider_image img{
 }
 
 .lp-business-hour-title{
-  margin-bottom: 15px;
+  margin-bottom: 28px;
 }
 
 .lp-social-profile-title{
-  margin-bottom: 20px;
+  margin-bottom: 28px;
 }
 
 .edgtf-ls-bg-time{
@@ -598,6 +603,29 @@ span.lp_single_contact_no{
   margin-left: 10px;
 }
 
+.lp-business-hour, .lp-social-profile {
+  box-shadow: 0px 4px 30px rgb(0 0 0 / 8%);
+  padding: 30px;
+}
+
+.lp-social-profile a{
+  margin-bottom: 0 !important;
+}
+
+.lp-social-profile {
+  margin-bottom: 38px;
+}
+
+.locatepress-single-listing-wrap{
+  padding: 60px 0;
+}
+
+/* ----------------- owl ----------------------------- */
+
+#sync1 .owl-dots{
+  display: none;
+}
+
 .owl-item .item img{
   margin-top: 15px;
 }
@@ -609,7 +637,12 @@ span.lp_single_contact_no{
   transform: translateY(-50%);
   height: auto;
   width: 30px;
+}
 
+.owl-prev svg, .owl-next svg{
+  margin-bottom: 2px;
+  height: auto;
+  width: 10px;
 }
 
 .owl-prev{
@@ -620,12 +653,22 @@ span.lp_single_contact_no{
   right: 1%;
 }
 
+#sync2{
+  margin-top: 20px;
+  margin-bottom: 48px;
+}
+
 #sync2 .owl-nav{
   visibility: hidden;
 }
 
 #sync2 .owl-stage-outer .owl-stage .owl-item .item img{
-  opacity: 0.2;
+  opacity: 0.7;
+}
+
+#sync2 .owl-stage-outer .owl-stage .owl-item.current .item img{
+  opacity: 1;
+  border: 2px solid purple;
 }
 
 #sync2 .owl-stage-outer .owl-stage .owl-item .item img:hover{
@@ -640,18 +683,94 @@ span.lp_single_contact_no{
 
 
 span.address-span {
-  margin-top: 25px;
-  margin-bottom: 15px;
+  margin-top: 48px;
+  margin-bottom: 30px;
   display: block;
 }
+
 
 .lp-address-meta{
   margin-top: 20px;
 }
 
-.owl-prev svg, .owl-next svg{
-  height: auto;
-  width: 10px;
+
+.site-header{
+  margin-left: 115px !important;
+}
+
+p.site-description{
+  margin-top: 5px;
+}
+
+
+.lp-single-video{
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
+
+#search-2{
+  margin-bottom: 28px;
+}
+
+.col-md-4{
+  padding: 0 20px !important;
+}
+
+#recent-posts-2{
+  margin-bottom: 28px;
+}
+
+#recent-comments-2{
+  margin-bottom: 28px;
+}
+
+#archives-2{
+  margin-bottom: 28px;
+}
+
+#categories-2{
+  margin-bottom: 28px;
+}
+
+#meta-2{
+  margin-bottom: 28px;
+}
+
+ul li{
+  list-style: none;
+}
+
+ul{
+  padding-left: 0px !important;
+}
+
+.lp-single-video .wp-video, .lp-single-video .wp-video .mejs-container {
+  width: 100% !important;
+}
+
+.locatepress-single-listing-wrap .col-md-4 {
+  padding-top: 15px !important;
+}
+
+.lp-lisiting-logo img {
+  width: auto;
+  max-height: 40px;
+}
+
+span.lp-lisiting-logo {
+  margin-right: 30px;
+  margin-top: 14px;
+}
+
+.plugin-main-title{
+  margin-bottom: 10px;
+}
+
+span.lp_single_address {
+  margin-left: 10px;
+}
+.locatepress-single-listing-wrap .plugin-main-title h1 {
+  font-size: 37px;
 }
 
 

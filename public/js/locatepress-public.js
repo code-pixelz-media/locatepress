@@ -447,7 +447,7 @@ jQuery(document).ready(function() {
 
     var sync1 = jQuery("#sync1");
     var sync2 = jQuery("#sync2");
-    var slidesPerPage = 4; //globaly define number of elements per page
+    var slidesPerPage = 6; //globaly define number of elements per page
     var syncedSecondary = true;
 
     sync1.owlCarousel({

@@ -25,15 +25,22 @@ if (!empty($tax)) {
 }
 
 ?>
-
+<div class= "locatepress-single-listing-wrap">
 <div class="container">
     <div class="row ">
 
         <?php echo apply_filters('locatepress_before_single_title', '<div class="col-md-8">') ?>
             <div class="plugin-main-title">
                 <?php echo Locatepress_Public::locatepress_single_listing_logo($post->ID) ?>
-                <h2><?php echo esc_html($post->post_title); ?></h2>
+                <h1><?php echo esc_html($post->post_title); ?></h1>
             </div>
+
+        <?php do_action('before_sinlge_listing_address');?>
+
+        <?php echo Locatepress_Public::locatepress_single_address($post->ID) ?>
+
+        <?php do_action('after_sinlge_listing_address');?>
+
         <?php do_action('before_sinlge_listing_contact_no');?>
 
         <?php echo Locatepress_Public::locatepress_single_contact_no($post->ID) ?>
@@ -42,12 +49,12 @@ if (!empty($tax)) {
 
         <?php echo apply_filters('locatepress_after_single_title', '</div>') ?>
 
-        
+
     </div>
 
     <div class="row">
         <div class="col-md-8">
-            <?php do_action('before_single_page_featured_image');?> 
+            <?php do_action('before_single_page_featured_image');?>
 
             <?php echo Locatepress_Public::locatepress_single_listing_gallery($post->ID) ?>
 
@@ -73,15 +80,10 @@ if (!empty($tax)) {
 
             <?php do_action('after_single_page_map');?>
 
-            <?php echo Locatepress_Public::locatepress_single_address($post->ID) ?>
-
-
-
-
         </div>
 
         <div class="col-md-4">
-           
+
             <?php do_action('before_sinlge_listing_business_hour');?>
 
             <?php echo Locatepress_Public::locatepress_single_business_hour($post->ID) ?>
@@ -98,6 +100,7 @@ if (!empty($tax)) {
 
         </div>
     </div>
+</div>
 </div>
 <?php
 echo do_action('after_single_page_ends');
