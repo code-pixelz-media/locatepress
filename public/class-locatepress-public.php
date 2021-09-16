@@ -94,11 +94,11 @@ class Locatepress_Public
 
         wp_enqueue_style('bootstrap', plugin_dir_url(__FILE__) . 'css/bootstrap.css', array(), $this->version, 'all');
 
-        wp_enqueue_style('owl-min-css', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/assets/owl.carousel.min.css', array(), $this->version, 'all');
+        wp_enqueue_style('owl-min-css', plugin_dir_url(__FILE__) . 'css/owl.carousel.min.css', array(), $this->version, 'all');
 
-        wp_enqueue_style('owl-carasoul-css', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/assets/owl.theme.default.min.css', array(), $this->version, 'all');
+        wp_enqueue_style('owl-carasoul-css', plugin_dir_url(__FILE__) . 'css/owl.theme.default.min.css', array(), $this->version, 'all');
 
-        wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+        wp_enqueue_style('font-awesome', plugin_dir_url(__FILE__) . 'css/font-awesome.min.css');
 
     }
 
@@ -130,15 +130,13 @@ class Locatepress_Public
 
         wp_enqueue_script('googlemaps');
 
-        wp_register_script('googlemaps-polyfill', 'https://polyfill.io/v3/polyfill.min.js?features=default', array(), '', false);
+        // wp_register_script('googlemaps-polyfill', 'https://polyfill.io/v3/polyfill.min.js?features=default', array(), '', false);
 
-        wp_enqueue_script('googlemaps-polyfill');
+        // wp_enqueue_script('googlemaps-polyfill');
 
-        wp_register_script('googlemaps-cluster', 'https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js', array(), '', false);
+        wp_register_script('googlemaps-cluster',  plugin_dir_url(__FILE__) . 'js/googlemaps-cluster.min.js', array(), '', false);
 
         wp_enqueue_script('googlemaps-cluster');
-
-        wp_enqueue_script('jquery');
 
         wp_enqueue_script('bootstrapjs', plugin_dir_url(__FILE__) . 'js/bootstrap.js', array('jquery'), $this->version, false);
 
@@ -152,7 +150,7 @@ class Locatepress_Public
 
         wp_enqueue_script('single-slider-owl', plugin_dir_url(__FILE__) . 'js/single-slider.js', array('jquery'), $this->version, false);
 
-        wp_register_script('owl-carousel-js', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/owl.carousel.min.js', array(), '', false);
+        wp_register_script('owl-carousel-js',  plugin_dir_url(__FILE__) . 'js/owl.carousel.min.js', array(), '', false);
 
         wp_enqueue_script('owl-carousel-js');
 
