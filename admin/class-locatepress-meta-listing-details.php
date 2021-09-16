@@ -161,12 +161,12 @@ class Locatepress_Register_Metabox_Listing_Details {
 		// Sanitize user input.
 		$locatepress_new_contact_no = isset( $_POST[ 'locatepress_contact_no' ] ) ? sanitize_text_field( $_POST[ 'locatepress_contact_no' ] ) : '';
 		$locatepress_new_business_hour = isset( $_POST[ 'locatepress_business_hour' ] ) ? wp_kses_post( $_POST[ 'locatepress_business_hour' ] ) : '';
-		$locatepress_new_yt_url = isset( $_POST[ 'locatepress_yt-url' ] ) ? esc_url( $_POST[ 'locatepress_yt-url' ] ) : '';
-		$locatepress_new_ig_url = isset( $_POST[ 'locatepress_ig-url' ] ) ? esc_url( $_POST[ 'locatepress_ig-url' ] ) : '';
-		$locatepress_new_pin_url = isset( $_POST[ 'locatepress_pin-url' ] ) ? esc_url( $_POST[ 'locatepress_pin-url' ] ) : '';
-		$locatepress_new_fb_url = isset( $_POST[ 'locatepress_fb-url' ] ) ? esc_url( $_POST[ 'locatepress_fb-url' ] ) : '';
-		$locatepress_new_twir_url = isset( $_POST[ 'locatepress_twir-url' ] ) ? esc_url( $_POST[ 'locatepress_twir-url' ] ) : '';
-		$locatepress_video_url = isset( $_POST[ 'locatepress_video_url' ] ) ? esc_url( $_POST[ 'locatepress_video_url' ] ) : '';
+		$locatepress_new_yt_url = isset( $_POST[ 'locatepress_yt-url' ] ) ? esc_url_raw( $_POST[ 'locatepress_yt-url' ] ) : '';
+		$locatepress_new_ig_url = isset( $_POST[ 'locatepress_ig-url' ] ) ? esc_url_raw( $_POST[ 'locatepress_ig-url' ] ) : '';
+		$locatepress_new_pin_url = isset( $_POST[ 'locatepress_pin-url' ] ) ? esc_url_raw( $_POST[ 'locatepress_pin-url' ] ) : '';
+		$locatepress_new_fb_url = isset( $_POST[ 'locatepress_fb-url' ] ) ? esc_url_raw( $_POST[ 'locatepress_fb-url' ] ) : '';
+		$locatepress_new_twir_url = isset( $_POST[ 'locatepress_twir-url' ] ) ? esc_url_raw( $_POST[ 'locatepress_twir-url' ] ) : '';
+		$locatepress_video_url = isset( $_POST[ 'locatepress_video_url' ] ) ? esc_url_raw( $_POST[ 'locatepress_video_url' ] ) : '';
 
 
 		// Update the meta field in the database.

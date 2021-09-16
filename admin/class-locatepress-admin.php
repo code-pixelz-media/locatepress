@@ -89,7 +89,7 @@ class Locatepress_Admin
         // Enqueued for font awesome
         
         wp_enqueue_style('fonts', 'https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
-        wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+        wp_enqueue_style('font-awesome', plugin_dir_url(__FILE__) . 'css/font-awesome.min.css');
 
     }
 
@@ -113,7 +113,7 @@ class Locatepress_Admin
 
         $locate_press_options = get_option('locate_press_set');
 
-        $locate_press_api_key = $locate_press_options['lp_map_api_key'];
+        $locate_press_api_key = isset($locate_press_options['lp_map_api_key']) ? esc_html($locate_press_options['lp_map_api_key'] ) : '' ;
         
 
         wp_enqueue_script($this->plugin_name . '-admin', plugin_dir_url(__FILE__) . 'js/locatepress-admin.js', array('jquery'), $this->version, true);
@@ -122,7 +122,7 @@ class Locatepress_Admin
 
         wp_enqueue_script('googlemaps', 'https://maps.googleapis.com/maps/api/js?&key=' . $locate_press_api_key . '&libraries=places', array(), '', false);
         
-        wp_enqueue_script('fa-js', 'https://kit.fontawesome.com/212ae5222e.js', array(), '', false);
+        wp_enqueue_script('fa-js', plugin_dir_url(__FILE__) . 'js/fontawesome-kit.js', array(), '', false);
 
         wp_enqueue_media();
 

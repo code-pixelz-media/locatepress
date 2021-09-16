@@ -113,7 +113,7 @@ class Locatepress_Register_Metabox_Gallery{
             {
                 if ( '' != $_POST['image_gallery_data']['img_url'][$i])
                 {
-                    $image_gallery_data['img_url'][]  = esc_url($_POST['image_gallery_data']['img_url'][ $i ]);
+                    $image_gallery_data['img_url'][]  = esc_url_raw($_POST['image_gallery_data']['img_url'][ $i ]);
                 }
             }
 
