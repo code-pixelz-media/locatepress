@@ -63,11 +63,14 @@ LocatePress.App = (function ($) {
 				} else {
 					singleIcon = lp_settings.map.lp_default_marker;
 				}
-				var mi = {
-					url: singleIcon,
-					scaledSize: new google.maps.Size(40, 40),
-
+				if (singleIcon){
+					var mi = {
+						url: singleIcon,
+						scaledSize: new google.maps.Size(40, 40),
+	
+					};
 				};
+
 				var lati = parseFloat(latiLong[0]);
 				var longi = parseFloat(latiLong[1]);
 				var singlePageMap = new google.maps.Map(singleMapDiv, {
