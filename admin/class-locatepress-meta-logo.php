@@ -70,8 +70,6 @@ class Locatepress_Register_Metabox_Logo{
     public function save_metabox( $post_id, $post ) {
 
 		 // Add nonce for security and authentication.
-		 print_r($_POST);
-		 die;
 		$nonce_name   = isset( $_POST['locatepress_meta_logo'] ) ? sanitize_text_field($_POST['locatepress_meta_logo']) : '';
 		$nonce_action = 'locatepress_logo_action';
 
