@@ -41,6 +41,7 @@ $('body').on('click','.remove_icon_button',function(){
 });
 
 $(document).ajaxComplete(function(event, xhr, settings) {
+
   var queryStringArr = settings.data.split('&');
     if( $.inArray('action=add-tag', queryStringArr) !== -1 ){
       var xml = xhr.responseXML;
