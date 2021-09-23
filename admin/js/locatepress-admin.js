@@ -40,21 +40,21 @@ $('body').on('click','.remove_icon_button',function(){
 
 });
 
-$(document).ajaxComplete(function(event, xhr, settings) {
+// $(document).ajaxComplete(function(event, xhr, settings) {
 
-  var queryStringArr = settings.data.split('&');
-    if( $.inArray('action=add-tag', queryStringArr) !== -1 ){
-      var xml = xhr.responseXML;
-      $response = $(xml).find('term_id').text();
-    if($response!=""){
+//   var queryStringArr = settings.data.split('&');
+//     if( $.inArray('action=add-tag', queryStringArr) !== -1 ){
+//       var xml = xhr.responseXML;
+//       $response = $(xml).find('term_id').text();
+//     if($response!=""){
     
-      $('#listing_type-icon-wrapper').html('');
-      $('#remove_icon_button').css('display','none');
+//       $('#listing_type-icon-wrapper').html('');
+//       $('#remove_icon_button').css('display','none');
 
 
-    }
-  }
-  });
+//     }
+//   }
+//   });
 
  function save_main_options_ajax() {
       $('#save-settings').submit( function () {

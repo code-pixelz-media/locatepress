@@ -63,11 +63,7 @@ LocatePress.App = (function ($) {
 				} else {
 					singleIcon = lp_settings.map.lp_default_marker;
 				}
-				var mi = {
-					url: singleIcon,
-					scaledSize: new google.maps.Size(40, 40),
-
-				};
+				
 				var lati = parseFloat(latiLong[0]);
 				var longi = parseFloat(latiLong[1]);
 				var singlePageMap = new google.maps.Map(singleMapDiv, {
@@ -79,8 +75,21 @@ LocatePress.App = (function ($) {
 				singleMarker = new google.maps.Marker({
 					position: { lat: lati, lng: longi },
 					singlePageMap,
-					icon: mi,
+				
 				});
+
+				if (singleIcon){
+					var mi = {
+						url: singleIcon,
+						scaledSize: new google.maps.Size(40, 40),
+	
+					};
+					singleMarker.setIcon(mi);
+
+					
+				}else{
+					singleMarker.setIcon(null);
+				}
 				singleMarker.setMap(singlePageMap);
 				singleInfoWindow = new google.maps.InfoWindow();
 				google.maps.event.addListener(singleMarker, 'click', (function (singleMarker) {

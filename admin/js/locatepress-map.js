@@ -13,9 +13,11 @@ function load_map() {
   var dSetsArr = dSets.split('/');
   var lats = parseFloat(dSetsArr[0]);
   var longs = parseFloat(dSetsArr[1]);
+
+  //init map
   locatePressAdminMap = new google.maps.Map(mapDivs, {
     center: { lat: -33.8688, lng: 151.2195 },
-    zoom: 17
+    zoom: 3
   });
 
   // marker = new google.maps.Marker({
@@ -25,6 +27,8 @@ function load_map() {
   //   draggable: true,
   // });
 
+
+  //init geocoder
   var geocoder = new google.maps.Geocoder();
 
   var bounds = new google.maps.LatLngBounds();
@@ -37,11 +41,12 @@ function load_map() {
   infowindow = new google.maps.InfoWindow();
 
 
-
   //if no location is set initally use add a marker on clicked position for once then drag the marker
   function placeMarker() {
-
-    google.maps.event.addListenerOnce(locatePressAdminMap, 'click', function (event) {
+    google.maps.event.addListener(locatePressAdminMap, 'click', function (event) {
+      if (marker){
+        marker.setMap(null);
+      }
       marker = new google.maps.Marker({
         position: event.latLng,
         map: locatePressAdminMap,
@@ -72,6 +77,9 @@ function load_map() {
 
   //if location is set already and set marker to that given position
   function defaultMarker(latitude, longitude) {
+
+    locatePressAdminMap.setCenter({ lat: latitude, lng: longitude });
+    locatePressAdminMap.setZoom(15);
 
     marker = new google.maps.Marker({
       position: { lat: latitude, lng: longitude },
@@ -105,10 +113,8 @@ function load_map() {
             //   }
           // }
           if (results[0]) {
-            //console.log(results[1].formatted_address);
 
-            document.getElementById('country').value = results[0].formatted_address;
-            
+            document.getElementById('country').value = results[0].formatted_address;     
             document.getElementById('lp_location_lat_long').value = marker.getPosition().lat() + '/' + marker.getPosition().lng();
             document.getElementById('lp_location_latitude').value = marker.getPosition().lat();
             document.getElementById('lp_location_longitude').value = marker.getPosition().lng();
@@ -127,6 +133,7 @@ function load_map() {
     placeMarker();
   } else {
     defaultMarker(lats, longs);
+    placeMarker();
 
   }
 
@@ -164,6 +171,8 @@ function fillInAddress() {
   }
   document.getElementById('lp_location_lat_long').value = place.geometry.location.lat() + '/' + place.geometry.location.lng();
   document.getElementById('country').value = place.formatted_address;
+  document.getElementById('lp_location_latitude').value = place.geometry.location.lat();
+  document.getElementById('lp_location_longitude').value = place.geometry.location.lng();
   // marker.setIcon(({
   //   url: place.icon,
   //   size: new google.maps.Size(71, 71),
