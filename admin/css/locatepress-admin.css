@@ -1689,3 +1689,7 @@ a.addon-detail-button:hover{
     color: #0f88c1;
     border: none;
 }
+
+.cpm-plugin-wrap .cpm-btn, .cpm-plugin-wrap .cpm-btn:visited {
+    margin-left: 1px;
+}
