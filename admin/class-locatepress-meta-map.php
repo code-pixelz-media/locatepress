@@ -119,9 +119,9 @@ class Locatepress_Register_Metabox_Map
 
         // Sanitize user input.
 
-        $locatepress_new_lat = isset( $_POST[ 'lp_location_latitude' ] ) ? esc_html( $_POST[ 'lp_location_latitude' ] ) : '';
+        $locatepress_new_lat = isset( $_POST[ 'lp_location_latitude' ] ) ? sanitize_text_field( $_POST[ 'lp_location_latitude' ] ) : '';
 
-		$locatepress_new_lng = isset( $_POST[ 'lp_location_longitude' ] ) ? esc_html( $_POST[ 'lp_location_longitude' ] ) : '';
+		$locatepress_new_lng = isset( $_POST[ 'lp_location_longitude' ] ) ? sanitize_text_field( $_POST[ 'lp_location_longitude' ] ) : '';
 
         $new_lp_location_lat_long = isset($_POST['lp_location_lat_long']) ? sanitize_text_field($_POST['lp_location_lat_long']) : '';
 
