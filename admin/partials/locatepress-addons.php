@@ -17,7 +17,7 @@
     
     <div class="row">
         <?php
-        $url = esc_url('http://codepixelz.tech/locatepress/locatepress-addons.json');
+        $url = esc_url('https://wplocatepress.com/locatepress-addons.json');
 
         $response = wp_remote_get($url);
 

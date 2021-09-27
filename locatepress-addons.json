@@ -1,0 +1,24 @@
+[
+    {
+      "name": "Featured Listing for Locatepress",
+      "about": "Adds new functionalty to feature a post in the list",
+      "slug": "featured-listing-for-locatepress",
+      "icon": "http://codepixelz.tech/locatepress/featured.png",
+      "url": "https://wplocatepress.com/test/",
+      "version" : "0.1.0",
+      "type" : "free",
+      "date" : "19 july, 2021",
+      "price" : "N/A"
+    },
+    {
+      "name": "Open street Map for Locatepress",
+      "about": "Adds new map option (open street map by mapbox) for listings.",
+      "slug": "open-street-map-for-locatepress",
+      "icon": "http://codepixelz.tech/locatepress/open-street-map.png",
+      "url": "https://wplocatepress.com/test/",
+      "version" : "0.1.0",
+      "type" : "premium",
+      "date" : "19 july, 2021",
+      "price" : "$30"
+    }
+  ]
