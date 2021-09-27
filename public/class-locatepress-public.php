@@ -292,7 +292,10 @@ class Locatepress_Public
         );
 
         // The Query
-        $lp_visble_list = new WP_Query($visbleargs);
+
+        $filter_args = apply_filters('locatepress_search_filter_query_visible_marker', $visbleargs);
+
+        $lp_visble_list = new WP_Query($filter_args);
 
         if ($lp_visble_list->have_posts()) {
             $v_html = '';
