@@ -1,5 +1,4 @@
-=== Plugin Name ===
-Plugin Name: Locatepress
+=== Locatepress ===
 Plugin URI: http://wplocatepress.com/
 Description: Locatepress is a wordpress plugin used to filter and track the listings with google maps. 
 Version: 1.0.0
@@ -30,13 +29,11 @@ You can search listings by keywords, listing categories, tags and Google Map Pla
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
+1. Locatepress can be installed directly through your WordPress Plugins dashboard.
+2. Click "Add New" and Search for "Locatepress"
+3. Install and Activate
 
-e.g.
-
-1. Upload `locatepress.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+Alternatively, you can also download the plugin using the download button on this page and then upload the locatepress folder to the /wp-content/plugins/ directory then activate throught the Plugins dashboard in WordPress.
 
 
 == Frequently Asked Questions ==
@@ -51,5 +48,5 @@ The plugin has option to have separate custom marker per Listing Category
 
 == Changelog ==
 
-= 1.0 =
+= 1.0.0 =
 * First Push.
