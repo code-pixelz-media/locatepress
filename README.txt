@@ -47,6 +47,7 @@ The plugin has option to have separate custom marker per Listing Category
 
 
 == Screenshots ==
+1. Settings
 
 == Changelog ==
 
