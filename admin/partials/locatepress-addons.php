@@ -17,7 +17,7 @@ if ( is_wp_error( $response ) ) {
 
 	$addons = json_decode( $body, true );
 if ( empty( $addons ) ) {
-	die;
+	return;
 }
 
 ?>
