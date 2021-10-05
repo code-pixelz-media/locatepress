@@ -134,7 +134,7 @@ if(isset($lp_options['lp_distance_unit'])){
 <div id="map-settings">
     <h2 class="tab-title"><?php _e('Map Settings', 'locatepress');?></h2>
     <div class="form-group">
-    <?php do_action('locatepress_before_map_type');?>
+    <?php do_action('locatepress_before_map_settings');?>
         <label for="locate_press_set[lp_search_disp]"><?php _e('Map Type', 'locatepress');?></label>
         <div class="form-control-wrap lp-options">
             <div class="radio-wrap custom">
@@ -242,6 +242,9 @@ if(isset($lp_options['lp_distance_unit'])){
             </div>
         </div>
     </div>
+
+    <?php do_action('locatepress_after_map_settings');?>
+
 </div>
 <!-- <div id="geo-location-search">
     <h2 class="tab-title"><?php _e('Search Result Setting', 'locatepress');?></h2>
