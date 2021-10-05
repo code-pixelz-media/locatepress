@@ -218,7 +218,7 @@ class Locatepress_Register_Cpt {
                 'hierarchical'          => false,
                 'menu_icon'             => 'dashicons-tag',
                 'rewrite' => array(
-                    'slug'                  => 'map_listing',
+                    'slug'                  => 'listing',
                     'with_front'            => true,
                     'pages'                 => true,
                     'feeds'                 => true,
