@@ -1,6 +1,6 @@
-var LocatePress = {};
+var Locatepress = {};
 
-LocatePress.App = (function ($) {
+Locatepress.App = (function ($) {
 	var LpForm = $('.lp-search-filter-form'),
 		LpKeyword = $('.lp-input-keyword'),
 		LpLocSearch = $('.lp-loc-search'),
@@ -11,7 +11,7 @@ LocatePress.App = (function ($) {
 		LpListing = $('.lp-display-listing'),
 		LpMap = $('#lp-display-map'),
 		LpReset = $('#lp-resetbutton'),
-		LocatePressMap, icons, marker, mapDiv, popup,
+		LocatepressMap, icons, marker, mapDiv, popup,
 		formDataObj = {}, markerArrList = [],
 		//zoom = parseInt(lp_settings.map.lp_map_zoom),
 		autocompleteSearch, bounds, infos;
@@ -105,32 +105,32 @@ LocatePress.App = (function ($) {
 	//initialiaze map
 	function locatePressMapInit() {
 
-		var LocatePressMapOptions = {
+		var LocatepressMapOptions = {
 			zoom: 2,
 			center: new google.maps.LatLng(43.4130, 34.2993),
 
 		}
 		if (lp_settings.map.lp_zoom_control === 'off') {
-			LocatePressMapOptions.zoomControl = false;
+			LocatepressMapOptions.zoomControl = false;
 		}
 
 		if (lp_settings.map.lp_full_screen_control === 'off') {
-			LocatePressMapOptions.fullscreenControl = false;
+			LocatepressMapOptions.fullscreenControl = false;
 		}
 		if (lp_settings.map.lp_maptype_control === 'off') {
-			LocatePressMapOptions.mapTypeControl = false;
+			LocatepressMapOptions.mapTypeControl = false;
 		}
 		if (lp_settings.map.lp_streetview_control === 'off') {
-			LocatePressMapOptions.streetViewControl = false;
+			LocatepressMapOptions.streetViewControl = false;
 		}
 
 		if (lp_settings.map.lp_map_type !== '') {
-			LocatePressMapOptions.mapTypeId = lp_settings.map.lp_map_type;
+			LocatepressMapOptions.mapTypeId = lp_settings.map.lp_map_type;
 		} else {
-			LocatePressMapOptions.mapTypeId = 'roadmap';
+			LocatepressMapOptions.mapTypeId = 'roadmap';
 		}
 		var el = document.getElementById('lp-display-map');
-		LocatePressMap = new google.maps.Map(LpMap.get(0), LocatePressMapOptions);
+		LocatepressMap = new google.maps.Map(LpMap.get(0), LocatepressMapOptions);
 
 
 	}
@@ -178,7 +178,7 @@ LocatePress.App = (function ($) {
 
 
 
-				mlist.setMap(LocatePressMap);
+				mlist.setMap(LocatepressMap);
 				markerArrList.push(mlist);
 
 				bounds.extend(mlist.position);
@@ -192,8 +192,8 @@ LocatePress.App = (function ($) {
 								  <a href="${mark[k].permalink}"><button class="load-link">View Location</button></a>
 								  </div>`;
 						infos.setContent(contInfo);
-						infos.open(LocatePressMap, mlist);
-						LocatePressMap.panTo(this.getPosition());
+						infos.open(LocatepressMap, mlist);
+						LocatepressMap.panTo(this.getPosition());
 
 					}
 
@@ -201,12 +201,12 @@ LocatePress.App = (function ($) {
 
 			}
 			//add marker cluster
-			new MarkerClusterer(LocatePressMap, markerArrList, {
+			new MarkerClusterer(LocatepressMap, markerArrList, {
 				imagePath:
 					"https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
 			});
 
-			LocatePressMap.fitBounds(bounds);
+			LocatepressMap.fitBounds(bounds);
 		}else{
 			return;
 		}
@@ -278,10 +278,10 @@ LocatePress.App = (function ($) {
 						fData.lp_location_longitude = lng;
 						
 						make_ajax_request(fData);
-						LocatePressMap.fitBounds(place.geometry.viewport);
+						LocatepressMap.fitBounds(place.geometry.viewport);
 
 					} else {
-						LocatePressMap.setCenter(place.geometry.location);
+						LocatepressMap.setCenter(place.geometry.location);
 
 					}
 
@@ -362,7 +362,7 @@ LocatePress.App = (function ($) {
 
 	function showVisibleMarkers() {
 
-		var bnds = LocatePressMap.getBounds();
+		var bnds = LocatepressMap.getBounds();
 
 		var popList = [];
 		for (var i = 0; i < markerArrList.length; i++) {
@@ -398,7 +398,7 @@ LocatePress.App = (function ($) {
 
 	function get_and_display_visible_markers() {
 		if (checkel(LpListing)) {
-			google.maps.event.addListener(LocatePressMap, 'idle', function () {
+			google.maps.event.addListener(LocatepressMap, 'idle', function () {
 
 				var visibleItems = showVisibleMarkers();
 				if (visibleItems.length > 0) {
@@ -420,7 +420,7 @@ LocatePress.App = (function ($) {
 			if (status == 'OK') {
 
 
-				LocatePressMap.fitBounds(results[0].geometry.viewport);
+				LocatepressMap.fitBounds(results[0].geometry.viewport);
 
 				get_and_display_visible_markers();
 			} else {
@@ -448,7 +448,7 @@ LocatePress.App = (function ($) {
 
 jQuery(document).ready(function () {
 
-	LocatePress.App.init();
+	Locatepress.App.init();
 
 });
 

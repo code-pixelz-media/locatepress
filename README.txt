@@ -17,15 +17,25 @@ Locatepress is a plugin where you can add listings and filter and track listings
 
 == Description ==
 
-Locatepress allows you to add multiple listings. With the integration of Google Map API, you can define location in every listing.
-You can search listings by keywords, listing categories, tags and Google Map Places. 
+The all-new Locatepress is a WordPress-based plugin that is set to handle directories based on a geographic location. Working on many WordPress platforms this plugin is highly versatile in creating and managing one's directory. It includes extensive new shortcodes which are supported by the TinyMCE and Gutenberg editor.
 
-== Features ==
-1. Google Map integration
-2. Listing search functionality.
-3. Enable/Disable Map view in Search page.
-4. Add custom Google Map markers for listing types
-5. Options to choose from different map types provided by Google Map API
+== THE BEST LOCATION-BASED DIRECTORY PLUGIN ==
+Locatepress allows the user to create a location-based directory easily. This is compatible with any theme and page builders. Similar to the GeoDirectory plugin, Locatepress is a powerful and comprehensive tool for WordPress. 
+
+== EASY SCALING- MANAGING DIRECTORIES GLOBALLY ==
+Having a highly optimized database, Locatepress functions well in managing large-scale listings and tackles massive traffic. Creating a directory on the basis of location which comprehends the globe is easy with this plugin. 
+
+== VERSATILITY, EFFICIENT, AND EASY TO USE ==
+Being a shortcode-based plugin LocatPress works in every WordPress-based theme and page builder. Creating and managing directories for multiple businesses is made easier as it keeps track of the directories based on address and image. Your new directory is a few clicks away. 
+
+== SHORTCODES AND API KEYS ==
+Locatepress uses the shortcode [locatepress_search_bar] to create a search field for your directory, enabling you to easily create or locate your business on the map. A shortcode is something that replaces content into a more dynamic form, produced by a PHP function. It is located as macros “[ ]” in WordPress. Also, using the API key gives access to all the places included in the google map. So, now it is easy for the user to create their desired database and set up an efficient directory.
+
+== FEATURES ==
+Create a local directory, based on geographic location. 
+Easy search and management capability. 
+Works great on TinyMCE, Gutenberg, and many more themes and page builders.
+Dynamic 
 
 == Installation ==
 
@@ -38,7 +48,7 @@ Alternatively, you can also download the plugin using the download button on thi
 
 == Frequently Asked Questions ==
 
-= Can you have separate Markers per listing ? =
+= Can you have separate Markers per listing? =
 
 The plugin has option to have separate custom marker per Listing Category
 
