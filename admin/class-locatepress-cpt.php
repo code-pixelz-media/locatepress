@@ -247,6 +247,8 @@ class Locatepress_Register_Cpt {
                     'page-attributes',
                     'post-formats',
                 ),
+                'capability_type'       => array('map_listing','map_listings'),
+                'map_meta_cap'        => true,
                 'custom_caps'           => true,
                 'custom_caps_users'     => array(
                     'administrator',
@@ -279,8 +281,9 @@ class Locatepress_Register_Cpt {
             ),
         );
 
-        foreach ( $post_types_fields as $fields ) {
+        $post_types_field = apply_filters('post_types_fields', $post_types_fields);
 
+        foreach ( $post_types_field as $fields ) {
             $this->locatepress_register_single_post_type( $fields );
 
         }

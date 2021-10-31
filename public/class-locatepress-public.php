@@ -124,7 +124,8 @@ class Locatepress_Public
 
         $locate_press_options = get_option('locate_press_set');
 
-        $locate_press_api_key = $locate_press_options['lp_map_api_key'];
+        $locate_press_api_key = isset($locate_press_options['lp_map_api_key']) ? sanitize_text_field($locate_press_options['lp_map_api_key']) : '';
+
 
         wp_register_script('googlemaps', 'https://maps.googleapis.com/maps/api/js?&key=' . $locate_press_api_key . '&libraries=places', array(), '', false);
 
