@@ -1,7 +1,7 @@
 === Locatepress ===
 Plugin URI: http://wplocatepress.com/
 Description: Locatepress is a wordpress plugin used to filter and track the listings with google maps. 
-Version: 1.0.0
+Version: 1.0.1
 Author: wplocatepress.com
 Author URI: http://wplocatepress.com/locatepress/
 Contributors: locatepress, utsavsinghrathour, aleenak19, rowhit07, sushil51, ramanb
@@ -9,7 +9,7 @@ Donate Link: http://wplocatepress.com/
 Requires at least: 4.9
 Requires PHP: 5.6.20
 Tested up to: 5.8
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,3 +60,8 @@ The plugin has option to have separate custom marker per Listing Category
 
 = 1.0.0 =
 * First Push.
+
+= 1.0.1 =
+* Listing post_type slug changed.
+* Google Maps Cluster issue fixed.
+* Listing Single Page style fixed.
