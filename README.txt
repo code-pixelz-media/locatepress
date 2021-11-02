@@ -1,6 +1,6 @@
 === Locatepress ===
 Plugin URI: http://wplocatepress.com/
-Description: Locatepress is a wordpress plugin used to filter and track the listings with google maps. 
+Description: The all-new Locatepress is a WordPress-based plugin that is set to handle directories based on a geographic location. Working on many WordPress platforms this plugin is highly versatile in creating and managing one's directory. It includes extensive new shortcodes which are supported by the TinyMCE and Gutenberg editor.  
 Version: 1.0.1
 Author: wplocatepress.com
 Author URI: http://wplocatepress.com/locatepress/
@@ -13,11 +13,11 @@ Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Locatepress is a plugin where you can add listings and filter and track listings with Google Map API integration
+The all-new Locatepress is a WordPress-based plugin that is set to handle directories based on a geographic location. Working on many WordPress platforms this plugin is highly versatile in creating and managing one's directory. It includes extensive new shortcodes which are supported by the TinyMCE and Gutenberg editor. 
 
 == Description ==
 
-The all-new Locatepress is a WordPress-based plugin that is set to handle directories based on a geographic location. Working on many WordPress platforms this plugin is highly versatile in creating and managing one's directory. It includes extensive new shortcodes which are supported by the TinyMCE and Gutenberg editor.
+The all-new Locatepress is a WordPress-based plugin that is set to handle directories based on a geographic location. Working on many WordPress platforms this plugin is highly versatile in creating and managing one's directory. It includes extensive new shortcodes which are supported by the TinyMCE and Gutenberg editor. 
 
 == THE BEST LOCATION-BASED DIRECTORY PLUGIN ==
 Locatepress allows the user to create a location-based directory easily. This is compatible with any theme and page builders. Similar to the GeoDirectory plugin, Locatepress is a powerful and comprehensive tool for WordPress. 
