@@ -18,7 +18,7 @@ if(!empty($terms)){
 	<div class="lp-card ">
 		<?php apply_filters('locatepress_before_listing_image', get_the_id());?>
 
-		<img class="card-featured-image" src="<?php echo esc_url($featured_img_url)  ?>" class="aligncenter">
+		<a href= "<?php echo esc_url(get_the_permalink());?>"><img class="card-featured-image" src="<?php echo esc_url($featured_img_url)  ?>" class="aligncenter"> </a>
 
 		<?php apply_filters('locatepress_after_listing_image', get_the_id())?>
 
