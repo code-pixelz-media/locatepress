@@ -248,9 +248,9 @@ class Locatepress_Shortcodes
         if ($listings_query->have_posts()) {
             do_action('locatepress_before_listing');
 
-            echo apply_filters('locatepress_listing_starts', $this->locatepress_start(), 10, 9);
+            echo apply_filters('locatepress_listing_start', $this->locatepress_start(), 10, 9);
 
-            echo apply_filters('before_listing_loop_start', '<div class="lp-listing-container"><div class="lp-display-listing">');
+            echo apply_filters('locatepress_before_listing_loop_start', '<div class="lp-listing-container"><div class="lp-display-listing">');
 
             while ($listings_query->have_posts()): $listings_query->the_post();
 
@@ -260,9 +260,9 @@ class Locatepress_Shortcodes
 
             wp_reset_postdata();
 
-            echo apply_filters('after_listing_loop_ends', '</div></div>');
+            echo apply_filters('locatepress_after_listing_loop_end', '</div></div>');
 
-            echo apply_filters('locatepress_listing_ends', $this->locatepress_form_end(), 10, 9);
+            echo apply_filters('locatepress_listing_end', $this->locatepress_form_end(), 10, 9);
 
             do_action('locatepress_after_listing');
 
