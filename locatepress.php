@@ -16,7 +16,7 @@
  * Plugin Name:       Locatepress
  * Plugin URI:        http://wplocatepress.com/locatepress/
  * Description:       The all-new Locatepress is a WordPress-based plugin that is set to handle directories based on a geographic location. Working on many WordPress platforms, this plugin is highly versatile in creating and managing one's directory.  
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            wplocatepress.com
  * Author URI:        http://wplocatepress.com/
  * License:           GPL-2.0+
@@ -35,7 +35,7 @@ if (!defined('WPINC')) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('LOCATEPRESS_VERSION', '1.0.1');
+define('LOCATEPRESS_VERSION', '1.0.2');
 
 define('LOCATEPRESS_SETTINGS_URL', get_admin_url() . "edit.php?post_type=map_listing&page=locatepress_dashboard");
 

@@ -1,15 +1,15 @@
 === Locatepress ===
 Plugin URI: http://wplocatepress.com/
 Description: The all-new Locatepress is a WordPress-based plugin that is set to handle directories based on a geographic location. Working on many WordPress platforms this plugin is highly versatile in creating and managing one's directory. It includes extensive new shortcodes which are supported by the TinyMCE and Gutenberg editor.  
-Version: 1.0.1
+Version: 1.0.2
 Author: wplocatepress.com
 Author URI: http://wplocatepress.com/locatepress/
-Contributors: locatepress, utsavsinghrathour, aleenak19, rowhit07, sushil51, ramanb
+Contributors: locatepress, utsavsinghrathour, aleenak19, rowhit07, sushil51, ramanb, anilpanthi21
 Donate Link: http://wplocatepress.com/
 Requires at least: 4.9
 Requires PHP: 5.6.20
 Tested up to: 5.8
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,6 +18,8 @@ The all-new Locatepress is a WordPress-based plugin that is set to handle direct
 == Description ==
 
 The all-new Locatepress is a WordPress-based plugin that is set to handle directories based on a geographic location. Working on many WordPress platforms this plugin is highly versatile in creating and managing one's directory. It includes extensive new shortcodes which are supported by the TinyMCE and Gutenberg editor. 
+
+[youtube https://www.youtube.com/watch?v=HZIwl6slpgE]
 
 == THE BEST LOCATION-BASED DIRECTORY PLUGIN ==
 Locatepress allows the user to create a location-based directory easily. This is compatible with any theme and page builders. Similar to the GeoDirectory plugin, Locatepress is a powerful and comprehensive tool for WordPress. 
@@ -65,3 +67,7 @@ The plugin has option to have separate custom marker per Listing Category
 * Listing post_type slug changed.
 * Google Maps Cluster issue fixed.
 * Listing Single Page style fixed.
+
+= 1.0.2 =
+* Filter and action hooks added for addons.
+* Readme.txt changed.
