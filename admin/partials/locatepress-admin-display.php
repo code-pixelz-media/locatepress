@@ -246,6 +246,8 @@ if(isset($lp_options['lp_distance_unit'])){
     <?php do_action('locatepress_after_map_settings');?>
 
 </div>
+<?php do_action('locatepress_after_settings_tab_content')?>
+
 <!-- <div id="geo-location-search">
     <h2 class="tab-title"><?php _e('Search Result Setting', 'locatepress');?></h2>
 
