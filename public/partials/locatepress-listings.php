@@ -46,5 +46,5 @@ if(!empty($terms)){
 		</div>
 	</div>
 </div>
-<?php apply_filters('locatepress_listing_loop_ends', get_the_id());?>
+<?php apply_filters('locatepress_listing_loop_end', get_the_id());?>
 <?php
