@@ -29,7 +29,7 @@ if(isset($lp_options['lp_distance_unit'])){
     <?php do_action('locatepress_after_google_map_api_key_field');?>
 
     <div class="form-group">
-        <label for=""><?php _e('Select Page To Display Results', 'locatepress');?></label>
+                <label for=""><?php _e('Select Page To Display Results', 'locatepress');?></label>
         <div class="form-control-wrap">
              <?php wp_dropdown_pages($args = array(
                 'class'             => 'lp-custom-select minimal',
@@ -246,8 +246,8 @@ if(isset($lp_options['lp_distance_unit'])){
     <?php do_action('locatepress_after_map_settings');?>
 
 </div>
-<?php do_action('locatepress_after_settings_tab_content')?>
 
+<?php do_action('locatepress_after_settings_tab_content')?>
 <!-- <div id="geo-location-search">
     <h2 class="tab-title"><?php _e('Search Result Setting', 'locatepress');?></h2>
 
