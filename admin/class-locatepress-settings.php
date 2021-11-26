@@ -66,7 +66,6 @@ class Locatepress_Settings
         echo '<li class="nav-tab"><a href="#search-bar" class="dashicons-before dashicons-admin-generic">' . __('Search Bar', 'locatepress') . '</a></li>';
         echo '<li class="nav-tab"><a href="#map-settings" class="dashicons-before dashicons-admin-settings">' . __('Map Settings', 'locatepress') . '</a></li>';
         do_action('locatepress_after_setting_tab');
-
         //echo '<li class="nav-tab"><a href="#geo-location-search" class="dashicons-before dashicons-search">' . __('Search Result Setting', 'locatepress') . '</a></li>';
 
         echo '</ul>'; //tab-menu ends
