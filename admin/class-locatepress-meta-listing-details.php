@@ -178,6 +178,7 @@ class Locatepress_Register_Metabox_Listing_Details {
 		update_post_meta( $post_id, 'locatepress_fb-url', $locatepress_new_fb_url );
 		update_post_meta( $post_id, 'locatepress_twir-url', $locatepress_new_twir_url );
 		update_post_meta( $post_id, 'locatepress_video_url', $locatepress_video_url );
+		update_post_meta( $post_id, 'featured-listing-checkbox', '0' );
 
 
 	}
