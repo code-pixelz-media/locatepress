@@ -1,203 +1,202 @@
 <?php
 
 // If this file is called directly, abort.
-if (!defined('WPINC')) {
-    die;
+if ( ! defined( 'WPINC' ) ) {
+	die;
 }
 
-class Locatepress_Shortcodes
-{
+class Locatepress_Shortcodes {
 
-    /**
-     * The ID of this plugin.
-     *
-     * @since    1.0.0
-     * @access   private
-     * @var      string    $plugin_name    The ID of this plugin.
-     */
-    private $plugin_name;
 
-    /**
-     * The version of this plugin.
-     *
-     * @since    1.0.0
-     * @access   private
-     * @var      string    $version    The current version of this plugin.
-     */
-    private $version;
-    /**
-     * The filter fields of search bar
-     *
-     * @since    1.0.0
-     * @access   private
-     * @var      string    $version    The current version of this plugin.
-     */
+	/**
+	 * The ID of this plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $plugin_name    The ID of this plugin.
+	 */
+	private $plugin_name;
 
-    private $fields;
-    /**
-     * The Settings from dashboard
-     *
-     * @since    1.0.0
-     * @access   private
-     * @var      string    $version    The current version of this plugin.
-     */
+	/**
+	 * The version of this plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $version    The current version of this plugin.
+	 */
+	private $version;
+	/**
+	 * The filter fields of search bar
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $version    The current version of this plugin.
+	 */
 
-    private $settings;
+	private $fields;
+	/**
+	 * The Settings from dashboard
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $version    The current version of this plugin.
+	 */
 
-    /**
-     * Initialize the class and set its properties.
-     *
-     * @since    1.0.0
-     * @param      string    $plugin_name       The name of the plugin.
-     * @param      string    $version    The version of this plugin.
-     */
+	private $settings;
 
-    public function __construct($plugin_name, $version)
-    {
+	/**
+	 * Initialize the class and set its properties.
+	 *
+	 * @since    1.0.0
+	 * @param      string    $plugin_name       The name of the plugin.
+	 * @param      string    $version    The version of this plugin.
+	 */
 
-        $this->plugin_name  = $plugin_name;
-        $this->version      = $version;
-        $this->settings     = get_option('locate_press_set');
-        $lp_options         = get_option('locate_press_set');
+	public function __construct( $plugin_name, $version ) {
+		$this->plugin_name = $plugin_name;
+		$this->version     = $version;
+		$this->settings    = get_option( 'locate_press_set' );
+		$lp_options        = get_option( 'locate_press_set' );
 
-        if (isset($lp_options['lp_map_js'])) {
+		if ( isset( $lp_options['lp_map_js'] ) ) {
 
-            $map_type = $lp_options['lp_map_js'];
+			$map_type = $lp_options['lp_map_js'];
 
-        } else {
+		} else {
 
-            $map_type = 'google-map';
-        }
-        $this->fields = array(
-            'keyword_filter'    => array(
-                'type'          => 'text',
-                'title'         => __('Keyword Search', 'locatepress'),
-                'placeholder'   => __('Search...', 'locatepress'),
-                'name'          => 'lp_search_keyword',
-                'settings'      => 'lp_ky_search',
-                'class'         => 'lp-input-keyword',
+			$map_type = 'google-map';
+		}
+		$this->fields = array(
+			'keyword_filter'  => array(
+				'type'        => 'text',
+				'title'       => __( 'Keyword Search', 'locatepress' ),
+				'placeholder' => __( 'Search...', 'locatepress' ),
+				'name'        => 'lp_search_keyword',
+				'settings'    => 'lp_ky_search',
+				'class'       => 'lp-input-keyword',
 
-            ),
+			),
 
-            'location_search' =>
-            array(
-                'type'          => 'text',
-                'title'         => __('Location Search', 'locatepress'),
-                'placeholder'   => __('Location Search', 'locatepress'),
-                'name'          => 'lp_search_filter_loc',
-                'settings'      => 'lp_location_search',
-                'class'         => 'lp-loc-search',
-            ),
+			'location_search' =>
+			array(
+				'type'        => 'text',
+				'title'       => __( 'Location Search', 'locatepress' ),
+				'placeholder' => __( 'Location Search', 'locatepress' ),
+				'name'        => 'lp_search_filter_loc',
+				'settings'    => 'lp_location_search',
+				'class'       => 'lp-loc-search',
+			),
 
-            'lisitng_types'    => array(
-                'type'          => 'select',
-                'title'         => __('Lisitng Types', 'locatepress'),
-                'placeholder'   => __('All Lisitng Types', 'locatepress'),
-                'name'          => 'lp_search_filter_loctype',
-                'settings'      => 'lp_locationtype_search',
-                'class'         => 'lp-search-filter-loc',
-                'tax_slug'      => 'listing_type',
-            ),
+			'lisitng_types'   => array(
+				'type'        => 'select',
+				'title'       => __( 'Lisitng Types', 'locatepress' ),
+				'placeholder' => __( 'All Lisitng Types', 'locatepress' ),
+				'name'        => 'lp_search_filter_loctype',
+				'settings'    => 'lp_locationtype_search',
+				'class'       => 'lp-search-filter-loc',
+				'tax_slug'    => 'listing_type',
+			),
 
-            'category'          => array(
-                'type'          => 'select',
-                'title'         => __('Category', 'locatepress'),
-                'placeholder'   => __('All categories', 'locatepress'),
-                'name'          => 'lp_search_filter_cat',
-                'settings'      => 'lp_com_search',
-                'class'         => 'lp-search-filter-cat',
-                'tax_slug'      => 'listing_category',
-            ),
+			'category'        => array(
+				'type'        => 'select',
+				'title'       => __( 'Category', 'locatepress' ),
+				'placeholder' => __( 'All categories', 'locatepress' ),
+				'name'        => 'lp_search_filter_cat',
+				'settings'    => 'lp_com_search',
+				'class'       => 'lp-search-filter-cat',
+				'tax_slug'    => 'listing_category',
+			),
 
-            'resetbutton'       => array(
-                'type'          => 'button',
-                'placeholder'   => __('Reset', 'locatepress'),
-                'settings'      => 'lp_filter_reset-btn',
-                'class'         => 'lp-filter-form-reset',
+			'resetbutton'     => array(
+				'type'        => 'button',
+				'placeholder' => __( 'Reset', 'locatepress' ),
+				'settings'    => 'lp_filter_reset-btn',
+				'class'       => 'lp-filter-form-reset',
 
-            ),
+			),
 
-            'filterbutton'      => array(
-                'type'          => 'submit',
-                'placeholder'   => __('Filter', 'locatepress'),
-                'settings'      => '',
-                'name'          => 'lp_filter_submit',
-                'class'         => 'lp-filter-form-reset',
-                'value'         => '',
-            ),
-        );
+			'filterbutton'    => array(
+				'type'        => 'submit',
+				'placeholder' => __( 'Filter', 'locatepress' ),
+				'settings'    => '',
+				'name'        => 'lp_filter_submit',
+				'class'       => 'lp-filter-form-reset',
+				'value'       => '',
+			),
+		);
 
-        add_filter('locatepress_searchbar_filters', array($this, 'locatepress_remove_filter_button'));
-    }
+		add_filter( 'locatepress_searchbar_filters', array( $this, 'locatepress_remove_filter_button' ) );
+	}
 
-    //removes filter button from filter page
-    public function locatepress_remove_filter_button($arr)
-    {
+	//removes filter button from filter page
+	public function locatepress_remove_filter_button( $arr ) {
+		if ( is_page( $this->settings['lp_filter_page'] ) && ! empty( $this->settings['lp_filter_page'] ) ) {
+			unset( $arr['filterbutton'] );
 
-        if (is_page($this->settings['lp_filter_page']) && !empty($this->settings['lp_filter_page'])) {
-            unset($arr['filterbutton']);
+		}
+		return $arr;
+	}
+	public function locatepress_taxonomy_data( $catSlug ) {
+		$tax = get_terms(
+			array(
+				'taxonomy'   => $catSlug,
+				'hide_empty' => true,
+				'exclude'    => 1,
+			)
+		);
 
-        }
-        return $arr;
-    }
-    public function locatepress_taxonomy_data($catSlug)
-    {
+		return $tax;
+	}
 
-        $tax = get_terms(array(
-            'taxonomy'      => $catSlug,
-            'hide_empty'    => true,
-            'exclude'       => 1,
-        ));
+	//map display shortcode
+	public function locatepress_map_shortcode( $atts ) {
+		ob_start();
 
-        return $tax;
-    }
-
-//map display shortcode
-    public function locatepress_map_shortcode($atts)
-    {
-        ob_start();
-
-        extract(shortcode_atts(array(
-            'width'     => '100%',
-            'height'    => '400px',
-
-        ), $atts, 'locatepress_map'));
-
-        do_action('locatepress_before_map');
-
-        echo apply_filters('locatepress_before_map', '<div class="lp-map-container">');
-
-        echo '<div class="lp-display-map" id="lp-display-map" style="height:' . $height . ';width:' . $width . ';"></div>';
-
-        echo apply_filters('locatepress_after_map', '</div>');
-
-        do_action('locatepress_after_map');
-
-        return ob_get_clean();
-    }
-
-/**
- * Functionality : returns the listing of locations and shops according to parameters provided while serach or in shortcode attribute
- * Parameters      : $atts(attributes of shortcode(listing_types, categories, count, columns))
- * returns          : list of queried location and shops
- * @since 1.0.0
- */
-    public function locatepress_listings_shortcode($atts)
-    {
-
-        ob_start();
-        //$get_listing = sanitize_text_field(isset($_GET[ 'lp_search_filter_loctype' ]));
-
-        $get_lisitng_types  = ( isset( $_GET ['lp_search_filter_loctype'] ) && $_GET ['lp_search_filter_loctype'] ) ? sanitize_text_field (  $_GET ['lp_search_filter_loctype'] ) : '';
-		$get_categories     = ( isset( $_GET ['lp_search_filter_cat'] ) && $_GET ['lp_search_filter_cat'] ) ? sanitize_text_field ( $_GET ['lp_search_filter_cat'] ) : '';
-        
 		extract(
 			shortcode_atts(
 				array(
-					'listing_types'  => $get_lisitng_types,
-					'categories'     => $get_categories,
-					'count'          => '-1',
-					'columns'        => '4',
+					'width'  => '100%',
+					'height' => '400px',
+
+				),
+				$atts,
+				'locatepress_map'
+			)
+		);
+
+		do_action( 'locatepress_before_map' );
+
+		echo apply_filters( 'locatepress_before_map', '<div class="lp-map-container">' );
+
+		echo '<div class="lp-display-map" id="lp-display-map" style="height:' . $height . ';width:' . $width . ';"></div>';
+
+		echo apply_filters( 'locatepress_after_map', '</div>' );
+
+		do_action( 'locatepress_after_map' );
+
+		return ob_get_clean();
+	}
+
+	/**
+	 * Functionality : returns the listing of locations and shops according to parameters provided while serach or in shortcode attribute
+	 * Parameters      : $atts(attributes of shortcode(listing_types, categories, count, columns))
+	 * returns          : list of queried location and shops
+	 * @since 1.0.0
+	 */
+	public function locatepress_listings_shortcode( $atts ) {
+		ob_start();
+		//$get_listing = sanitize_text_field(isset($_GET[ 'lp_search_filter_loctype' ]));
+
+		$get_lisitng_types = ( isset( $_GET ['lp_search_filter_loctype'] ) && $_GET ['lp_search_filter_loctype'] ) ? sanitize_text_field( $_GET ['lp_search_filter_loctype'] ) : '';
+		$get_categories    = ( isset( $_GET ['lp_search_filter_cat'] ) && $_GET ['lp_search_filter_cat'] ) ? sanitize_text_field( $_GET ['lp_search_filter_cat'] ) : '';
+
+		extract(
+			shortcode_atts(
+				array(
+					'listing_types' => $get_lisitng_types,
+					'categories'    => $get_categories,
+					'count'         => '-1',
+					'columns'       => '4',
 				),
 				$atts,
 				'locatepress_listings'
@@ -205,10 +204,10 @@ class Locatepress_Shortcodes
 		);
 
 		$tax_query = [];
-        
+
 		if ( ! empty( $listing_types ) ) {
-			$location_terms_array = explode( ',', $listing_types  );
-            
+			$location_terms_array = explode( ',', $listing_types );
+
 			array_push(
 				$tax_query,
 				array(
@@ -236,230 +235,223 @@ class Locatepress_Shortcodes
 		$listing_args = array(
 			'post_type'      => array( 'map_listing' ),
 			'post_status'    => array( 'publish' ),
-			'posts_per_page' => sanitize_text_field($count),
+			'posts_per_page' => sanitize_text_field( $count ),
 		);
-        
+
 		if ( ! empty( $tax_query ) ) {
 			$tax_query['relation']     = 'AND';
 			$listing_args['tax_query'] = $tax_query;
 		}
+
+		$listing_args   = apply_filters( 'locatepress_search_filter_query', $listing_args );
 		$listings_query = new WP_Query( $listing_args );
 
-        if ($listings_query->have_posts()) {
-            do_action('locatepress_before_listing');
+		if ( $listings_query->have_posts() ) {
+			do_action( 'locatepress_before_listing' );
 
-            echo apply_filters('locatepress_listing_start', $this->locatepress_start(), 10, 9);
+			echo apply_filters( 'locatepress_listing_start', $this->locatepress_start(), 10, 9 );
 
-            echo apply_filters('locatepress_before_listing_loop_start', '<div class="lp-listing-container"><div class="lp-display-listing">');
+			echo apply_filters( 'locatepress_before_listing_loop_start', '<div class="lp-listing-container"><div class="lp-display-listing">' );
 
-            while ($listings_query->have_posts()): $listings_query->the_post();
+			while ( $listings_query->have_posts() ) :
+				$listings_query->the_post();
 
-                include plugin_dir_path(__FILE__) . 'partials/locatepress-listings.php';
+				include plugin_dir_path( __FILE__ ) . 'partials/locatepress-listings.php';
 
-            endwhile;
+			endwhile;
 
-            wp_reset_postdata();
+			wp_reset_postdata();
 
-            echo apply_filters('locatepress_after_listing_loop_end', '</div></div>');
+			echo apply_filters( 'locatepress_after_listing_loop_end', '</div></div>' );
 
-            echo apply_filters('locatepress_listing_end', $this->locatepress_form_end(), 10, 9);
+			echo apply_filters( 'locatepress_listing_end', $this->locatepress_form_end(), 10, 9 );
 
-            do_action('locatepress_after_listing');
+			do_action( 'locatepress_after_listing' );
 
-        }
-        return ob_get_clean();
+		}
+		return ob_get_clean();
 
-    }
+	}
 
-/**
- * Functionality : dispays the search bar
- * Parameters      : $atts(attributes of shortcode(map, listing))
- * returns          : search bar with map and lisitng of set true
- * @since 1.0.0
- */
-    public function locatepress_search_bar_shortcode($atts)
-    {
-        ob_start();
-        extract(shortcode_atts(array(
-            'map' => 'false',
-            'listing' => 'false',
-        ), $atts, 'locatepress_filters'));
+	/**
+	 * Functionality : dispays the search bar
+	 * Parameters      : $atts(attributes of shortcode(map, listing))
+	 * returns          : search bar with map and lisitng of set true
+	 * @since 1.0.0
+	 */
+	public function locatepress_search_bar_shortcode( $atts ) {
+		 ob_start();
+		extract(
+			shortcode_atts(
+				array(
+					'map'     => 'false',
+					'listing' => 'false',
+				),
+				$atts,
+				'locatepress_filters'
+			)
+		);
 
-        $filter_fields = apply_filters('locatepress_searchbar_filters', $this->fields, 10, 9);
+		$filter_fields = apply_filters( 'locatepress_searchbar_filters', $this->fields, 10, 9 );
 
-        echo apply_filters('locatepress_filter_start', $this->locatepress_start(), 10, 9);
+		echo apply_filters( 'locatepress_filter_start', $this->locatepress_start(), 10, 9 );
 
-        echo apply_filters('locatepress_before_form_start', $this->locatepress_before_form_start(), 10, 9);
+		echo apply_filters( 'locatepress_before_form_start', $this->locatepress_before_form_start(), 10, 9 );
 
-        echo '<div class="lp-search-filter">';
+		echo '<div class="lp-search-filter">';
 
-        echo apply_filters('locatepress_form_start', $this->locatepress_form_start(), 10, 9);
+		echo apply_filters( 'locatepress_form_start', $this->locatepress_form_start(), 10, 9 );
 
-        echo '<ul class="lp-search-filter-elm">';
+		echo '<ul class="lp-search-filter-elm">';
 
-        echo '<input class="lp_location_lat" type= "hidden" name="lp_location_latitude" value="">';
+		echo '<input class="lp_location_lat" type= "hidden" name="lp_location_latitude" value="">';
 
-        echo '<input class="lp_location_lng" type= "hidden" name="lp_location_longitude" value="">';
+		echo '<input class="lp_location_lng" type= "hidden" name="lp_location_longitude" value="">';
 
+		foreach ( $filter_fields as $key => $value ) {
 
+			if ( ! isset( $this->settings[ $value['settings'] ] ) ) {
+				do_action( 'locatepress_before_' . $key );
+				echo '<li class="lp_' . esc_attr( $key ) . '">';
+				if ( ! empty( $value['title'] ) ) {
+					echo '<h3>' . esc_attr( $value['title'] ) . '</h3>';
 
-        foreach ($filter_fields as $key => $value) {
+				}
 
-            if (!isset($this->settings[$value['settings']])) {
-                do_action('locatepress_before_' . $key);
-                echo '<li class="lp_' . esc_attr( $key ) . '">';
-                if (!empty($value['title'])) {
-                    echo '<h3>' . esc_attr( $value['title']) . '</h3>';
+				if ( ! empty( $value['type'] ) ) {
 
-                }
+					switch ( $value['type'] ) {
+						case 'text':
+							echo '<input placeholder="' . esc_attr( $value['placeholder'] ) . '" name="' . esc_attr( $value['name'] ) . '" class="' . esc_attr( $value['class'] ) . '" type="text" autocomplete="off" value="' . esc_attr( $this->locatepress_post_values( $value['name'] ) ) . '">';
 
-                if (!empty($value['type'])) {
+							break;
+						case 'div':
+							echo '<div id="' . esc_attr( $value['class'] ) . '"></div>';
+							echo '<pre id="result"></pre>';
+							break;
 
-                    switch ($value['type']) {
-                        case 'text':
-                            echo '<input placeholder="' . esc_attr( $value['placeholder'] ) . '" name="' . esc_attr( $value['name'] ) . '" class="' . esc_attr( $value['class'] ) . '" type="text" autocomplete="off" value="' . esc_attr ($this->locatepress_post_values($value['name'])) . '">';
+						case 'button':
+							echo '<input type="button" id="lp-' . esc_attr( $key ) . '"  class="' . esc_attr( $value['class'] ) . '"  value="' . esc_attr( $value['placeholder'] ) . '">';
 
-                            break;
-                        case 'div':
-                            echo '<div id="' . esc_attr( $value['class'] ) . '"></div>';
-                            echo '<pre id="result"></pre>';
-                            break;
+							break;
 
-                        case 'button':
+						case 'submit':
+							echo '<input type="submit" id="lp-' . esc_attr( $key ) . '" name="' . esc_attr( $value['name'] ) . '"  class="' . esc_attr( $value['class'] ) . '"  value="' . esc_attr( $value['placeholder'] ) . '">';
 
-                            echo '<input type="button" id="lp-' . esc_attr( $key ) . '"  class="' . esc_attr ($value['class'] ) . '"  value="' . esc_attr ( $value['placeholder'] ) . '">';
+							break;
 
-                            break;
+						case 'select':
+							$taxitems = $this->locatepress_taxonomy_data( esc_attr( $value['tax_slug'] ) );
 
-                        case 'submit':
+							echo '<select class="' . esc_attr( $value['class'] ) . ' select-css" name="' . esc_attr( $value['name'] ) . '">';
 
-                            echo '<input type="submit" id="lp-' . esc_attr( $key ) . '" name="' . esc_attr( $value['name'] ). '"  class="' . esc_attr( $value['class'] ) . '"  value="' . esc_attr( $value['placeholder'] ) . '">';
+							echo '<option value="" >' . esc_attr( $value['placeholder'] ) . '</option>';
 
-                            break;
+							foreach ( $taxitems as $t ) {
 
-                        case 'select':
-                            $taxitems = $this->locatepress_taxonomy_data( esc_attr( $value['tax_slug'] ) );
+								if ( isset( $_GET[ $value['name'] ] ) && ( $_GET[ $value['name'] ] == $t->term_id ) ) {
 
-                            echo '<select class="' . esc_attr( $value['class'] ) . ' select-css" name="' . esc_attr( $value['name'] ) . '">';
+									echo '<option value="' . esc_attr( $t->term_id ) . '" selected>' . esc_html( $t->name ) . '</option>';
 
-                            echo '<option value="" >' . esc_attr( $value['placeholder'] ) . '</option>';
+									continue;
+								}
+								echo '<option  value="' . esc_attr( $t->term_id ) . '">' . esc_html( $t->name ) . '</option>';
 
-                            foreach ($taxitems as $t) {
+							}
 
-                                if (isset($_GET[$value['name']]) && ($_GET[$value['name']] == $t->term_id)) {
+							echo '</select>';
+							break;
 
-                                    echo '<option value="' . esc_attr( $t->term_id ). '" selected>' . esc_html($t->name) . '</option>';
+						default:
+							echo '<p>' . esc_html( $value['type'] ) . __( 'is not supported', 'locatepress' ) . ' </p>';
+							break;
+					}
+				}
 
-                                    continue;
-                                }
-                                echo '<option  value="' .esc_attr( $t->term_id ) . '">' . esc_html($t->name) .'</option>';
+				do_action( 'locatepress_after_' . $key );
+				echo '</li>';
+			}
+		}
 
-                            }
+		echo '</ul>';
 
-                            echo '</select>';
-                            break;
+		echo apply_filters( 'locatepress_form_end', $this->locatepress_form_end(), 10, 9 );
 
-                        default:
-                            echo '<p>' . esc_html( $value['type'] ) . __('is not supported', 'locatepress') . ' </p>';
-                            break;
-                    }
-                }
+		echo '</div>';
+		if ( $map == 'true' ) {
+			echo do_shortcode( '[locatepress_map]' );
+		}
 
-                do_action('locatepress_after_' . $key);
-                echo '</li>';
-            }
+		echo apply_filters( 'locatepress_after_form_end', $this->locatepress_after_form_end(), 10, 9 );
 
-        }
+		if ( $listing == 'true' ) {
 
-        echo '</ul>';
+			$listing_type  = ( isset( $_GET ['lp_search_filter_loctype'] ) && $_GET ['lp_search_filter_loctype'] ) ? sanitize_text_field( $_GET ['lp_search_filter_loctype'] ) : '';
+			$category_type = ( isset( $_GET ['lp_search_filter_cat'] ) && $_GET ['lp_search_filter_cat'] ) ? sanitize_text_field( $_GET ['lp_search_filter_cat'] ) : '';
 
-        echo apply_filters('locatepress_form_end', $this->locatepress_form_end(), 10, 9);
+			echo do_shortcode( '[locatepress_listing listing_types="' . $listing_type . '" categories="' . $category_type . '" count="-1"]' );
 
-        echo '</div>';
-        if ($map == 'true') {
-            echo do_shortcode('[locatepress_map]');
-        }
+		}
 
-        echo apply_filters('locatepress_after_form_end', $this->locatepress_after_form_end(), 10, 9);
+		echo apply_filters( 'locatepress_filter_end', $this->locatepress_end(), 10, 9 );
 
-        if ($listing == 'true') {
-            
-            $listing_type = ( isset( $_GET ['lp_search_filter_loctype'] ) && $_GET ['lp_search_filter_loctype'] ) ? sanitize_text_field (  $_GET ['lp_search_filter_loctype'] ) : '';
-            $category_type = ( isset( $_GET ['lp_search_filter_cat'] ) && $_GET ['lp_search_filter_cat'] ) ? sanitize_text_field ( $_GET ['lp_search_filter_cat'] ) : '';
+		return ob_get_clean();
 
-            echo do_shortcode('[locatepress_listing listing_types="' . $listing_type . '" categories="' . $category_type . '" count="-1"]');
+	}
 
-        }
+	//container berfore form starts
+	public function locatepress_before_form_start() {
+		if ( isset( $this->settings['lp_search_disp'] ) ) {
+			$searchbar_align = $this->settings['lp_search_disp'];
+		} else {
+			$searchbar_align = 'top';
+		}
+		echo '<div class="lp-wrap search-align-' . esc_html( $searchbar_align ) . '" >';
 
-        echo apply_filters('locatepress_filter_end', $this->locatepress_end(), 10, 9);
+	}
+	//container after form ends
+	public function locatepress_after_form_end() {
+		echo '</div>';
 
-        return ob_get_clean();
+	}
+	//Search Bar Form Starts
+	public function locatepress_form_start() {
+		return '<form  class="lp-search-filter-form" id="lp-search-filter-form" name="lp_search_filter"  method="GET" action="' . esc_url( get_permalink( $this->settings['lp_filter_page'] ) ) . '" >';
 
-    }
+	}
 
-    //container berfore form starts
-    public function locatepress_before_form_start()
-    {
-        if (isset($this->settings['lp_search_disp'])) {
-            $searchbar_align = $this->settings['lp_search_disp'];
-        } else {
-            $searchbar_align = 'top';
-        }
-        echo '<div class="lp-wrap search-align-' . esc_html($searchbar_align) . '" >';
+	//Search Bar Form Ends
 
-    }
-    //container after form ends
-    public function locatepress_after_form_end()
-    {
-        echo '</div>';
+	public function locatepress_form_end() {
+		return '</form>';
+	}
 
-    }
-    //Search Bar Form Starts
-    public function locatepress_form_start()
-    {
+	//container Start
+	public function locatepress_start() {
+		$s_html  = '<div class="lp-row">';
+		$s_html .= '<div class="lp-container">';
+		return $s_html;
 
-        return '<form  class="lp-search-filter-form" id="lp-search-filter-form" name="lp_search_filter"  method="GET" action="' . esc_url(get_permalink($this->settings['lp_filter_page'])) . '" >';
+	}
 
-    }
+	//container end
+	public function locatepress_end() {
+		 $e_html = '</div>';
+		$e_html .= '</div>';
+		return $e_html;
 
-    //Search Bar Form Ends
+	}
 
-    public function locatepress_form_end()
-    {
+	public function locatepress_post_values( $name ) {
+		if ( isset( $_GET[ $name ] ) ) {
 
-        return '</form>';
-    }
+			return sanitize_text_field( $_GET[ $name ] );
 
-    //container Start
-    public function locatepress_start()
-    {
-        $s_html  = '<div class="lp-row">';
-        $s_html .= '<div class="lp-container">';
-        return $s_html;
+		} else {
 
-    }
+			return false;
+		}
 
-    //container end
-    public function locatepress_end()
-    {
-        $e_html = '</div>';
-        $e_html .= '</div>';
-        return $e_html;
-
-    }
-
-    public function locatepress_post_values($name)
-    {
-
-        if (isset($_GET[$name])) {
-
-            return sanitize_text_field( $_GET[$name] ) ;
-
-        } else {
-
-            return false;
-        }
-
-    }
+	}
 
 }
