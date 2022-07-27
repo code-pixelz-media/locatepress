@@ -587,11 +587,6 @@ a.lp_slider_image img{
   float: right;
 }
 
-.lp-lisiting-logo img{
- height: auto;
- width: 80px;
-}
-
 span.lp-lisiting-logo{
   margin-right: 10px;
 }
@@ -767,13 +762,14 @@ ul{
 }
 
 .lp-lisiting-logo img {
-  width: auto;
-  max-height: 40px;
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
 }
 
 span.lp-lisiting-logo {
-  margin-right: 30px;
-  margin-top: 14px;
+  margin-right: 25px;
+  margin-top: 10px;
 }
 
 
@@ -969,10 +965,12 @@ span.lp_single_address {
 
 
 .locatepress-single-listing-wrap .lp-contact {
-  padding-left: 80px;
-  margin-bottom: 10px;
+  padding-left: 150px;
+  margin-bottom: 6px;
   font-weight: 400;
   color: #6d6d6d;
+  position: relative;
+  bottom: 45px;
 }
 
 .locatepress-single-listing-wrap .plugin-main-title h1 {
