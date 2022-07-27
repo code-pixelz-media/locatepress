@@ -40,10 +40,6 @@ p{
     position: relative;
 }
 
-.lp-search-filter-form .lp_resetbutton {
-    padding: 55px 0 10px 5px !important;
-}
-
 .lp-search-filter-form .lp_filterbutton {
     padding: 55px 0 10px 5px !important;
 }
@@ -98,6 +94,7 @@ p{
 .lp-search-filter-form .lp-filter-form-reset:hover {
     color: #007CB2;
     background-color: transparent;
+    border-color: #aaaaaa;
 }
 
 /* class applies to select element itself, not a wrapper element */
@@ -116,7 +113,7 @@ p{
     display: block;
     font-size: 16px;
     height: 40px;
-    line-height: 1.2;
+    line-height: 1.3;
     max-width: 100%;
     margin: 15px 0 0;
     outline: none;
@@ -223,6 +220,9 @@ p{
     font-size: 16px;
     padding: 20px;
 }
+.lp-display-listing .lp-card .lp-card-body a{
+  text-decoration: none;
+}
 
 .lp-listing-container .lp-display-listing .lp-card .lp-card-body .card-body-title {
   font-size: 20px;
@@ -239,6 +239,10 @@ p{
     font-size: 16px;
     font-weight: 600;
     text-decoration: none !important;
+}
+.lp-map-container .lp-display-map {
+  width: 100% !important;
+  max-width: 550px;
 }
 
 /*Test Css*/
@@ -326,7 +330,6 @@ p{
     width: 80% !important;
 }
 
-.lp-wrap.search-align-left .lp-search-filter li,
 .lp-wrap.search-align-right .lp-search-filter li {
     width: 100% !important;
     padding-top: 15px !important;
@@ -591,11 +594,11 @@ a.lp_slider_image img{
 
 span.lp-lisiting-logo{
   margin-right: 10px;
-  margin-top: 20px;
 }
 
 .plugin-main-title{
   display: flex;
+  margin-bottom: 10px;
   
 }
 
@@ -618,6 +621,17 @@ span.lp_single_contact_no{
 
 .locatepress-single-listing-wrap{
   padding: 60px 0;
+}
+
+@media (max-width:550px){
+
+  .plugin-main-title{
+    margin-bottom: 0px;  
+  }
+
+  span.lp-lisiting-logo {
+    margin-top: 14px !important;
+}
 }
 
 /* ----------------- owl ----------------------------- */
@@ -762,9 +776,6 @@ span.lp-lisiting-logo {
   margin-top: 14px;
 }
 
-.plugin-main-title{
-  margin-bottom: 10px;
-}
 
 span.lp_single_address {
   margin-left: 10px;
@@ -774,9 +785,457 @@ span.lp_single_address {
 }
 
 
-
-
-
 .fa, .fas {
   font-family: "FontAwesome" !important;
 }
+
+
+/* ---------------------------------------------------- Designing -------------------------------------------- */
+
+.site-header {
+  margin-left: auto !important;
+}
+
+.site-header:not(.dynamic-header){
+  width: unset !important;
+}
+
+
+.lp-row .lp-wrap.search-align-left .lp-search-filter{
+	width: 100%;
+	padding: 0;
+}
+
+.lp-row .lp-wrap.search-align-left .lp-search-filter ul{
+	display: flex;
+}
+
+.lp-row .lp-search-filter-form .lp_filterbutton{
+	display: none;
+}
+
+.lp-row .lp-search-filter-elm li h3{
+	font-size: 18px;
+	font-weight: 450;
+}
+
+.site-main .lp-search-filter-form select {
+  background-position: right 10px top 50%, 0px 0px;
+	color: #6d6d6d;
+}
+
+.site-main .lp-search-filter-form .lp-filter-form-reset{
+	padding: 11px;
+  position: relative;
+  top: 40px;
+}
+
+@media (max-width: 1024px){
+  .lp-row .lp-wrap.search-align-left .lp-search-filter ul {
+    display: block;
+}
+
+.lp-wrap.search-align-left .lp-search-filter ul {
+  padding: 0 !important;
+}
+
+.site-main .lp-search-filter-form .lp-filter-form-reset {
+  margin-top: 17px;
+  margin-bottom: 17px;
+}
+
+}
+
+ 
+/* --------------------------- lp-card ---------------------------------------------- */
+.site-title a{
+  text-decoration: none;
+}
+.lp-wrap.search-align-left .lp-search-filter ul{
+  padding: 20px 0;
+}
+
+.site-main .lp-listing-container .lp-display-listing .lp-card-col {
+  margin-bottom: 50px;
+}
+
+.site-main .lp-listing-container .lp-display-listing .lp-card{
+  height: 100%;
+  margin-bottom: 0;
+  background: #FFFFFF;
+  border: 0;
+  filter: drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.08));
+}
+
+.site-main .lp-listing-container .lp-display-listing .lp-card img {
+  width: 100%;
+  height: 23vh;
+  object-fit: cover;
+}
+
+.site-main .lp-listing-container .lp-display-listing .lp-card .lp-card-body h3.card-body-title{
+  font-size: 18px;
+  font-weight: 400;	
+  color: #000000;
+}
+.site-main .lp-listing-container .lp-display-listing .lp-card .lp-card-body h3.card-body-title:hover{
+  color: #444444
+}
+
+.site-main .card-body-cat{
+  font-size: 14px;
+}
+
+.site-main .card-body-location{
+  margin-top: 8px;
+}
+
+.site-main .card-body-location a {
+  color: #007CB2;
+  font-size: 14px;
+  font-weight: 400;
+}
+.site-main .lp-search-filter-form .lp-filter-form-reset:focus{
+  background-color: #007CB2;
+  border-color: #007CB2;
+  color: #fff;
+}
+
+@media (max-width: 1024px){
+  
+/* .site-main .lp-listing-container .lp-display-listing .lp-card a img{
+  width: 100%;
+  height: auto;
+} */
+
+.site-main .lp-listing-container .lp-display-listing .lp-card img {
+  width: 100%;
+  height: 35vh;
+}
+
+.lp-listing-container .lp-display-listing .lp-card-col{
+  width: 50%;
+}
+}
+
+@media (max-width: 991px){
+  .site-main .lp-listing-container .lp-display-listing .lp-card img {
+    width: 100%;
+    height: 30vh;
+  }
+}
+@media (max-width: 767px){
+  .lp-listing-container .lp-display-listing .lp-card-col {
+    width: 100%;
+}
+.site-main .lp-listing-container .lp-display-listing .lp-card img {
+ height: auto;
+}
+}
+
+@media (max-width: 575px){
+  .site-main .lp-listing-container .lp-display-listing .lp-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .lp-listing-container .lp-display-listing .lp-card-col{
+    width: 100%;
+  }
+
+  .lp-display-listing {
+    margin-right: 0px;
+}
+
+.lp-listing-container .lp-display-listing .lp-card-col{
+  padding-right: 0px;
+}
+}
+
+/* ----------map ----------- */
+
+.lp-wrap.search-align-left .lp-map-container{
+	width: 100% !important;
+}
+
+/* ----------------------- */
+
+.locatepress-single-listing-wrap p {
+  color: #A5A7A7;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+
+.locatepress-single-listing-wrap .lp-contact {
+  padding-left: 80px;
+  margin-bottom: 10px;
+  font-weight: 400;
+  color: #6d6d6d;
+}
+
+
+span.lp-lisiting-logo {
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.locatepress-single-listing-wrap .plugin-main-title h1 {
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+.wp-video {
+  padding-top: 10px;
+}
+
+.lp-display-listing{
+  margin-left: 0;
+}
+/* ---- business hour -------- */
+
+.locatepress-single-listing-wrap .col-md-4 .lp-business-hour ul li{
+	margin-bottom: 6px;
+}
+
+@media (max-width: 1159px){
+
+  .lp-business-hour, .lp-social-profile {
+    padding: 20px;
+  }
+
+  .lp-social-profile a{
+    margin-right: 10px;
+  }
+
+}
+
+@media (max-width: 1024px){
+
+  .lp-business-hour, .lp-social-profile {
+    padding: 30px;
+  }
+
+  .lp-social-profile a{
+    margin-right: 15px;
+  }
+
+  .locatepress-single-listing-wrap .col-md-4 {
+    padding-top: 65px !important;
+  }
+
+}
+
+/* -----recent-posts and search ------------ */
+
+#search-2 {
+  margin-top: 50px;
+}
+
+.locatepress-single-listing-wrap [type=submit] {
+  color: #007CB2;
+  padding: 8px 20px;
+  border-color: #007CB2;
+  margin-left: 8px;
+}
+
+.locatepress-single-listing-wrap [type=submit]:hover{
+  background-color:#007CB2;
+}
+
+.locatepress-single-listing-wrap .search-form{
+	position: relative;
+}
+
+.locatepress-single-listing-wrap input.search-submit{
+	position:absolute;
+}
+
+.locatepress-single-listing-wrap .widget ul li a, .locatepress-single-listing-wrap .widget ul li{
+	color: #6d6d6d;
+}
+
+.locatepress-single-listing-wrap .widget ul li{
+	margin-bottom: 6px;
+	margin-left: 3px;
+}
+
+.locatepress-single-listing-wrap h2{
+	font-size: 1.75rem;
+}
+
+
+
+/* -------------------------- flex ----------------------------------------------------- */
+
+
+/* .locatepress-single-listing-wrap .col-md-8 .lp-contact{
+  position: absolute;
+  top: 65px;
+  left: 75px;
+  font-size: 14px;
+}
+
+.locatepress-single-listing-wrap i.fa.fa-phone, .locatepress-single-listing-wrap span.lp_single_contact_no{
+  position: absolute; 
+}
+
+
+.locatepress-single-listing-wrap span.lp_single_contact_no{
+  padding-left: 241px;
+
+}
+
+.locatepress-single-listing-wrap i.fa.fa-phone{
+  padding-left: 210px;
+  padding-top: 5px;
+ 
+}
+
+.locatepress-single-listing-wrap i.fa.fa-phone:before{
+	border-left: 1px solid;
+	padding-left: 18px;
+	color: #6d6d6d;
+} */
+
+@media (max-width: 550px){
+
+
+ .locatepress-single-listing-wrap .plugin-main-title h1 {
+    font-size: 28px;
+ }
+
+ .locatepress-single-listing-wrap .col-md-8 .lp-contact {
+  font-size: 12px;
+}
+
+/* .lp-lisiting-logo img {
+  max-width: 60px;
+  max-height: 60px;
+}
+
+.locatepress-single-listing-wrap span.lp_single_contact_no {
+  padding-left: 185px;
+}
+
+.locatepress-single-listing-wrap i.fa.fa-phone{
+  padding-left: 165px;
+ 
+}
+
+.locatepress-single-listing-wrap i.fa.fa-phone:before{
+	padding-left: 12px;
+	
+}  */
+
+
+
+}
+
+
+/* ----- owl-carousel---------- */
+
+.locatepress-single-listing-wrap .owl-theme .owl-dots .owl-dot{
+  display: none;
+}
+
+#sync1 .owl-item img{
+	max-width: 100%;
+	height: 70vh;
+}
+
+#sync2 .owl-item img{
+	width: 100%;
+	height: 10vh;
+}
+
+@media (max-width: 991px){
+  #sync1 .owl-item img{
+    max-width: 100%;
+    height: 40vh;
+  }
+  
+  #sync2 .owl-item img{
+    width: 100%;
+    height: 5vh;
+  }
+}
+
+@media (max-width: 1024px){
+	.locatepress-single-listing-wrap .col-md-8{
+		width: 100%;
+	}
+
+	.locatepress-single-listing-wrap .col-md-4{
+		width: 100%;
+	}
+	
+}
+
+
+
+/* .locatepress-single-listing-wrap .col-md-8{
+	position: relative;
+}
+
+.locatepress-single-listing-wrap i.fa.fa-phone, .locatepress-single-listing-wrap span.lp_single_contact_no{
+  position: absolute;
+  bottom: 10px;
+  right: 43%;
+  
+}
+
+.locatepress-single-listing-wrap i.fa.fa-phone{
+  right: 55%;
+  bottom: 13px;
+}
+
+
+.locatepress-single-listing-wrap i.fa.fa-phone:before{
+	border-left: 1px solid;
+	padding-left: 15px;
+	color: #6d6d6d;
+}
+
+
+@media (min-width: 1400px){
+
+  .locatepress-single-listing-wrap i.fa.fa-phone, .locatepress-single-listing-wrap span.lp_single_contact_no{
+    position: absolute;
+    bottom: 10px;
+    right: 52%;
+    
+  }
+  
+  .locatepress-single-listing-wrap i.fa.fa-phone{
+    right: 62%;
+    bottom: 13px;
+  }
+}
+
+
+@media (max-width: 1200px){
+
+  .locatepress-single-listing-wrap i.fa.fa-phone, .locatepress-single-listing-wrap span.lp_single_contact_no{
+    right: 34%;
+    
+  }
+  
+  .locatepress-single-listing-wrap i.fa.fa-phone{
+    right: 48%;
+  }
+}
+
+
+@media (max-width: 991px){
+
+  .locatepress-single-listing-wrap i.fa.fa-phone, .locatepress-single-listing-wrap span.lp_single_contact_no{
+    right: 12%;
+    
+  }
+  
+  .locatepress-single-listing-wrap i.fa.fa-phone{
+    right: 30%;
+  }
+} */
