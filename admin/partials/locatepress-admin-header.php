@@ -9,8 +9,8 @@ if (!defined('WPINC')) {
         <div class="logo-wrap col-md-6">
 
             <div class="title">
+                <a href="<?php echo esc_url('http://wplocatepress.com/'); ?>"> <img src="<?php echo plugin_dir_url( dirname( __FILE__ ) ) . 'images/blue.png'; ?>"></a>
                 <h1><?php _e('Locatepress Settings', 'locatepress');?></h1>
-                <p><a href="<?php echo esc_url('http://wplocatepress.com/'); ?>"><?php _e('Locatepress', 'locatepress');?></a></p>
             </div>
         </div>
         <div class="btn-wrap col-md-6">
