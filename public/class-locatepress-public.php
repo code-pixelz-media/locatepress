@@ -357,16 +357,22 @@ class Locatepress_Public
     public static function locatepress_single_listing_gallery($post_id)
     {
         $image_gallery_data = get_post_meta($post_id, 'image_gallery_data', true);
-        $featured_img = get_the_post_thumbnail_url($post_id, 'thumbnail');
-        $final_array = array($featured_img);
-         $image_gallery_datas = array_merge($image_gallery_data['img_url'], $final_array);
-         $image_gallery_datas_final = array_reverse($image_gallery_datas);
+        if(!empty($image_gallery_data)){
+            $featured_img = get_the_post_thumbnail_url($post_id, 'thumbnail');
+            $final_array = array($featured_img);
+             $image_gallery_datas = array_merge($image_gallery_data['img_url'], $final_array);
+             $image_gallery_datas_final = array_reverse($image_gallery_datas);
+        }else{
+            $featured_img = get_the_post_thumbnail_url($post_id, 'thumbnail');
+            $image_gallery_datas_final = array($featured_img);
+        }
+        
     //  var_dump($image_gallery_datas_final);
 
     $html = '';
     // var_dump()
         if (!empty($image_gallery_datas_final)) {
-            if ($image_gallery_datas != '') {
+            if ($image_gallery_datas_final != '') {
                 $html = '<div id="sync1" class="owl-carousel owl-theme">';
                 foreach ($image_gallery_datas_final as $url) {
                     $id = attachment_url_to_postid($url);
@@ -423,7 +429,7 @@ class Locatepress_Public
         if ($locatepress_contact_no != '') {
             $html = '<p class="lp-contact">';
             $html .= '<i class="fa fa-phone" aria-hidden="true"></i>';
-            $html .= '<span class="lp_single_contact_no">'.esc_html($locatepress_contact_no).'</span>';
+            $html .= '<span class="lp_single_contact_no"><a href="tel:'.esc_html($locatepress_contact_no).'">'.esc_html($locatepress_contact_no).'</a></span>';
             $html .= '</p>';
         }
         return apply_filters('locatepress_single_contact_no', $html);
@@ -495,9 +501,9 @@ class Locatepress_Public
         if ($lp_location_country != '') {
 
             
-            $html = '<p class="lp-contact"><i class="fa fa-map-marker" aria-hidden="true"></i><span class="lp_single_address">';
+            $html = '<p class="lp-contact"><i class="fa fa-map-marker" aria-hidden="true"></i><span class="lp_single_address"><a href="#direction-lp">';
             $html .= esc_html($lp_location_country);
-            $html .='</span></p>';
+            $html .='</a></span></p>';
 
         }
         return apply_filters('locatpress_single_address', $html);

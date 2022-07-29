@@ -74,7 +74,7 @@ if ( ! empty( $tax ) ) {
 
 			<?php do_action( 'locatepress_before_single_page_map' ); ?>
 
-			<?php echo apply_filters( 'locatepress_single_address_title', '<span class="address-span"><h3>' . __( 'Location ', 'locatepress' ) . '</h3></span>' ); ?>
+			<?php echo apply_filters( 'locatepress_single_address_title', '<span class="address-span"><h3 id="direction-lp">' . __( 'Location ', 'locatepress' ) . '</h3></span>' ); ?>
 
 			<div class="locatepress-single-map" data-latlong="<?php echo esc_html( get_post_meta( $post->ID, 'lp_location_lat_long', true ) ); ?>" data-info="<?php echo esc_html( get_post_meta( $post->ID, 'lp_location_country', true ) ); ?>"  id="single-map" data-marker='<?php echo esc_url( wp_get_attachment_url( $icon_meta ) ); ?>' style="width:100%;height: 300px;"></div>
 
