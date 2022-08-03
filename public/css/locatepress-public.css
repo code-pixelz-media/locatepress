@@ -1091,6 +1091,14 @@ a{
 	}
 	
 }
+@media (max-width: 550px){
+  #sync2 .owl-item img{
+    height: 40px;
+  }
+  #sync1 .owl-item img{
+    height: 300px;
+  }
+}
 
 
 /* -------- locatepress design fixes ---------- */
