@@ -340,9 +340,10 @@ class Locatepress_Public
 
         if (file_exists($file)) {
             $single_template = $file;
+            return $single_template;
         }
 
-        return $single_template;
+      
     }
 
     /**
@@ -357,40 +358,23 @@ class Locatepress_Public
     public static function locatepress_single_listing_gallery($post_id)
     {
         $image_gallery_data = get_post_meta($post_id, 'image_gallery_data', true);
+        $html = '';
         if(!empty($image_gallery_data)){
-            $featured_img = get_the_post_thumbnail_url($post_id, 'thumbnail');
-            $final_array = array($featured_img);
-             $image_gallery_datas = array_merge($image_gallery_data['img_url'], $final_array);
-             $image_gallery_datas_final = array_reverse($image_gallery_datas);
-        }else{
-            $featured_img = get_the_post_thumbnail_url($post_id, 'thumbnail');
-            $image_gallery_datas_final = array($featured_img);
-        }
-        
-    //  var_dump($image_gallery_datas_final);
-
-    $html = '';
-    // var_dump()
-        if (!empty($image_gallery_datas_final)) {
-            if ($image_gallery_datas_final != '') {
+          if ($image_gallery_data['img_url'] != '') {
                 $html = '<div id="sync1" class="owl-carousel owl-theme">';
-                foreach ($image_gallery_datas_final as $url) {
-                    $id = attachment_url_to_postid($url);
-                    $locatepress_image_url = wp_get_attachment_image_url($id, 'medium');
+                foreach ($image_gallery_data['img_url'] as $url) {
                     $html .= '<div class="item">';
-                    // $html .= '<img src ="' . get_the_post_thumbnail_url($post_id, 'thumbnail') . '">';
-                    $html .= '<img src ="' . esc_url($locatepress_image_url) . '">';
+                    $html .= '<img src ="' . esc_url($url) . '">';
                     $html .='</div>';
                 }
 
                 $html .= '</div>';
 
                 $html .= '<div id="sync2" class="owl-carousel owl-theme">';
-                foreach ($image_gallery_datas_final as $url) {
+                foreach ($image_gallery_data['img_url'] as $url) {
 
                     $id = attachment_url_to_postid($url);
                     $locatepress_image_url = wp_get_attachment_image_url($id, 'medium');
-                    // $locatepress_image_url = get_the_post_thumbnail_url($post_id, 'thumbnail');
 
                     $html .= '<div class="item">';
                     $html .= '<img src ="' . esc_url($locatepress_image_url) . '">';
@@ -403,13 +387,14 @@ class Locatepress_Public
 
         }else{
             $html = '<div class="lp_single_featured_image">';
-        	if( has_post_thumbnail() ){
+            if( has_post_thumbnail() ){
                 $html .= '<img src="'.esc_url( get_the_post_thumbnail_url($post_id, 'large') ).'">' ;
             };
             $html .= '</div>';
         }
 
         return apply_filters('locatepress_single_listing_gallery', $html);
+
 
     }
 
